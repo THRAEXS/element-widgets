@@ -1,12 +1,21 @@
-// exports.selector = function() {
-//     console.log('Vue Element-UI Selector...')
-// }
-
-// const org = () => console.log('Org selector') 
-// const list = () => console.log('List selector') 
-
-// export default { org, list }
 import ListSelector from '../packages/list'
 import TreeSelector from '../packages/tree'
 
-export default { ListSelector, TreeSelector }
+const components = [ ListSelector, TreeSelector ]
+
+// ListSelector.install = function(Vue) {
+//   Vue.component(ListSelector.name, ListSelector)
+// }
+
+// TreeSelector.install = function(Vue) {
+//   Vue.component(TreeSelector.name, TreeSelector)
+// }
+
+const install = function(Vue) {
+  // ListSelector.install(Vue)
+  // TreeSelector.install(Vue)
+  components.forEach(c => Vue.component(c.name, c))
+}
+
+export { install, ListSelector, TreeSelector }
+export default { install }
