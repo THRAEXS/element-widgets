@@ -10,7 +10,7 @@
   "author": "THRAEX <THRAEX@aliyun.com>",
   "license": "MIT",
   "dependencies": {
-    "element-ui": "^2.13.2",
-    "vue": "^2.6.10"
+    "element-ui": "2.13.2",
+    "vue": "2.6.10"
   }
 }

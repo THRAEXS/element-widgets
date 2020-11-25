@@ -5,7 +5,6 @@
 </template>
 <script>
 export default {
-  name: 'ListSelector',
-  componentName: 'ListSelector'
+  name: 'ListSelector'
 }
 </script>
