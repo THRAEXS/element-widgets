@@ -7,6 +7,8 @@
   </list-selector>
 </template>
 <script>
+import { getUserList } from '@/api'
+
 export default {
   name: 'UserSelector',
   data() {
@@ -28,6 +30,10 @@ export default {
     }
   },
   created() {
+    getUserList(this.pagination)
+      .then(data => console.log('Response:', data))
+      .catch(e => console.error('Response error:', e))
+
     const total = 3003
     this.pagination.total = total
     for (let i = 0; i < 10; i++) {

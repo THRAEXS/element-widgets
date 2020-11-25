@@ -9,7 +9,14 @@
     "lib": "vue-cli-service build --target lib --name element-selector --dest lib packages/index.js",
     "lint": "vue-cli-service lint"
   },
-  "keywords": ["thraex", "element-selector", "element", "selector", "vue", "vue2"],
+  "keywords": [
+    "thraex",
+    "element-selector",
+    "element",
+    "selector",
+    "vue",
+    "vue2"
+  ],
   "author": "THRAEX <THRAEX@aliyun.com>",
   "license": "MIT",
   "dependencies": {
@@ -20,9 +27,11 @@
     "@vue/cli-plugin-babel": "4.5.0",
     "@vue/cli-plugin-eslint": "4.5.0",
     "@vue/cli-service": "4.5.0",
+    "axios": "^0.21.0",
     "babel-eslint": "10.1.0",
     "eslint": "6.7.2",
     "eslint-plugin-vue": "6.2.2",
+    "mockjs": "^1.1.0",
     "vue-template-compiler": "2.6.11"
   },
   "eslintConfig": {
