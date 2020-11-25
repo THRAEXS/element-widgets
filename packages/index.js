@@ -1,5 +1,5 @@
-import ListSelector from '../packages/list'
-import TreeSelector from '../packages/tree'
+import ListSelector from './list'
+import TreeSelector from './tree'
 
 // v1.0
 /* ListSelector.install = function(Vue) {

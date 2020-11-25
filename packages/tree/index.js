@@ -1,3 +1,3 @@
-import TS from './src/main'
+import TreeSelector from './src/main'
 
-export default TS
+export default TreeSelector

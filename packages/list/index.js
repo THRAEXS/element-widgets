@@ -1,3 +1,3 @@
-import LS from './src/main'
+import ListSelector from './src/main'
 
-export default LS
+export default ListSelector
