@@ -1,48 +1,56 @@
 <template>
   <div>
     <el-table
-      :data="data"
-      style="width: 100%">
-      <el-table-column
-        prop="date"
-        label="日期"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="name"
-        label="姓名"
-        width="180">
-      </el-table-column>
-      <el-table-column
-        prop="address"
-        label="地址">
-      </el-table-column>
+      style="width: 100%;"
+      stripe
+      border
+      fit
+      highlight-current-row
+      :data="data">
+      <el-table-column type="selection" align="center" width="50"></el-table-column>
+      <el-table-column type="index" label="序号" width="50" align="center" :index="handleIndex"></el-table-column>
+      
+      <slot></slot>
     </el-table>
+
+    <el-pagination
+      class="m-t0"
+      background
+      layout="total, sizes, prev, pager, next, jumper"
+      :current-page.sync="pagination.page"
+      :page-size.sync="pagination.size"
+      :total="pagination.total"
+      :page-sizes="pageSizes"
+      ></el-pagination>
   </div>
 </template>
 <script>
 export default {
   name: 'ListSelector',
-  data() {
-    return {
-      data: [{
-            date: '2016-05-02',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1518 弄'
-          }, {
-            date: '2016-05-04',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1517 弄'
-          }, {
-            date: '2016-05-01',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1519 弄'
-          }, {
-            date: '2016-05-03',
-            name: '王小虎',
-            address: '上海市普陀区金沙江路 1516 弄'
-          }]
+  props: {
+    data: {
+      type: Array,
+      required: true
+    },
+    pagination: {
+      type: Object,
+      required: true
+    },
+    pageSizes: {
+      type: Array,
+      default() {
+        return [10, 20, 30, 50, 100]
+      }
+    }
+  },
+  methods: {
+    handleIndex(index) {
+      const { page, size } = this.pagination
+      return (page - 1) * size + (index + 1)
     }
   }
 }
 </script>
+<style>
+.m-t0 { margin-top: 10px; }
+</style>
