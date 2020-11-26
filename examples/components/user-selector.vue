@@ -7,7 +7,7 @@
   </list-selector>
 </template>
 <script>
-import { getUserList } from '@/api'
+import { getUserPage, getUser, getUsers } from '@/api'
 
 export default {
   name: 'UserSelector',
@@ -18,19 +18,35 @@ export default {
         page: 1,
         size: 10,
         total: 0
+      },
+      querys: {
+        page: 1,
+        size: 10,
+        params: {
+          name: 'gui',
+          other: 'oo'
+        }
       }
     }
   },
-  watch: {
-    pagination: {
-      deep: true,
-      handler: function(val) {
-        console.log(JSON.stringify(val))
-      }
-    }
-  },
+  // watch: {
+  //   pagination: {
+  //     deep: true,
+  //     handler: function(val) {
+  //       console.log(JSON.stringify(val))
+  //     }
+  //   }
+  // },
   created() {
-    getUserList(this.pagination)
+    getUserPage(this.querys)
+      .then(data => console.log('Response:', data))
+      .catch(e => console.error('Response error:', e))
+
+    getUser('user-10')
+      .then(data => console.log('Response:', data))
+      .catch(e => console.error('Response error:', e))
+
+    getUsers(['user-2', 'user-7', 'user-10'])
       .then(data => console.log('Response:', data))
       .catch(e => console.error('Response error:', e))
 

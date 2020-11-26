@@ -1,10 +1,10 @@
 import Mock from 'mockjs'
+import data from './data'
 
-// import { userList } from './data'
+const mocks = [
+    { url: '/api/admin/user/page', type: 'get', template: data.getUserPage },
+    { url: '/api/admin/user/', type: 'get', template: data.getUser },
+    { url: '/api/admin/user', type: 'get', template: data.getUsers }
+]
 
-// Mock.mock('/api/admin/user/list', 'get', userList)
-// Mock.mock(/\/api\/admin\/user\/list*/, 'get', function(options) {
-Mock.mock(new RegExp('/api/admin/user/list'), 'get', function(options) {
-    console.log(options)
-    return []
-})
+mocks.forEach(it => Mock.mock(new RegExp(it.url), it.type, it.template))

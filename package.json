@@ -1,6 +1,6 @@
 {
   "name": "element-selector",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A selector based on element-ui",
   "main": "lib/element-selector.common.js",
   "scripts": {
