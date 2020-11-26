@@ -1,13 +1,16 @@
 <template>
-  <list-selector :data="data" :pagination="pagination">
-    <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
-    <el-table-column prop="name" label="姓名" align="center"></el-table-column>
-    <el-table-column prop="deptName" label="所级单位" align="center"></el-table-column>
-    <el-table-column prop="officeName" label="所在科室" align="center"></el-table-column>
-  </list-selector>
+  <el-dialog>
+    <list-selector :data="data" :pagination="pagination">
+      <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
+      <el-table-column prop="account" label="Account" align="center"></el-table-column>
+      <el-table-column prop="name" label="Name" align="center"></el-table-column>
+      <el-table-column prop="department" label="Department" align="center"></el-table-column>
+      <el-table-column prop="office" label="Office" align="center"></el-table-column>
+    </list-selector>
+  </el-dialog>
 </template>
 <script>
-import { getUserPage, getUser, getUsers } from '@/api'
+import { getUserPage } from '@/api'
 
 export default {
   name: 'UserSelector',
@@ -17,47 +20,47 @@ export default {
       pagination: {
         page: 1,
         size: 10,
-        total: 0
-      },
-      querys: {
-        page: 1,
-        size: 10,
-        params: {
-          name: 'gui',
-          other: 'oo'
-        }
+        total: 0 // Trigger watch twice
       }
     }
   },
-  // watch: {
-  //   pagination: {
-  //     deep: true,
-  //     handler: function(val) {
-  //       console.log(JSON.stringify(val))
-  //     }
-  //   }
-  // },
+  watch: {
+    // Trigger watch twice
+    /* pagination: {
+      deep: true,
+      handler: function() {
+        this.search()
+      }
+    } */
+    'pagination.page'() {
+      this.search()
+    },
+    'pagination.size'() {
+      this.search()
+    }
+  },
   created() {
-    getUserPage(this.querys)
-      .then(data => console.log('Response:', data))
-      .catch(e => console.error('Response error:', e))
+    this.search()
 
-    getUser('user-10')
-      .then(data => console.log('Response:', data))
-      .catch(e => console.error('Response error:', e))
+    // getUser('user-10')
+    //   .then(data => console.log('Response:', data))
 
-    getUsers(['user-2', 'user-7', 'user-10'])
-      .then(data => console.log('Response:', data))
-      .catch(e => console.error('Response error:', e))
-
-    const total = 3003
-    this.pagination.total = total
-    for (let i = 0; i < 10; i++) {
-      this.data.push({
-        id: `user-${i}`,
-        name: `HANZO-${i+1}`,
-        deptName: 'Peking University Thrid Hospital',
-        officeName: 'Dental'
+    // getUsers(['user-2', 'user-7', 'user-10'])
+    //   .then(data => console.log('Response:', data))
+  },
+  methods: {
+    search() {
+      const { page, size } = this.pagination
+      getUserPage({
+        page,
+        size,
+        params: {
+          name: 'gui',
+          other: 'oo' 
+        } 
+      }).then(({ data, total }) => {
+        this.data = data
+        this.pagination.total = total
       })
     }
   }

@@ -8,7 +8,7 @@
       highlight-current-row
       :data="data">
       <el-table-column type="selection" align="center" width="50"></el-table-column>
-      <el-table-column type="index" label="序号" width="50" align="center" :index="handleIndex"></el-table-column>
+      <el-table-column type="index" label="No." width="60" align="center" :index="handleIndex"></el-table-column>
       
       <slot></slot>
     </el-table>
