@@ -1,11 +1,16 @@
 <template>
   <div id="app">
-    <el-card>
+    <!-- <el-card>
       <user-selector />
-    </el-card>
+    </el-card> -->
     <!-- <el-card class="m-t">
       <tree-selector />
     </el-card> -->
+
+    <user-selector
+    :visible="visible"
+     />
+    <el-button type="primary" @click="visible = true">Select User</el-button>
   </div>
 </template>
 
@@ -13,7 +18,17 @@
 import UserSelector from './components/user-selector'
 export default {
   name: 'App',
-  components: { UserSelector }
+  components: { UserSelector },
+  data() {
+    return {
+      visible: false
+    }
+  },
+  methods: {
+    handleSelectUser() {
+
+    }
+  }
 }
 </script>
 
