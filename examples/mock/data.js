@@ -15,25 +15,25 @@ import { param2Obj } from './utils'
 // }
 
 function getUserPage(options) {
-  console.log('getUserPage:', options)
+  // console.log('getUserPage:', options)
   const params = param2Obj(options.url)
-  console.log('getUserPage params:', params)
-  return []
+  // console.log('getUserPage params:', params)
+  return [params]
 }
 
 function getUser(options) {
-  console.log('getUser:', options)
+  // console.log('getUser:', options)
   const [id] = options.url.split('/').reverse()
-  console.log('getUser params:', id)
+  // console.log('getUser params:', id)
 
-  return {}
+  return { id }
 }
 
 function getUsers(options) {
-  console.log('getUsers:', options)
+  // console.log('getUsers:', options)
   const params = param2Obj(options.url)
-  console.log('getUsers params:', params)
-  return []
+  // console.log('getUsers params:', params)
+  return [params]
 }
 
 export default { getUserPage, getUser, getUsers }
