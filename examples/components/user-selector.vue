@@ -8,18 +8,14 @@
     <list-selector
       :data="data"
       :pagination="pagination"
-      @handle-ok="dialogVisible = false"
+      :value.sync="selected"
+      @handle-ok="handleOk"
       @handle-cancel="dialogVisible = false">
       <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
       <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
       <el-table-column prop="department" label="Department" align="center"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-
-      <!-- <template v-slot:operation>
-        <el-button size="mini" @click="dialogVisible = false">取 消</el-button>
-        <el-button type="primary" size="mini" @click="dialogVisible = false">确 定</el-button>
-      </template> -->
     </list-selector>
   </el-dialog>
 </template>
@@ -49,8 +45,9 @@ export default {
       pagination: {
         page: 1,
         size: 10,
-        total: 0 // Fix: Trigger watch twice
-      }
+        total: 0
+      },
+      selected: null
     }
   },
   watch: {
@@ -58,13 +55,6 @@ export default {
       this.dialogVisible = this.visible
       this.dialogVisible && this.search()
     },
-    // Fix: Trigger watch twice
-    /* pagination: {
-      deep: true,
-      handler: function() {
-        this.search()
-      }
-    } */
     'pagination.page'() {
       this.search()
     },
@@ -72,6 +62,10 @@ export default {
       this.search()
     }
   },
+  // created() {
+  //   this.selected = 'user-4'
+  //   // this.$set(this, 'selected', 'user-8')
+  // },
   /* created() {
     this.search()
 
@@ -98,6 +92,19 @@ export default {
     },
     handleClosed() {
       this.$emit('update:visible', false)
+      console.log(this.selected)
+    },
+    handleOk() {
+    // handleOk(val) {
+      // const tips = `
+      // (v-model || :value) && (this.selected = val)
+      // or
+      // :value.sync
+      // `
+      // console.log(tips, val)
+      // this.selected = val
+
+      this.dialogVisible = false
     }
   }
 }
@@ -109,7 +116,4 @@ export default {
 .el-dialog__body {
   padding: 10px 10px 10px 10px!important;
 }
-/* .el-dialog__footer {
-  padding: 0 10px 10px 10px!important;
-} */
 </style>

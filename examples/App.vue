@@ -21,17 +21,7 @@ export default {
     return {
       visible: false
     }
-  },
-  // watch: {
-  //   visible() {
-  //     console.log('dddd')
-  //   }
-  // },
-  // methods: {
-  //   handleSelectUser() {
-
-  //   }
-  // }
+  }
 }
 </script>
 
