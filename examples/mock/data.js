@@ -1,5 +1,6 @@
 // import Mock from 'mockjs'
-import { param2Obj } from './utils'
+import { param2Obj } from '@/utils/util'
+import logger from '../utils/logger'
 
 // const Random = Mock.Random // Mock.Random 是一个工具类，用于生成各种随机数据
 
@@ -15,24 +16,24 @@ import { param2Obj } from './utils'
 // }
 
 function getUserPage(options) {
-  // console.log('getUserPage:', options)
+  logger.debug('getUserPage:', options)
   const params = param2Obj(options.url)
-  // console.log('getUserPage params:', params)
+  logger.debug('getUserPage params:', params)
   return [params]
 }
 
 function getUser(options) {
-  // console.log('getUser:', options)
+  logger.debug('getUser:', options)
   const [id] = options.url.split('/').reverse()
-  // console.log('getUser params:', id)
+  logger.debug('getUser params:', id)
 
   return { id }
 }
 
 function getUsers(options) {
-  // console.log('getUsers:', options)
+  logger.debug('getUsers:', options)
   const params = param2Obj(options.url)
-  // console.log('getUsers params:', params)
+  logger.debug('getUsers params:', params)
   return [params]
 }
 
