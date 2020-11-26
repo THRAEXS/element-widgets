@@ -1,21 +1,26 @@
 <template>
   <el-dialog
-    :visible.sync="visible"
+    :visible.sync="dialogVisible"
     :width="width"
     :top="top"
-    :show-close="false">
-    <list-selector :data="data" :pagination="pagination">
+    :show-close="false"
+    @closed="handleClosed">
+    <list-selector
+      :data="data"
+      :pagination="pagination"
+      @handle-ok="dialogVisible = false"
+      @handle-cancel="dialogVisible = false">
       <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
       <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
       <el-table-column prop="department" label="Department" align="center"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-    </list-selector>
 
-    <template v-slot:footer>
-      <el-button size="mini" @click="visible = false">取 消</el-button>
-      <el-button type="primary" size="mini" @click="visible = false">确 定</el-button>
-    </template>
+      <!-- <template v-slot:operation>
+        <el-button size="mini" @click="dialogVisible = false">取 消</el-button>
+        <el-button type="primary" size="mini" @click="dialogVisible = false">确 定</el-button>
+      </template> -->
+    </list-selector>
   </el-dialog>
 </template>
 <script>
@@ -39,6 +44,7 @@ export default {
   },
   data() {
     return {
+      dialogVisible: false,
       data: [],
       pagination: {
         page: 1,
@@ -48,6 +54,10 @@ export default {
     }
   },
   watch: {
+    visible() {
+      this.dialogVisible = this.visible
+      this.dialogVisible && this.search()
+    },
     // Fix: Trigger watch twice
     /* pagination: {
       deep: true,
@@ -62,7 +72,7 @@ export default {
       this.search()
     }
   },
-  created() {
+  /* created() {
     this.search()
 
     // getUser('user-10')
@@ -70,7 +80,7 @@ export default {
 
     // getUsers(['user-2', 'user-7', 'user-10'])
     //   .then(data => console.log('Response:', data))
-  },
+  }, */
   methods: {
     search() {
       const { page, size } = this.pagination
@@ -85,6 +95,9 @@ export default {
         this.data = data
         this.pagination.total = total
       })
+    },
+    handleClosed() {
+      this.$emit('update:visible', false)
     }
   }
 }
@@ -96,7 +109,7 @@ export default {
 .el-dialog__body {
   padding: 10px 10px 10px 10px!important;
 }
-.el-dialog__footer {
+/* .el-dialog__footer {
   padding: 0 10px 10px 10px!important;
-}
+} */
 </style>

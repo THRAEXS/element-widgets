@@ -7,9 +7,7 @@
       <tree-selector />
     </el-card> -->
 
-    <user-selector
-    :visible="visible"
-     />
+    <user-selector :visible.sync="visible" />
     <el-button type="primary" @click="visible = true">Select User</el-button>
   </div>
 </template>
@@ -24,11 +22,16 @@ export default {
       visible: false
     }
   },
-  methods: {
-    handleSelectUser() {
+  // watch: {
+  //   visible() {
+  //     console.log('dddd')
+  //   }
+  // },
+  // methods: {
+  //   handleSelectUser() {
 
-    }
-  }
+  //   }
+  // }
 }
 </script>
 

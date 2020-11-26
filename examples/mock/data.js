@@ -4,6 +4,8 @@ import logger from '../utils/logger'
 
 const Random = Mock.Random
 
+const debug = false
+
 const total = 3157
 let users = []
 let maps = new Map()
@@ -21,9 +23,9 @@ for (let i = 0; i < total; i++) {
 }
 
 function getUserPage(options) {
-  logger.debug('getUserPage:', options)
+  debug && logger.debug('getUserPage:', options)
   const params = param2Obj(options.url)
-  logger.debug('getUserPage params:', params)
+  debug && logger.debug('getUserPage params:', params)
   
   const { page, size } = params
 
@@ -34,17 +36,17 @@ function getUserPage(options) {
 }
 
 function getUser(options) {
-  logger.debug('getUser:', options)
+  debug && logger.debug('getUser:', options)
   const [id] = options.url.split('/').reverse()
-  logger.debug('getUser params:', id)
+  debug && logger.debug('getUser params:', id)
 
   return maps.get(id) || {}
 }
 
 function getUsers(options) {
-  logger.debug('getUsers:', options)
+  debug && logger.debug('getUsers:', options)
   const params = param2Obj(options.url)
-  logger.debug('getUsers params:', params)
+  debug && logger.debug('getUsers params:', params)
   
   return params.ids.map(it => maps.get(it)).filter(it => it)
 }
