@@ -1,5 +1,5 @@
 <template>
-  <div class="th-component">
+  <div class="thx-component">
     <el-dialog
       :visible.sync="dialogVisible"
       :width="width"
@@ -16,7 +16,7 @@
 </template>
 <script>
 export default {
-  name: 'ThDialogBox',
+  name: 'ThxDialogBox',
   props: {
     visible: {
       type: Boolean,
@@ -49,10 +49,10 @@ export default {
 }
 </script>
 <style scoped>
-.th-component >>> .el-dialog__header {
+.thx-component >>> .el-dialog__header {
   padding: 0;
 }
-.th-component >>> .el-dialog__body {
+.thx-component >>> .el-dialog__body {
   padding: 10px;
   min-height: 300px;
 }

@@ -1,5 +1,6 @@
-import ListSelector from './list'
-import TreeSelector from './tree'
+import DialogBox from './dialog-box'
+import ListSelector from './list-selector'
+import TreeSelector from './tree-selector'
 
 // v1.0
 /* ListSelector.install = function(Vue) {
@@ -16,20 +17,27 @@ const install = function(Vue) {
 } */
 
 // v2.0
-const installComponent = (Vue, c) => Vue.component(c.name, c)
+/* const installComponent = (Vue, c) => Vue.component(c.name, c)
 
+DialogBox.install = Vue => installComponent(Vue, DialogBox)
 ListSelector.install = Vue => installComponent(Vue, ListSelector)
 TreeSelector.install = Vue => installComponent(Vue, TreeSelector)
 
 const install = function(Vue) {
+  DialogBox.install(Vue)
   ListSelector.install(Vue)
   TreeSelector.install(Vue)
-}
+} */
 
 // v3.0
-/* const components = [ ListSelector, TreeSelector ]
+const components = [ DialogBox, ListSelector, TreeSelector ]
 
-const install = Vue =>  components.forEach(c => Vue.component(c.name, c)) */
+const install = Vue =>  components.forEach(c => Vue.component(c.name, c))
 
-export { install, ListSelector, TreeSelector }
+export {
+  DialogBox,
+  ListSelector,
+  TreeSelector,
+  install
+}
 export default { install }

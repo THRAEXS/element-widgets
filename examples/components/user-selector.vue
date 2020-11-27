@@ -1,12 +1,12 @@
 <template>
-  <div class="th-component">
+  <div class="thx-component">
     <el-dialog
       :visible.sync="dialogVisible"
       :width="width"
       :top="top"
       :show-close="false"
       @closed="handleClosed">
-      <list-selector
+      <thx-list-selector
         :data="data"
         :pagination="pagination"
         :value.sync="selected"
@@ -17,7 +17,7 @@
         <el-table-column prop="name" label="Name" align="center"></el-table-column>
         <el-table-column prop="department" label="Department" align="center"></el-table-column>
         <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-      </list-selector>
+      </thx-list-selector>
     </el-dialog>
   </div>
 </template>
@@ -105,10 +105,10 @@ export default {
 }
 </script>
 <style scoped>
-.th-component >>> .el-dialog__header {
+.thx-component >>> .el-dialog__header {
   padding: 0;
 }
-.th-component >>> .el-dialog__body {
+.thx-component >>> .el-dialog__body {
   padding: 10px;
 }
 </style>

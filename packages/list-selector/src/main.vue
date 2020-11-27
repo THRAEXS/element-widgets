@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="thx-component">
     <el-table
       style="width: 100%;margin-bottom: 10px;"
       stripe
@@ -40,7 +40,7 @@
 </template>
 <script>
 export default {
-  name: 'ListSelector',
+  name: 'ThxListSelector',
   props: {
     value: [String, Array],
     data: {
@@ -86,7 +86,7 @@ export default {
   }
 }
 </script>
-<style>
-.text-right { text-align: right; }
-.el-radio .el-radio__label { display: none; }
+<style scoped>
+.thx-component .text-right { text-align: right; }
+.thx-component >>> .el-radio .el-radio__label { display: none; }
 </style>
