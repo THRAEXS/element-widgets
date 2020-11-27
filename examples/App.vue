@@ -1,27 +1,15 @@
 <template>
   <div id="app">
-    <!-- <el-card>
-      <user-selector />
-    </el-card> -->
-    <!-- <el-card class="m-t">
-      <tree-selector />
-    </el-card> -->
-
-    <user-selector :visible.sync="visible" />
-    <el-button type="primary" @click="visible = true">Select User</el-button>
+    <user-radio />
   </div>
 </template>
 
 <script>
-import UserSelector from './components/user-selector'
+import UserRadio from '@/views/user-radio'
+
 export default {
   name: 'App',
-  components: { UserSelector },
-  data() {
-    return {
-      visible: false
-    }
-  }
+  components: { UserRadio }
 }
 </script>
 
@@ -32,5 +20,4 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   color: #2c3e50;
 }
-.m-t { margin-top: 10px; }
 </style>

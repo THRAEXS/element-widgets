@@ -9,7 +9,7 @@
       :data="data">
       <el-table-column type="selection" align="center" width="40" v-if="multiSelect"></el-table-column>
       <el-table-column align="center" width="40" v-else>
-        <template slot-scope="scope">
+        <template v-slot:default="scope">
           <el-radio v-model="selected" :label="scope.row.id" />
         </template>
       </el-table-column>
@@ -68,7 +68,7 @@ export default {
     }
   },
   beforeUpdate() {
-    console.log('beforeUpdate...', this.value, this.selected)
+    // console.log('beforeUpdate...', this.value, this.selected)
     this.selected = this.value
   },
   methods: {

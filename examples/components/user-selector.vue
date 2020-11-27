@@ -20,11 +20,12 @@
   </el-dialog>
 </template>
 <script>
-import { getUserPage } from '@/api'
+import { getUserPage, getUser, getUsers } from '@/api'
 
 export default {
   name: 'UserSelector',
   props: {
+    value: [String, Array],
     visible: {
       type: Boolean,
       default: false
@@ -51,6 +52,9 @@ export default {
     }
   },
   watch: {
+    value() {
+      console.log('********')
+    },
     visible() {
       this.dialogVisible = this.visible
       this.dialogVisible && this.search()
@@ -62,19 +66,6 @@ export default {
       this.search()
     }
   },
-  // created() {
-  //   this.selected = 'user-4'
-  //   // this.$set(this, 'selected', 'user-8')
-  // },
-  /* created() {
-    this.search()
-
-    // getUser('user-10')
-    //   .then(data => console.log('Response:', data))
-
-    // getUsers(['user-2', 'user-7', 'user-10'])
-    //   .then(data => console.log('Response:', data))
-  }, */
   methods: {
     search() {
       const { page, size } = this.pagination
@@ -90,21 +81,23 @@ export default {
         this.pagination.total = total
       })
     },
+    async one(id) {
+      return await getUser(id)
+    },
+    async gets(ids) {
+      return await getUsers(ids)
+    },
     handleClosed() {
       this.$emit('update:visible', false)
-      console.log(this.selected)
     },
     handleOk() {
-    // handleOk(val) {
-      // const tips = `
-      // (v-model || :value) && (this.selected = val)
-      // or
-      // :value.sync
-      // `
-      // console.log(tips, val)
-      // this.selected = val
-
+      this.$emit('update:value', this.selected)
       this.dialogVisible = false
+
+      this.one(this.selected).then(data => {
+        this.$emit('update:data-set', data)
+        this.$emit('handle-ok', data)
+      })
     }
   }
 }
@@ -114,6 +107,6 @@ export default {
   padding: 0!important;
 }
 .el-dialog__body {
-  padding: 10px 10px 10px 10px!important;
+  padding: 10px!important;
 }
 </style>
