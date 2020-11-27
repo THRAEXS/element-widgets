@@ -1,29 +1,24 @@
 <template>
   <div>
-    <el-card>
-      <template v-slot:header>
-        <span>
-          <b>Selector - User Radio</b>
-        </span>
+    <thx-card-box>
+      <template v-slot:title>
+        Selector - User Radio
+      </template>
+
+      <template v-slot:toolbar>
         <el-button
-          style="float: right;"
           type="success"
           icon="el-icon-check"
           size="mini"
           circle
-          @click="visible = true"></el-button>
-        <el-button
-          style="float: right;"
-          type="info"
-          icon="el-icon-edit"
-          size="mini"
-          circle
-          @click="dialogBoxVisible = true"></el-button>
+          @click="visible = true"
+        ></el-button>
       </template>
+
       <el-tag type="success">
         <b>{{ data }}</b>
       </el-tag>
-    </el-card>
+    </thx-card-box>
 
     <!-- Case 1: (v-model || :value) &&  @handle-ok  -->
     <!-- <user-selector
@@ -46,10 +41,6 @@
       :visible.sync="visible"
       :value.sync="uid"
       :data-set.sync="data" />
-
-    <thx-dialog-box :visible.sync="dialogBoxVisible" />
-
-    <thx-tree-selector />
   </div>
 </template>
 
@@ -63,7 +54,6 @@ export default {
     return {
       visible: false,
       uid: null,
-      dialogBoxVisible: false,
       data: null
     }
   },
@@ -86,7 +76,3 @@ export default {
   }
 }
 </script>
-<style>
-.el-card__header { padding: 15px!important; }
-.el-card__body { padding: 15px!important; }
-</style>

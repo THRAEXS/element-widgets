@@ -31,7 +31,7 @@
           :page-sizes="pageSizes">
         </el-pagination>
       </el-col>
-      <el-col class="text-right" :span="6">
+      <el-col align="right" :span="6">
         <el-button size="mini" @click="handleCancel">取 消</el-button>
         <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
       </el-col>
@@ -87,6 +87,5 @@ export default {
 }
 </script>
 <style scoped>
-.thx-component .text-right { text-align: right; }
 .thx-component >>> .el-radio .el-radio__label { display: none; }
 </style>

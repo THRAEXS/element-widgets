@@ -44,6 +44,7 @@ export default {
   methods: {
     handleClosed() {
       this.$emit('update:visible', false)
+      this.$emit('handle-closed')
     }
   }
 }

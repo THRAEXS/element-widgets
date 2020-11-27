@@ -1,11 +1,8 @@
 <template>
   <div class="thx-component">
-    <el-dialog
+    <thx-dialog-box
       :visible.sync="dialogVisible"
-      :width="width"
-      :top="top"
-      :show-close="false"
-      @closed="handleClosed">
+      @handle-closed="handleClosed">
       <thx-list-selector
         :data="data"
         :pagination="pagination"
@@ -18,27 +15,19 @@
         <el-table-column prop="department" label="Department" align="center"></el-table-column>
         <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
       </thx-list-selector>
-    </el-dialog>
+    </thx-dialog-box>
   </div>
 </template>
 <script>
 import { getUserPage, getUser, getUsers } from '@/api'
 
 export default {
-  name: 'UserSelector',
+  name: 'ThxUserSelector',
   props: {
     value: [String, Array],
     visible: {
       type: Boolean,
       default: false
-    },
-    width: {
-      type: String,
-      default: '75%'
-    },
-    top: {
-      type: String,
-      default: '3vh'
     }
   },
   data() {

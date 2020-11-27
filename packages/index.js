@@ -1,3 +1,4 @@
+import CardBox from './card-box'
 import DialogBox from './dialog-box'
 import ListSelector from './list-selector'
 import TreeSelector from './tree-selector'
@@ -30,14 +31,25 @@ const install = function(Vue) {
 } */
 
 // v3.0
-const components = [ DialogBox, ListSelector, TreeSelector ]
+const components = [
+  CardBox,
+  DialogBox,
+  ListSelector,
+  TreeSelector
+]
 
 const install = Vue =>  components.forEach(c => Vue.component(c.name, c))
 
+if (typeof window !== 'undefined' && window.Vue) {
+  install(window.Vue)
+}
+
 export {
+  CardBox,
   DialogBox,
   ListSelector,
   TreeSelector,
   install
 }
+
 export default { install }
