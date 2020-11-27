@@ -1,10 +1,6 @@
 <template>
-  <div>
-    <thx-card-box>
-      <template v-slot:title>
-        Selector - User Radio
-      </template>
-
+  <div class="thx-component">
+    <thx-card-box title="Selector - User Radio">
       <template v-slot:toolbar>
         <el-button
           type="success"

@@ -1,10 +1,6 @@
 <template>
   <div class="thx-component">
-    <thx-card-box show-header>
-      <template v-slot:title>
-        Others
-      </template>
-
+    <thx-card-box :title="title">
       <template v-slot:toolbar>
         <el-button
           type="success"
@@ -33,7 +29,8 @@ export default {
   name: 'Other',
   data() {
     return {
-      visible: false
+      visible: false,
+      title: 'Others'
     }
   }
 }
