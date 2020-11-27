@@ -12,6 +12,13 @@
           size="mini"
           circle
           @click="visible = true"></el-button>
+        <!-- <el-button
+          style="float: right;"
+          type="info"
+          icon="el-icon-edit"
+          size="mini"
+          circle
+          @click="dialogBoxVisible = true"></el-button> -->
       </template>
       <el-tag type="success">
         <b>{{ data }}</b>
@@ -39,11 +46,14 @@
       :visible.sync="visible"
       :value.sync="uid"
       :data-set.sync="data" />
+
+    <!-- <th-dialog-box :visible.sync="dialogBoxVisible" ></th-dialog-box> -->
   </div>
 </template>
 
 <script>
 import UserSelector from '@/components/user-selector'
+// import ThDialogBox from '@/components/dialog-box'
 
 export default {
   name: 'UserRadio',

@@ -1,23 +1,25 @@
 <template>
-  <el-dialog
-    :visible.sync="dialogVisible"
-    :width="width"
-    :top="top"
-    :show-close="false"
-    @closed="handleClosed">
-    <list-selector
-      :data="data"
-      :pagination="pagination"
-      :value.sync="selected"
-      @handle-ok="handleOk"
-      @handle-cancel="dialogVisible = false">
-      <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
-      <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
-      <el-table-column prop="name" label="Name" align="center"></el-table-column>
-      <el-table-column prop="department" label="Department" align="center"></el-table-column>
-      <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-    </list-selector>
-  </el-dialog>
+  <div class="th-component">
+    <el-dialog
+      :visible.sync="dialogVisible"
+      :width="width"
+      :top="top"
+      :show-close="false"
+      @closed="handleClosed">
+      <list-selector
+        :data="data"
+        :pagination="pagination"
+        :value.sync="selected"
+        @handle-ok="handleOk"
+        @handle-cancel="dialogVisible = false">
+        <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
+        <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
+        <el-table-column prop="name" label="Name" align="center"></el-table-column>
+        <el-table-column prop="department" label="Department" align="center"></el-table-column>
+        <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
+      </list-selector>
+    </el-dialog>
+  </div>
 </template>
 <script>
 import { getUserPage, getUser, getUsers } from '@/api'
@@ -102,11 +104,11 @@ export default {
   }
 }
 </script>
-<style>
-.el-dialog__header {
-  padding: 0!important;
+<style scoped>
+.th-component >>> .el-dialog__header {
+  padding: 0;
 }
-.el-dialog__body {
-  padding: 10px!important;
+.th-component >>> .el-dialog__body {
+  padding: 10px;
 }
 </style>
