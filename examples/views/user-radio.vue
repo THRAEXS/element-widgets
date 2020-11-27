@@ -1,6 +1,6 @@
 <template>
   <div class="thx-component">
-    <thx-card-box title="Selector - User Radio">
+    <thx-card-box title="Case - Selector User Radio">
       <template v-slot:toolbar>
         <el-button
           type="success"
@@ -44,7 +44,7 @@
 import UserSelector from '@/components/user-selector'
 
 export default {
-  name: 'UserRadio',
+  name: 'CaseUserRadio',
   components: { UserSelector },
   data() {
     return {
@@ -53,11 +53,11 @@ export default {
       data: null
     }
   },
-  watch: {
-    uid(nv, ov) {
-      console.log('watch uid:', nv, ov)
-    }
-  },
+  // watch: {
+  //   uid(nv, ov) {
+  //     console.log('watch uid:', nv, ov)
+  //   }
+  // },
   methods: {
     // Case 1: (v-model || :value) &&  @handle-ok
     /* handleOk(data) {

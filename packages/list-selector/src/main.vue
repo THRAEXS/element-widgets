@@ -10,7 +10,10 @@
       <el-table-column type="selection" align="center" width="40" v-if="multiSelect"></el-table-column>
       <el-table-column align="center" width="40" v-else>
         <template v-slot:default="scope">
-          <el-radio v-model="selected" :label="scope.row.id" />
+          <el-radio
+            v-model="selected"
+            :label="scope.row.id"
+            @change="handleRadioChange" />
         </template>
       </el-table-column>
       <el-table-column type="index" label="No." width="60" align="center" :index="handleIndex"></el-table-column>
@@ -20,7 +23,7 @@
       </slot>
     </el-table>
 
-    <el-row>
+    <el-row type="flex" align="middle">
       <el-col :span="18">
         <el-pagination
           background
@@ -32,8 +35,7 @@
         </el-pagination>
       </el-col>
       <el-col align="right" :span="6">
-        <el-button size="mini" @click="handleCancel">取 消</el-button>
-        <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+        <slot name="reserved"></slot>
       </el-col>
     </el-row>
   </div>
@@ -67,21 +69,14 @@ export default {
       selected: null
     }
   },
-  beforeUpdate() {
-    // console.log('beforeUpdate...', this.value, this.selected)
-    this.selected = this.value
-  },
   methods: {
     handleIndex(index) {
       const { page, size } = this.pagination
       return (page - 1) * size + (index + 1)
     },
-    handleCancel() {
-      this.$emit('handle-cancel')
-    },
-    handleOk() {
-      this.$emit('update:value', this.selected)
-      this.$emit('handle-ok', this.selected)
+    handleRadioChange(val) {
+      this.$emit('update:value', val)
+      this.$emit('handle-checked', val)
     }
   }
 }

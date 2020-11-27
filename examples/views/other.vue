@@ -26,11 +26,11 @@
 </template>
 <script>
 export default {
-  name: 'Other',
+  name: 'CaseOther',
   data() {
     return {
       visible: false,
-      title: 'Others'
+      title: 'Case - Others'
     }
   }
 }

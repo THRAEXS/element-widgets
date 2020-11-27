@@ -43,9 +43,6 @@ export default {
     }
   },
   watch: {
-    value() {
-      console.log('********')
-    },
     visible() {
       this.dialogVisible = this.visible
       this.dialogVisible && this.search()
@@ -57,6 +54,10 @@ export default {
       this.search()
     }
   },
+  // beforeUpdate() {
+  //   console.log('user selector beforeUpdate', this.visible)
+  //   this.$emit('handle-clears')
+  // },
   methods: {
     search() {
       const { page, size } = this.pagination

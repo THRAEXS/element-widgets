@@ -2,6 +2,11 @@
   <div id="app" class="thx-component">
     <el-row>
       <el-col>
+        <case-list-selector />
+      </el-col>
+    </el-row>
+    <el-row>
+      <el-col>
         <user-radio />
       </el-col>
     </el-row>
@@ -15,11 +20,12 @@
 
 <script>
 import UserRadio from '@/views/user-radio'
+import CaseListSelector from '@/views/case-list-selector'
 import Other from '@/views/other'
 
 export default {
   name: 'App',
-  components: { UserRadio, Other }
+  components: { UserRadio, CaseListSelector, Other }
 }
 </script>
 
