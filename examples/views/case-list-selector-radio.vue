@@ -20,7 +20,7 @@
 import { getUserPage } from '@/api'
 
 export default {
-  name: 'CaseListSelector',
+  name: 'CaseListSelectorRadio',
   data() {
     return {
       data: [],
@@ -34,8 +34,11 @@ export default {
   },
   computed: {
     checked() {
-      const { id, account, name } = this.data.find(it => it.id === this.selected) || {}
-      return { id, account, name }
+      // Find data
+      /* const { id, account, name } = this.data.find(it => it.id === this.selected) || {}
+      return { id, account, name } */
+      
+      return this.selected || 'Unchecked'
     }
   },
   watch: {

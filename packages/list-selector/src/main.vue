@@ -6,7 +6,11 @@
       border
       fit
       highlight-current-row
-      :data="data">
+      :max-height="maxHeight"
+      :data="data"
+      @selection-change="handleSelectionChange">
+      <!-- @select="handleSelection"
+      @select-all="handleSelectionAll"> -->
       <el-table-column type="selection" align="center" width="40" v-if="multiSelect"></el-table-column>
       <el-table-column align="center" width="40" v-else>
         <template v-slot:default="scope">
@@ -62,6 +66,10 @@ export default {
     multiSelect: {
       type: Boolean,
       default: false
+    },
+    maxHeight: {
+      type: [String, Number],
+      default: 530
     }
   },
   data() {
@@ -69,14 +77,42 @@ export default {
       selected: null
     }
   },
+  created() {
+    this.multiSelect && (this.selected = new Set())
+  },
   methods: {
     handleIndex(index) {
       const { page, size } = this.pagination
       return (page - 1) * size + (index + 1)
     },
     handleRadioChange(val) {
-      this.$emit('update:value', val)
-      this.$emit('handle-checked', val)
+      this.deliverData(val)
+    },
+    // handleSelection() {
+    //   console.log('handleSelection:', arguments)
+    // },
+    // handleSelectionAll() {
+    //   console.log('handleSelectionAll:', arguments)
+    // },
+    handleSelectionChange(selection) {
+      // console.log('handleSelectionChange:', this.selected, selection)
+      // console.log('handleSelectionChange:', selection.map(it => it.id))
+
+      // const identifiers = selection.map(it => it.id)
+      // if (!this.selected) {
+      //   this.selected = identifiers
+      // } else {
+      //   identifiers.forEach(i => this.selected.push(i))
+      // }
+
+      const ids = selection.map(it => it.id)
+      ids.forEach(i => this.selected.add(i))
+
+      this.deliverData(Array.from(this.selected))
+    },
+    deliverData(data) {
+      this.$emit('update:value', data)
+      this.$emit('handle-checked', data)
     }
   }
 }
