@@ -1,7 +1,6 @@
 <template>
   <el-aside width="240px">
     <el-menu
-      :default-openeds="['1', '3']"
       background-color="#545c64"
       text-color="#fff"
       active-text-color="#ffd04b">
@@ -34,9 +33,7 @@ export default {
   name: 'LayoutAside',
   computed: {
     routes() {
-      const routes = this.$router.options.routes.filter(it => !it.hidden)
-      console.log(routes)
-      return routes
+      return this.$router.options.routes.filter(it => !it.hidden)
     }
   }
 }

@@ -22,9 +22,32 @@ const constantRoutes = [
   },
 
   {
+    path: '/card/box',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/other'),
+        meta: { title: 'Card Box', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
+
+  {
+    path: '/dialog/box',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/other'),
+        meta: { title: 'Dialog Box', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
+
+  {
     path: '/paging/table',
     component: Layout,
-    // meta: { title: 'PagingTable', icon: 'el-icon-s-help' },
     children: [
       {
         path: '',
