@@ -3,6 +3,7 @@ import DialogBox from './dialog-box'
 import ListSelector from './list-selector'
 import Pagination from './pagination'
 import PagingTable from './paging-table'
+import Table from './table'
 import TreeSelector from './tree-selector'
 
 // v1.0
@@ -39,6 +40,7 @@ const components = [
   ListSelector,
   Pagination,
   PagingTable,
+  Table,
   TreeSelector
 ]
 
@@ -54,6 +56,7 @@ export {
   ListSelector,
   Pagination,
   PagingTable,
+  Table,
   TreeSelector,
   install
 }

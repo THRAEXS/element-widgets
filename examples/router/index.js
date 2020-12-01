@@ -22,6 +22,18 @@ const constantRoutes = [
   },
 
   {
+    path: '/table',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/case-table'),
+        meta: { title: 'Table', icon: 'el-icon-tickets' }
+      }
+    ]
+  },
+
+  {
     path: '/pagination',
     component: Layout,
     children: [
