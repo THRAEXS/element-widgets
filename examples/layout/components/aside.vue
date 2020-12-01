@@ -1,6 +1,7 @@
 <template>
-  <el-aside width="240px">
+  <el-aside width="250px">
     <el-menu
+      :default-openeds="['/table']"
       background-color="#282923"
       text-color="#d4d4d3"
       active-text-color="#ffd04b">
@@ -18,8 +19,11 @@
           <template v-slot:title v-if="item.meta">
             <i :class="item.meta.icon"></i> {{ item.meta.title }}
           </template>
-          <el-menu-item v-for="sub in item.children" :key="`${item.path}/${sub.path}`" :index="`${item.path}/${sub.path}`">
-            <router-link :to="`${item.path}/${sub.path}`">
+          <el-menu-item
+            v-for="sub in item.children"
+            :key="joinPath(item.path, sub.path)"
+            :index="joinPath(item.path, sub.path)">
+            <router-link :to="joinPath(item.path, sub.path)">
               <i :class="sub.meta.icon"></i> {{ sub.meta.title }}
             </router-link>
           </el-menu-item>
@@ -34,6 +38,12 @@ export default {
   computed: {
     routes() {
       return this.$router.options.routes.filter(it => !it.hidden)
+    }
+  },
+  methods: {
+    joinPath(p1, p2) {
+      const np = p2 ? `/${p2}` : ''
+      return np ? `${p1}${np}` : p1
     }
   }
 }
