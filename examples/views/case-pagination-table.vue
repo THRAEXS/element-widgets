@@ -21,11 +21,13 @@ export default {
   name: 'CasePagingTable',
   data() {
     return {
-      paging: { data: [], total: 0 },
+      paging: {
+        data: [],
+        total: 0
+      },
       pagination: {
         page: 1,
         size: 10
-        // sizes: [10, 20, 20, 30, 50, 100]
       }
     }
   },
@@ -43,8 +45,7 @@ export default {
   methods: {
     search() {
       const { page, size } = this.pagination
-      getUserPage({ page, size })
-        .then(({ data, total }) => (this.paging = { data, total }))
+      getUserPage({ page, size }).then(({ data, total }) => (this.paging = { data, total }))
     }
   }
 }

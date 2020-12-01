@@ -10,6 +10,8 @@
       @row-click="handleRowClick"
       @row-dblclick="handleRowDblclick">
       <template>
+        <slot name="pre-column"></slot>
+
         <el-table-column
           type="index"
           align="center"
