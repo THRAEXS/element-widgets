@@ -16,7 +16,19 @@ const constantRoutes = [
         alias: '',
         name: 'Dashboard',
         component: () => import('@/views/dashboard'),
-        meta: { title: 'Dashboard', icon: 'el-icon-edit' }
+        meta: { title: 'Dashboard', icon: 'el-icon-platform-eleme' }
+      }
+    ]
+  },
+
+  {
+    path: '/pagination',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/case-pagination'),
+        meta: { title: 'Pagination', icon: 'el-icon-eleme' }
       }
     ]
   },
@@ -28,7 +40,7 @@ const constantRoutes = [
       {
         path: '',
         component: () => import('@/views/case-paging-table'),
-        meta: { title: 'Paging Table', icon: 'el-icon-s-help' }
+        meta: { title: 'Paging Table', icon: 'el-icon-s-grid' }
       }
     ]
   },
@@ -36,7 +48,7 @@ const constantRoutes = [
   {
     path: '/list/selector',
     component: Layout,
-    meta: { title: 'List Selector', icon: 'el-icon-s-help' },
+    meta: { title: 'List Selector', icon: 'el-icon-finished' },
     redirect: '/list/selector/radio',
     children: [
       {
@@ -49,7 +61,7 @@ const constantRoutes = [
         path: 'multi',
         name: 'ListSelectorMulti',
         component: () => import('@/views/case-list-selector-multi'),
-        meta: { title: 'Multi', icon: 'el-icon-s-help' }
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       },
     ]
   },
@@ -61,7 +73,7 @@ const constantRoutes = [
       {
         path: '',
         component: () => import('@/views/other'),
-        meta: { title: 'Other', icon: 'el-icon-s-help' }
+        meta: { title: 'Other', icon: 'el-icon-question' }
       }
     ]
   },

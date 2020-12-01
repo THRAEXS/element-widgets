@@ -1,6 +1,7 @@
 import CardBox from './card-box'
 import DialogBox from './dialog-box'
 import ListSelector from './list-selector'
+import Pagination from './pagination'
 import PagingTable from './paging-table'
 import TreeSelector from './tree-selector'
 
@@ -36,6 +37,7 @@ const components = [
   CardBox,
   DialogBox,
   ListSelector,
+  Pagination,
   PagingTable,
   TreeSelector
 ]
@@ -50,6 +52,7 @@ export {
   CardBox,
   DialogBox,
   ListSelector,
+  Pagination,
   PagingTable,
   TreeSelector,
   install
