@@ -1,6 +1,8 @@
 <template>
   <thx-table
-    :data="data">
+    :data="data"
+    @row-click="handleRowClick"
+    @row-dblclick="handleRowDblclick">
     <el-table-column type="index" label="No." align="center" width="50" fixed></el-table-column>
     <el-table-column prop="account" label="Account" align="center" width="100" fixed></el-table-column>
     <el-table-column prop="name" label="Name" align="center" width="200" fixed></el-table-column>
@@ -29,6 +31,12 @@ export default {
   methods: {
     search() {
       getUserPage({ page: 1, size: 30 }).then(({ data }) => (this.data = data))
+    },
+    handleRowClick() {
+      console.log('row-click', ...arguments)
+    },
+    handleRowDblclick() {
+      console.log('row-dblclick', ...arguments)
     }
   }
 }
