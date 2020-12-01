@@ -24,11 +24,22 @@ const constantRoutes = [
   {
     path: '/table',
     component: Layout,
+    meta: { title: 'Table', icon: 'el-icon-s-grid' },
     children: [
       {
         path: '',
         component: () => import('@/views/case-table'),
-        meta: { title: 'Table', icon: 'el-icon-tickets' }
+        meta: { title: 'Simple Table', icon: 'el-icon-tickets' }
+      },
+      {
+        path: 'pagination',
+        component: () => import('@/views/case-pagination-table'),
+        meta: { title: 'Pagination Table', icon: 'el-icon-film' }
+      },
+      {
+        path: 'pagination/selection',
+        component: () => import('@/views/case-table-selection'),
+        meta: { title: 'Pagination Table Selection', icon: 'el-icon-document-checked' }
       }
     ]
   },
@@ -41,18 +52,6 @@ const constantRoutes = [
         path: '',
         component: () => import('@/views/case-pagination'),
         meta: { title: 'Pagination', icon: 'el-icon-eleme' }
-      }
-    ]
-  },
-
-  {
-    path: '/pagination/table',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/case-pagination-table'),
-        meta: { title: 'Pagination Table', icon: 'el-icon-s-grid' }
       }
     ]
   },
