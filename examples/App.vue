@@ -1,5 +1,5 @@
 <template>
-  <div id="app" class="thx-component">
+  <div id="app" class="thx-widget">
     <router-view />
     <!-- <el-row>
       <el-col>
@@ -61,7 +61,7 @@ body {
 }
 </style>
 <style scoped>
-/* .thx-component .el-row {
+/* .thx-widget .el-row {
   margin-bottom: 10px;
 } */
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <div class="thx-component">
+  <div class="thx-widget">
     <el-table
       style="width: 100%;margin-bottom: 10px;"
       stripe
@@ -118,5 +118,5 @@ export default {
 }
 </script>
 <style scoped>
-.thx-component >>> .el-radio .el-radio__label { display: none; }
+.thx-widget >>> .el-radio .el-radio__label { display: none; }
 </style>

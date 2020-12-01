@@ -22,30 +22,6 @@ const constantRoutes = [
   },
 
   {
-    path: '/card/box',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/other'),
-        meta: { title: 'Card Box', icon: 'el-icon-s-help' }
-      }
-    ]
-  },
-
-  {
-    path: '/dialog/box',
-    component: Layout,
-    children: [
-      {
-        path: '',
-        component: () => import('@/views/other'),
-        meta: { title: 'Dialog Box', icon: 'el-icon-s-help' }
-      }
-    ]
-  },
-
-  {
     path: '/paging/table',
     component: Layout,
     children: [
@@ -75,6 +51,18 @@ const constantRoutes = [
         component: () => import('@/views/case-list-selector-multi'),
         meta: { title: 'Multi', icon: 'el-icon-s-help' }
       },
+    ]
+  },
+
+  {
+    path: '/other',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/other'),
+        meta: { title: 'Other', icon: 'el-icon-s-help' }
+      }
     ]
   },
 

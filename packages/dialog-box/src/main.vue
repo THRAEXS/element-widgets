@@ -1,5 +1,5 @@
 <template>
-  <div class="thx-component">
+  <div class="thx-widget">
     <el-dialog
       :visible.sync="dialogVisible"
       :width="width"
@@ -50,10 +50,10 @@ export default {
 }
 </script>
 <style scoped>
-.thx-component >>> .el-dialog__header {
+.thx-widget >>> .el-dialog__header {
   padding: 0;
 }
-.thx-component >>> .el-dialog__body {
+.thx-widget >>> .el-dialog__body {
   padding: 10px;
   min-height: 300px;
 }

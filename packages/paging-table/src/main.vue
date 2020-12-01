@@ -1,5 +1,5 @@
 <template>
-  <div class="thx-component">
+  <div class="thx-widget">
     <el-table
       style="width: 100%;margin-bottom: 10px;"
       stripe

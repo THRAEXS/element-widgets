@@ -1,5 +1,5 @@
 <template>
-  <div class="thx-component">
+  <div class="thx-widget">
     <el-card>
       <template v-slot:header>
         <el-row type="flex" align="middle" v-if="showHeader">
@@ -41,8 +41,8 @@ export default {
 }
 </script>
 <style scoped>
-.thx-component >>> .el-card__header,
-.thx-component >>> .el-card__body {
+.thx-widget >>> .el-card__header,
+.thx-widget >>> .el-card__body {
   padding: 10px;
 }
 </style>

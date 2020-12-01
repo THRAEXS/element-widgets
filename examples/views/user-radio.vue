@@ -1,5 +1,5 @@
 <template>
-  <div class="thx-component">
+  <div class="thx-widget">
     <thx-card-box title="Case - Selector User Radio">
       <template v-slot:toolbar>
         <el-button
