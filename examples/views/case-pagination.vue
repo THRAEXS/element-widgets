@@ -5,6 +5,8 @@
       :page="2"
       :size="30"
       :sizes="[10, 20, 30, 40, 50, 100, 200]" />
+
+    <el-tag>.sync</el-tag>
     <thx-pagination
       :total="total"
       :page.sync="page"
@@ -15,6 +17,8 @@
         <el-button type="success" size="mini" >Query</el-button>
       </template>
     </thx-pagination>
+
+    <el-tag>Callback</el-tag>
     <thx-pagination
       :total="case2.total"
       :page="case2.page"

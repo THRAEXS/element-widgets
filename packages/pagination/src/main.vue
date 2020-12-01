@@ -27,7 +27,7 @@ export default {
   props: {
     total: {
       type: Number,
-      default: 0
+      required: true
     },
     page: {
       type: Number,
