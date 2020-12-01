@@ -46,13 +46,13 @@ const constantRoutes = [
   },
 
   {
-    path: '/paging/table',
+    path: '/pagination/table',
     component: Layout,
     children: [
       {
         path: '',
-        component: () => import('@/views/case-paging-table'),
-        meta: { title: 'Paging Table', icon: 'el-icon-s-grid' }
+        component: () => import('@/views/case-pagination-table'),
+        meta: { title: 'Pagination Table', icon: 'el-icon-s-grid' }
       }
     ]
   },
