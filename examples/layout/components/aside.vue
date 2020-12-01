@@ -1,8 +1,8 @@
 <template>
   <el-aside width="240px">
     <el-menu
-      background-color="#545c64"
-      text-color="#fff"
+      background-color="#282923"
+      text-color="#d4d4d3"
       active-text-color="#ffd04b">
       <template v-for="item in routes">
         <el-menu-item
