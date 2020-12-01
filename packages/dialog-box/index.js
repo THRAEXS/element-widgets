@@ -1,3 +1,3 @@
-import DialogBox from './src/main'
+import ThxWidget from './src/main'
 
-export default DialogBox
+export default ThxWidget

@@ -1,3 +1,3 @@
-import PagingTable from './src/main'
+import ThxWidget from './src/main'
 
-export default PagingTable
+export default ThxWidget

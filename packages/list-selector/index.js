@@ -1,3 +1,3 @@
-import ListSelector from './src/main'
+import ThxWidget from './src/main'
 
-export default ListSelector
+export default ThxWidget
