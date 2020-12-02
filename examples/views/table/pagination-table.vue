@@ -18,7 +18,7 @@
 import { getUserPage } from '@/api'
 
 export default {
-  name: 'CasePagingTable',
+  name: 'CasePaginationTable',
   data() {
     return {
       paging: {

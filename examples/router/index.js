@@ -28,18 +28,15 @@ const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('@/views/case-table'),
+        name: 'Table',
+        component: () => import('@/views/table'),
         meta: { title: 'Simple Table', icon: 'el-icon-tickets' }
       },
       {
         path: 'pagination',
-        component: () => import('@/views/case-pagination-table'),
+        name: 'PaginationTable',
+        component: () => import('@/views/table/pagination-table'),
         meta: { title: 'Pagination Table', icon: 'el-icon-film' }
-      },
-      {
-        path: 'pagination/selection',
-        component: () => import('@/views/case-table-selection'),
-        meta: { title: 'Pagination Table Selection', icon: 'el-icon-document-checked' }
       }
     ]
   },
@@ -50,8 +47,30 @@ const constantRoutes = [
     children: [
       {
         path: '',
-        component: () => import('@/views/case-pagination'),
+        name: 'Pagination',
+        component: () => import('@/views/pagination'),
         meta: { title: 'Pagination', icon: 'el-icon-eleme' }
+      }
+    ]
+  },
+
+  {
+    path: '/pagination/selection',
+    component: Layout,
+    meta: { title: 'Pagination Selection', icon: 'el-icon-s-operation' },
+    redirect: '/pagination/selection/radio',
+    children: [
+      {
+        path: 'radio',
+        name: 'PaginationSelectionRadio',
+        component: () => import('@/views/pagination-selection/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'PaginationSelectionMulti',
+        component: () => import('@/views/pagination-selection/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       }
     ]
   },
@@ -65,13 +84,13 @@ const constantRoutes = [
       {
         path: 'radio',
         name: 'ListSelectorRadio',
-        component: () => import('@/views/case-list-selector-radio'),
+        component: () => import('@/views/list-selector/radio'),
         meta: { title: 'Radio', icon: 'el-icon-s-help' }
       },
       {
         path: 'multi',
         name: 'ListSelectorMulti',
-        component: () => import('@/views/case-list-selector-multi'),
+        component: () => import('@/views/list-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       },
     ]
