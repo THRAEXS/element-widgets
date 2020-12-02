@@ -1,7 +1,7 @@
 <template>
   <thx-card-box title="Case - Pagination Table">
     <thx-pagination-table
-      :index="{ label: 'No.', width: '60', fixed: true }"
+      :index="{ label: 'No.', fixed: true }"
       :data="paging.data"
       :total="paging.total"
       :page.sync="pagination.page"

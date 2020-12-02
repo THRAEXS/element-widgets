@@ -16,7 +16,7 @@
           type="index"
           align="center"
           :label="index.label"
-          :width="index.width"
+          :width="index.width || 60"
           :fixed="index.fixed"
           :index="handleIndex"
           v-if="showIndex" />
