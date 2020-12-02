@@ -21,7 +21,9 @@
           :index="handleIndex"
           v-if="showIndex" />
         
-        <slot></slot>
+        <slot>
+          <el-table-column label="Columns" align="center"></el-table-column>
+        </slot>
       </template>
     </thx-table>
     
@@ -39,6 +41,7 @@
   </div>
 </template>
 <script>
+import MainMixin from './mixins/main'
 import TableMixin from './mixins/table'
 import PaginationMixin from './mixins/pagination'
 
@@ -47,29 +50,7 @@ import ThxPagination from './pagination'
 
 export default {
   name: 'ThxPaginationTable',
-  mixins: [TableMixin, PaginationMixin],
-  components: { ThxTable, ThxPagination },
-  props: {
-    index: {
-      type: Object,
-      default() {
-        return {
-          label: '',
-          width: 60,
-          fixed: false
-        }
-      }
-    },
-    showIndex: {
-      type: Boolean,
-      default: true
-    }
-  },
-  methods: {
-    handleIndex(index) {
-      const { page, size } = this.$props
-      return (page - 1) * size + (index + 1)
-    }
-  }
+  mixins: [MainMixin, TableMixin, PaginationMixin],
+  components: { ThxTable, ThxPagination }
 }
 </script>
