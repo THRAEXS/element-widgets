@@ -1,7 +1,7 @@
 <template>
   <el-aside width="250px">
     <el-menu
-      :default-openeds="['/pagination/selection']"
+      :default-openeds="['/list/selector']"
       background-color="#282923"
       text-color="#d4d4d3"
       active-text-color="#ffd04b">

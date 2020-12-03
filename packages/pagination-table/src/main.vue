@@ -26,6 +26,10 @@
           <el-table-column label="Columns" align="center"></el-table-column>
         </slot>
       </template>
+
+      <template v-slot:append>
+        <slot name="append"></slot>
+      </template>
     </thx-table>
     
     <thx-pagination
@@ -38,7 +42,9 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       @prev-click="handlePrevClick"
-      @next-click="handleNextClick" />
+      @next-click="handleNextClick">
+      <slot name="reserved"></slot>
+    </thx-pagination>
   </div>
 </template>
 <script>

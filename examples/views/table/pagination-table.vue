@@ -10,7 +10,7 @@
       <el-table-column prop="name" label="Name" align="center" width="200" fixed></el-table-column>
       <el-table-column prop="department" label="Department" align="center" width="300"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-      <el-table-column prop="remark" label="Remark" align="center" width="800" show-overflow-tooltip></el-table-column>
+      <el-table-column prop="remark" label="Remark" align="center" width="1000" show-overflow-tooltip></el-table-column>
     </thx-pagination-table>
   </thx-card-box>
 </template>

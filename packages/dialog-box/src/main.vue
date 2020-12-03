@@ -15,38 +15,11 @@
   </div>
 </template>
 <script>
+import MainMixin from './mixins/main'
+
 export default {
   name: 'ThxDialogBox',
-  props: {
-    visible: {
-      type: Boolean,
-      default: false
-    },
-    width: {
-      type: String,
-      default: '75%'
-    },
-    top: {
-      type: String,
-      default: '3vh'
-    }
-  },
-  data() {
-    return {
-      dialogVisible: false
-    }
-  },
-  watch: {
-    visible() {
-      this.dialogVisible = this.visible
-    }
-  },
-  methods: {
-    handleClosed() {
-      this.$emit('update:visible', false)
-      this.$emit('handle-closed')
-    }
-  }
+  mixins: [MainMixin]
 }
 </script>
 <style scoped>

@@ -16,6 +16,10 @@
     @current-change="handleCurrentChange"
     v-if="multiple">
     <slot></slot>
+    
+    <template v-slot:reserved>
+      <slot name="reserved"></slot>
+    </template>
   </thx-pagination-selection-multi>
   
   <thx-pagination-selection-radio
@@ -35,6 +39,10 @@
     @current-change="handleCurrentChange"
     v-else>
     <slot></slot>
+    
+    <template v-slot:reserved>
+      <slot name="reserved"></slot>
+    </template>
   </thx-pagination-selection-radio>
 </template>
 <script>

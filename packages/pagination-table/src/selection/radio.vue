@@ -25,6 +25,10 @@
       </template>
 
       <slot></slot>
+
+      <template v-slot:reserved>
+        <slot name="reserved"></slot>
+      </template>
     </pagination-table>
   </div>
 </template>
