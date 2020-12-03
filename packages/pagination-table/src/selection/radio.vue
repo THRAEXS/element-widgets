@@ -12,9 +12,7 @@
       :index="index"
       :show-index="showIndex"
       @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-      @prev-click="handlePrevClick"
-      @next-click="handleNextClick">
+      @current-change="handleCurrentChange">
       <template v-slot:pre-column>
         <el-table-column align="center" width="40">
           <template v-slot:default="scope">
@@ -41,7 +39,10 @@ import PaginationTable from '../main'
 export default {
   name: 'ThxPaginationSelectionRadio',
   mixins: [MainMixin, TableMixin, PaginationMixin, SelectionMixin],
-  components: { PaginationTable }
+  components: { PaginationTable },
+  props: {
+    value: String
+  }
 }
 </script>
 <style scoped>

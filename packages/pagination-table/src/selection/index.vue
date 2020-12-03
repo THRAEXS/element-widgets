@@ -10,11 +10,10 @@
     :sizes="sizes"
     :index="index"
     :show-index="showIndex"
-    :value.sync="selected"
+    v-model="value"
+    @handle-selected="handleDeliver"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
-    @prev-click="handlePrevClick"
-    @next-click="handleNextClick"
     v-if="multiple">
     <slot></slot>
   </thx-pagination-selection-multi>
@@ -30,11 +29,10 @@
     :sizes="sizes"
     :index="index"
     :show-index="showIndex"
-    :value.sync="selected"
+    v-model="value"
+    @handle-selected="handleDeliver"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
-    @prev-click="handlePrevClick"
-    @next-click="handleNextClick"
     v-else>
     <slot></slot>
   </thx-pagination-selection-radio>
@@ -53,12 +51,13 @@ export default {
   mixins: [MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   components: { ThxPaginationSelectionRadio, ThxPaginationSelectionMulti },
   props: {
+    value: [String, Array],
     multiple: Boolean
   },
-  watch: {
-    selected() {
-      this.handleDeliver(this.selected)
-    }
-  }
+  // watch: {
+  //   selected() {
+  //     this.handleDeliver(this.selected)
+  //   }
+  // }
 }
 </script>

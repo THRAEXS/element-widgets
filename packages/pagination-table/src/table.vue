@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <el-table
+      ref="table"
       style="width: 100%;"
       stripe
       border
@@ -29,6 +30,12 @@ import TableMixin from './mixins/table'
 
 export default {
   name: 'ThxTable',
-  mixins: [TableMixin]
+  mixins: [TableMixin],
+  methods: {
+    rowSelection(ids = []) {
+      this.$nextTick(() => this.data.filter(row => ids.includes(row.id))
+        .forEach(row => this.$refs.table.toggleRowSelection(row, true)))
+    } 
+  }
 }
 </script>

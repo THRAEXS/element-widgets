@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <thx-table
+      ref="thxTable"
       :data="data"
       :height="height"
       :max-height="maxHeight"
@@ -51,6 +52,11 @@ import ThxPagination from './pagination'
 export default {
   name: 'ThxPaginationTable',
   mixins: [MainMixin, TableMixin, PaginationMixin],
-  components: { ThxTable, ThxPagination }
+  components: { ThxTable, ThxPagination },
+  methods: {
+    rowSelection(ids) {
+      this.$refs.thxTable.rowSelection(ids)
+    } 
+  }
 }
 </script>
