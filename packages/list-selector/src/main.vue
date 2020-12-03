@@ -7,6 +7,8 @@
     @opened="handleOpened"
     @close="handleClose"
     @closed="handleClosed">
+    <slot name="prepend"></slot>
+    
     <thx-pagination-selection
       :data="data"
       :height="height"
