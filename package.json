@@ -1,17 +1,17 @@
 {
-  "name": "element-selector",
+  "name": "element-widgets",
   "version": "0.1.0",
   "description": "A selector based on element-ui",
-  "main": "lib/element-selector.common.js",
+  "main": "lib/element-widgets.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lib": "vue-cli-service build --target lib --name element-selector --dest lib packages/index.js",
+    "lib": "vue-cli-service build --target lib --name element-widgets --dest lib packages/index.js",
     "lint": "vue-cli-service lint"
   },
   "keywords": [
     "thraex",
-    "element-selector",
+    "element-widgets",
     "element",
     "selector",
     "vue",
