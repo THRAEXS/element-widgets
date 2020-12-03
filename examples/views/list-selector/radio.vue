@@ -33,6 +33,7 @@ export default {
       page: 1,
       size: 10,
       selected: null
+      // selected: 'user-12'
     }
   },
   watch: {

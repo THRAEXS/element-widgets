@@ -18,6 +18,7 @@
       :sizes="sizes"
       :index="index"
       :show-index="showIndex"
+      :multiple="multiple"
       :value.sync="selected"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
@@ -45,7 +46,7 @@ export default {
   mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   props: {
     value: [String, Array],
-    // multiple: Boolean
+    multiple: Boolean
   },
   data() {
     return {

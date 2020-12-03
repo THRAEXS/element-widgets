@@ -64,6 +64,9 @@ export default {
       this.handleBackfill()
     }
   },
+  created() {
+    this.$nextTick(() => this.handleBackfill())
+  },
   methods: {
     handleSelect(selection) {
       this.handleMerge(selection)
