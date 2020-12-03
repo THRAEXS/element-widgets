@@ -1,3 +1,3 @@
-# Element Selector
+# Element Widgets
 
-A selector based on element-ui.
+A widgets based on element-ui.
