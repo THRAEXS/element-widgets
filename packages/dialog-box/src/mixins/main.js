@@ -20,6 +20,9 @@ export default {
       this.dialogVisible = this.visible
     }
   },
+  created() {
+    this.dialogVisible = this.visible
+  },
   methods: {
     handleOpen() {
       this.$emit('open')
