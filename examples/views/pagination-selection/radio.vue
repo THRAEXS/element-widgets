@@ -1,7 +1,17 @@
 <template>
   <thx-card-box title="Case - Pagination Selection Radio">
     <template v-slot:toolbar>
-      <b>{{ checked }}</b>
+      <b>
+        <el-tag type="danger" size="mini">{{ checked }}</el-tag>
+      </b>
+      <el-button
+        type="danger"
+        icon="el-icon-delete"
+        size="mini"
+        circle
+        style="padding: 3px;"
+        @click="selected = null">
+      </el-button>
     </template>
 
     <thx-pagination-selection

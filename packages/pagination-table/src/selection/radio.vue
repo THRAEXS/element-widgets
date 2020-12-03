@@ -47,6 +47,14 @@ export default {
     return {
       selected: null
     }
+  },
+  watch: {
+    value() {
+      this.selected = this.value
+    }
+  },
+  created() {
+    this.selected = this.value
   }
 }
 </script>
