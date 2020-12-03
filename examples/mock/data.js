@@ -16,7 +16,8 @@ for (let i = 0; i < total; i++) {
     account: `hanzo-${i+1}`,
     name: Random.name(),
     department: 'Peking University Thrid Hospital',
-    office: 'Dental'
+    office: 'Dental',
+    remark: Random.paragraph()
   }
   users.push(user)
   maps.set(user.id, user)

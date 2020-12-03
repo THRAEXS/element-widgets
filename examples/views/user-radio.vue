@@ -1,22 +1,20 @@
 <template>
-  <div>
-    <el-card>
-      <template v-slot:header>
-        <span>
-          <b>Selector - User Radio</b>
-        </span>
+  <div class="thx-widget">
+    <thx-card-box title="Case - Selector User Radio">
+      <template v-slot:toolbar>
         <el-button
-          style="float: right;"
           type="success"
           icon="el-icon-check"
           size="mini"
           circle
-          @click="visible = true"></el-button>
+          @click="visible = true"
+        ></el-button>
       </template>
+
       <el-tag type="success">
         <b>{{ data }}</b>
       </el-tag>
-    </el-card>
+    </thx-card-box>
 
     <!-- Case 1: (v-model || :value) &&  @handle-ok  -->
     <!-- <user-selector
@@ -46,7 +44,7 @@
 import UserSelector from '@/components/user-selector'
 
 export default {
-  name: 'UserRadio',
+  name: 'CaseUserRadio',
   components: { UserSelector },
   data() {
     return {
@@ -55,11 +53,11 @@ export default {
       data: null
     }
   },
-  watch: {
-    uid(nv, ov) {
-      console.log('watch uid:', nv, ov)
-    }
-  },
+  // watch: {
+  //   uid(nv, ov) {
+  //     console.log('watch uid:', nv, ov)
+  //   }
+  // },
   methods: {
     // Case 1: (v-model || :value) &&  @handle-ok
     /* handleOk(data) {
@@ -74,7 +72,3 @@ export default {
   }
 }
 </script>
-<style>
-.el-card__header { padding: 15px!important; }
-.el-card__body { padding: 15px!important; }
-</style>
