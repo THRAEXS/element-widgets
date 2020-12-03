@@ -33,8 +33,12 @@ export default {
   mixins: [TableMixin],
   methods: {
     rowSelection(ids = []) {
-      this.$nextTick(() => this.data.filter(row => ids.includes(row.id))
-        .forEach(row => this.$refs.table.toggleRowSelection(row, true)))
+      this.$nextTick(() => {
+        const table = this.$refs.table
+        table.clearSelection()
+        this.data.filter(row => ids.includes(row.id))
+          .forEach(row => table.toggleRowSelection(row, true))
+      })
     } 
   }
 }

@@ -53,11 +53,6 @@ export default {
   props: {
     value: [String, Array],
     multiple: Boolean
-  },
-  // watch: {
-  //   selected() {
-  //     this.handleDeliver(this.selected)
-  //   }
-  // }
+  }
 }
 </script>

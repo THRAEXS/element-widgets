@@ -14,7 +14,8 @@
       :show-index="showIndex"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
-      @selection-change="handleSelectionChange">
+      @select="handleSelect"
+      @select-all="handleSelectAll">
       <template v-slot:pre-column>
         <el-table-column type="selection" align="center" width="40"></el-table-column>
       </template>
@@ -42,47 +43,46 @@ export default {
     ids() {
       return this.data.map(it => it.id)
     },
-    notPage() {
-      console.log('computed notPage...')
+    selected() {
+      return [...new Set(this.value)]
+    },
+    notOnPage() {
       return this.selected.filter(it => !this.ids.includes(it))
     }
   },
   watch: {
     value() {
-      console.log('watch value...', this.selected, this.value)
-      this.selected = [...new Set(this.value)]
-    },
-    data() {
-      console.log('watch data...', this.data)
+      // console.debug('watch value...', this.value)
       this.handleBackfill()
     },
-    selected() {
-      console.log('watch selected....', this.selected)
+    data() {
+      // console.debug('watch data...', this.data)
       this.handleBackfill()
     }
   },
-  created() {
-    this.selected = [...new Set(this.value)]
-    console.log('created value...2', this.selected, this.value)
-  },
   methods: {
-    handleBackfill() {
-      if (this.data.length > 0) {
-        const pageChecked = this.selected.filter(it => this.ids.includes(it))
-        console.log('pageChecked:', pageChecked, this.data)
-        this.$refs.thxTable.rowSelection(pageChecked)
-      }
+    handleSelect(selection) {
+      this.handleMerge(selection)
     },
-    handleSelectionChange(selection) {
+    handleSelectAll(selection) {
+      this.handleMerge(selection)
+    },
+    handleMerge(selection) {
       const checked = selection.map(it => it.id)
-      const unChecked = this.ids.filter(it => !checked.includes(it))
-      console.log('checked:', checked)
-      console.log('unChecked:', unChecked)
-      console.log('notPage:', this.notPage)
-      
-      const val = [...new Set([...this.notPage, ...checked])].sort()
-      console.log('final value:', val)
-      this.handleDeliver(val)
+      const merged = [...new Set([...this.notOnPage, ...checked])]
+      // const unChecked = this.ids.filter(it => !checked.includes(it))
+      // console.debug(
+      //   'notOnPage:', this.notOnPage,
+      //   'checked:', checked,
+      //   'merged:', merged,
+      //   'unChecked:', unChecked)
+
+      this.handleDeliver(merged)
+    },
+    handleBackfill() {
+      const pageChecked = this.selected.filter(it => this.ids.includes(it))
+      // console.debug('pageChecked:', pageChecked)
+      this.$refs.thxTable.rowSelection(pageChecked)
     }
   }
 }

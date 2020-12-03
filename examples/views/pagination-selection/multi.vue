@@ -19,9 +19,22 @@
       </el-col>
       <el-col :span="6">
         <thx-table :data="selected">
+          <el-table-column type="index" label="No." align="center" width="50"></el-table-column>
           <el-table-column label="ID" align="center">
             <template v-slot:default="scope">
               {{ scope.row }}
+            </template>
+          </el-table-column>
+          <el-table-column align="center" width="60">
+            <template v-slot:default="scope">
+              <el-button
+                type="danger"
+                icon="el-icon-delete"
+                size="mini"
+                circle
+                style="padding: 3px;"
+                @click="handleDelete(scope.$index)">
+              </el-button>
             </template>
           </el-table-column>
         </thx-table>
@@ -40,7 +53,7 @@ export default {
       total: 0,
       page: 1,
       size: 10,
-      selected: []
+      selected: ['user-4', 'user-8', 'user-13']
     }
   },
   watch: {
@@ -63,6 +76,9 @@ export default {
         this.data = data
         this.total = total
       })
+    },
+    handleDelete(ind) {
+      this.selected.splice(ind, 1);
     }
   }
 }

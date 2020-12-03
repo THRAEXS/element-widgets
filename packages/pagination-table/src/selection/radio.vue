@@ -42,6 +42,11 @@ export default {
   components: { PaginationTable },
   props: {
     value: String
+  },
+  data() {
+    return {
+      selected: null
+    }
   }
 }
 </script>
