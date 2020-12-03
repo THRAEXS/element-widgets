@@ -5,6 +5,9 @@
       :width="width"
       :top="top"
       :show-close="false"
+      @open="handleOpen"
+      @opened="handleOpened"
+      @close="handleClose"
       @closed="handleClosed">
       <slot>
         <div style="text-align: center;">

@@ -10,22 +10,20 @@
       @selection-change="handleSelectionChange"
       @row-click="handleRowClick"
       @row-dblclick="handleRowDblclick">
-      <template>
-        <slot name="pre-column"></slot>
+      <slot name="pre-column"></slot>
 
-        <el-table-column
-          type="index"
-          align="center"
-          :label="index.label"
-          :width="index.width || 60"
-          :fixed="index.fixed"
-          :index="handleIndex"
-          v-if="showIndex" />
-        
-        <slot>
-          <el-table-column label="Columns" align="center"></el-table-column>
-        </slot>
-      </template>
+      <el-table-column
+        type="index"
+        align="center"
+        :label="index.label"
+        :width="index.width || 60"
+        :fixed="index.fixed"
+        :index="handleIndex"
+        v-if="showIndex" />
+
+      <slot>
+        <el-table-column label="Columns" align="center"></el-table-column>
+      </slot>
 
       <template v-slot:append>
         <slot name="append"></slot>

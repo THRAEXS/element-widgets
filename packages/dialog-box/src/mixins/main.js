@@ -21,9 +21,21 @@ export default {
     }
   },
   methods: {
+    handleOpen() {
+      this.$emit('open')
+    },
+    handleOpened() {
+      this.$emit('opened')
+    },
+    handleClose() {
+      this.updateVisible()
+      this.$emit('close')
+    },
     handleClosed() {
-      this.$emit('update:visible', false)
       this.$emit('closed')
+    },
+    updateVisible(v = false) {
+      this.$emit('update:visible', v)
     }
   }
 }

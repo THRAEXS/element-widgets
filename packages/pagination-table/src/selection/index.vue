@@ -11,12 +11,12 @@
     :index="index"
     :show-index="showIndex"
     v-model="value"
-    @handle-selected="handleDeliver"
+    @selected="handleDeliver"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
     v-if="multiple">
     <slot></slot>
-    
+
     <template v-slot:reserved>
       <slot name="reserved"></slot>
     </template>
@@ -34,7 +34,7 @@
     :index="index"
     :show-index="showIndex"
     v-model="value"
-    @handle-selected="handleDeliver"
+    @selected="handleDeliver"
     @size-change="handleSizeChange"
     @current-change="handleCurrentChange"
     v-else>

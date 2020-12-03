@@ -1,122 +1,80 @@
 <template>
-  <div class="thx-widget">
-    <el-table
-      style="width: 100%;margin-bottom: 10px;"
-      stripe
-      border
-      fit
-      highlight-current-row
-      :max-height="maxHeight"
+  <thx-dialog-box
+    :visible.sync="dialogVisible"
+    :width="width"
+    :top="top"
+    @open="handleOpen"
+    @opened="handleOpened"
+    @close="handleClose"
+    @closed="handleClosed">
+    <thx-pagination-selection
       :data="data"
-      @selection-change="handleSelectionChange">
-      <!-- @select="handleSelection"
-      @select-all="handleSelectionAll"> -->
-      <el-table-column type="selection" align="center" width="40" v-if="multiSelect"></el-table-column>
-      <el-table-column align="center" width="40" v-else>
-        <template v-slot:default="scope">
-          <el-radio
-            v-model="selected"
-            :label="scope.row.id"
-            @change="handleRadioChange" />
-        </template>
-      </el-table-column>
-      <el-table-column type="index" label="No." width="60" align="center" :index="handleIndex"></el-table-column>
-      
-      <slot>
-        <el-table-column label="Columns" align="center"></el-table-column>
-      </slot>
-    </el-table>
+      :height="height"
+      :max-height="maxHeight"
+      :small="small"
+      :total="total"
+      :page="page"
+      :size="size"
+      :sizes="sizes"
+      :index="index"
+      :show-index="showIndex"
+      :value.sync="selected"
+      @size-change="handleSizeChange"
+      @current-change="handleCurrentChange">
+      <slot></slot>
 
-    <el-row type="flex" align="middle">
-      <el-col :span="18">
-        <el-pagination
-          background
-          layout="total, sizes, prev, pager, next, jumper"
-          :current-page.sync="pagination.page"
-          :page-size.sync="pagination.size"
-          :total="pagination.total"
-          :page-sizes="pageSizes">
-        </el-pagination>
-      </el-col>
-      <el-col align="right" :span="6">
-        <slot name="reserved"></slot>
-      </el-col>
-    </el-row>
-  </div>
+      <template v-slot:reserved>
+        <el-button size="mini" @click="handleCancel">取 消</el-button>
+        <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+      </template>
+    </thx-pagination-selection>
+  </thx-dialog-box>
 </template>
 <script>
+import DialogBoxMixin from '../../dialog-box/src/mixins/main'
+import MainMixin from '../../pagination-table/src/mixins/main'
+import TableMixin from '../../pagination-table/src/mixins/table'
+import PaginationMixin from '../../pagination-table/src/mixins/pagination'
+import SelectionMixin from '../../pagination-table/src/mixins/selection'
+
+import ThxPaginationSelection from '../../pagination-selection'
+
 export default {
   name: 'ThxListSelector',
+  components: { ThxPaginationSelection },
+  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   props: {
     value: [String, Array],
-    data: {
-      type: Array,
-      required: true
-    },
-    pagination: {
-      type: Object,
-      required: true
-    },
-    pageSizes: {
-      type: Array,
-      default() {
-        return [10, 20, 30, 50, 100]
-      }
-    },
-    multiSelect: {
-      type: Boolean,
-      default: false
-    },
-    maxHeight: {
-      type: [String, Number],
-      default: 530
-    }
+    // multiple: Boolean
   },
   data() {
     return {
       selected: null
     }
   },
+  watch: {
+    value() {
+      this.selected = this.value
+    }
+  },
   created() {
-    this.multiSelect && (this.selected = new Set())
+    this.selected = this.value
   },
   methods: {
-    handleIndex(index) {
-      const { page, size } = this.pagination
-      return (page - 1) * size + (index + 1)
+    handleCancel() {
+      this.updateVisible()
+      this.$emit('cancel')
     },
-    handleRadioChange(val) {
-      this.deliverData(val)
+    handleOk() {
+      this.handleDeliver(this.selected)
+      
+      this.updateVisible()
+      this.$emit('ok')
     },
-    // handleSelection() {
-    //   console.log('handleSelection:', arguments)
-    // },
-    // handleSelectionAll() {
-    //   console.log('handleSelectionAll:', arguments)
-    // },
-    handleSelectionChange(selection) {
-      // console.log('handleSelectionChange:', this.selected, selection)
-      // console.log('handleSelectionChange:', selection.map(it => it.id))
-
-      // const identifiers = selection.map(it => it.id)
-      // if (!this.selected) {
-      //   this.selected = identifiers
-      // } else {
-      //   identifiers.forEach(i => this.selected.push(i))
-      // }
-
-      const ids = selection.map(it => it.id)
-      ids.forEach(i => this.selected.add(i))
-
-      this.deliverData(Array.from(this.selected))
-    },
-    deliverData(data) {
-      this.$emit('update:value', data)
-      this.$emit('handle-checked', data)
+    handleClosed() {
+      this.selected = this.value
+      this.$emit('closed')
     }
   }
 }
 </script>
-<style scoped>
-.thx-widget >>> .el-radio .el-radio__label { display: none; }
-</style>
