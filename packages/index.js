@@ -53,6 +53,7 @@ if (typeof window !== 'undefined' && window.Vue) {
 }
 
 export {
+  install,
   CardBox,
   DialogBox,
   ListSelector,
@@ -60,8 +61,7 @@ export {
   PaginationSelection,
   PaginationTable,
   Table,
-  TreeSelector,
-  install
+  TreeSelector
 }
 
 export default { install }
