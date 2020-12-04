@@ -1,3 +1,3 @@
 # Element Widgets
 
-A widgets based on element-ui.
+Widget based on element-ui.
