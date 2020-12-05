@@ -46,7 +46,29 @@ const components = [
   TreeSelector
 ]
 
-const install = Vue =>  components.forEach(c => Vue.component(c.name, c))
+// const install = Vue =>  components.forEach(c => Vue.component(c.name, c))
+
+components.forEach(c => c.install = v => v.component(c.name, c))
+const install = (v, o) => {
+  console.log(o)
+  v.myGlobalProp = 'myGlobalProp'
+  v.myGlobalMethod = function () {
+    console.log('myGlobalMethod')
+  }
+
+  v.prototype.$myInstanceProp = 'myInstanceProp'
+  v.prototype.$myInstanceMethod = function () {
+    console.log('myInstanceMethod')
+  }
+
+  // v.mixin({
+  //   created() {
+  //     console.log('Global mixin created', this.name)
+  //   }
+  // })
+  
+  components.forEach(c => c.install(v))
+}
 
 if (typeof window !== 'undefined' && window.Vue) {
   install(window.Vue)
