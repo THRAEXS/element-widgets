@@ -20,7 +20,11 @@ const components = [
 
 // const install = Vue =>  components.forEach(c => Vue.component(c.name, c))
 
-components.forEach(c => c.install = v => v.component(c.name, c))
+// components.forEach(c => {
+//   // console.debug(c.install)
+//   // !c.install && (c.install = v => v.component(c.name, c))
+//   // c.install = v => i(v, c)
+// })
 const install = v => components.forEach(c => c.install(v))
 
 if (typeof window !== 'undefined' && window.Vue) {
