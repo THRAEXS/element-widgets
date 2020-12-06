@@ -5,7 +5,7 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
-import ElementWidgets from '~'
+import ElementWidgets from '../src'
 
 import './mock'
 

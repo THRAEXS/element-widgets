@@ -28,16 +28,26 @@
         <el-button>Link - {{ i }}</el-button>
       </el-tooltip>
     </div> -->
+
+    <!-- <thx-tree-selector-carrier /> -->
   </div>
 </template>
 <script>
+// import ThxTreeSelectorCarrier from '~/tree-selector-carrier'
+
 export default {
   name: 'CaseOther',
+  // components: { ThxTreeSelectorCarrier },
   data() {
     return {
       visible: false,
       title: 'Case - Others'
     }
+  },
+  beforeCreate() {
+    // console.log(this.$myInstanceProp)
+    // console.log(this.$myInstanceMethod)
+    // this.$myInstanceMethod()
   }
 }
 </script>

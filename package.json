@@ -1,12 +1,12 @@
 {
   "name": "element-widgets",
   "version": "0.1.0",
-  "description": "A selector based on element-ui",
+  "description": "Widget based on element-ui",
   "main": "lib/element-widgets.common.js",
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "lib": "vue-cli-service build --target lib --name element-widgets --dest lib packages/index.js",
+    "lib": "vue-cli-service build --target lib --name element-widgets --dest lib src/index.js",
     "lint": "vue-cli-service lint"
   },
   "keywords": [
