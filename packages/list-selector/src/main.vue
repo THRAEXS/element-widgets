@@ -34,11 +34,11 @@
   </thx-dialog-box>
 </template>
 <script>
-import DialogBoxMixin from '../../dialog-box/src/mixins/main'
-import MainMixin from '../../pagination-table/src/mixins/main'
-import TableMixin from '../../pagination-table/src/mixins/table'
-import PaginationMixin from '../../pagination-table/src/mixins/pagination'
-import SelectionMixin from '../../pagination-table/src/mixins/selection'
+import DialogBoxMixin from '@@/mixins/dialog-box'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import ThxPaginationSelection from '../../pagination-selection'
 

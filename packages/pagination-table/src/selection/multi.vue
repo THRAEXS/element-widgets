@@ -29,10 +29,10 @@
   </div>
 </template>
 <script>
-import MainMixin from '../mixins/main'
-import TableMixin from '../mixins/table'
-import PaginationMixin from '../mixins/pagination'
-import SelectionMixin from '../mixins/selection'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import PaginationTable from '../main'
 
