@@ -1,3 +1,1 @@
-import ThxWidget from './src/main'
-
-export default ThxWidget
+export { default } from './src/main'

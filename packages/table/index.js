@@ -1,3 +1,1 @@
-import ThxWidget from '../pagination-table/src/table'
-
-export default ThxWidget
+export { default } from '../pagination-table/src/table'
