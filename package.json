@@ -13,7 +13,10 @@
     "thraex",
     "element-widgets",
     "element",
+    "element-ui",
+    "pagination",
     "selector",
+    "list-selector",
     "vue",
     "vue2"
   ],

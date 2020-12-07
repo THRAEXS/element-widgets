@@ -23,5 +23,8 @@ module.exports = {
         .include.add('/examples').end()
         .include.add('/packages').end()
       .use('babel').loader('babel-loader')
+  },
+  devServer: {
+    port: 9717
   }
 }
