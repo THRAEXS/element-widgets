@@ -30,6 +30,20 @@
     </div> -->
 
     <!-- <thx-tree-selector-carrier /> -->
+
+    <!-- <el-row style="margin-top: 5px;">
+      <el-col :span="24">
+        <el-input class="input-with-select" style="width: 200px">
+          <el-button slot="append" icon="el-icon-check"></el-button>
+        </el-input>
+      </el-col>
+    </el-row>
+    <el-row style="margin-top: 5px;">
+      <el-col :span="24">
+        <thx-input-carrier style="width: 400px;" @click="handleClick" />
+      </el-col>
+    </el-row> -->
+    
   </div>
 </template>
 <script>
@@ -48,6 +62,11 @@ export default {
     // console.log(this.$myInstanceProp)
     // console.log(this.$myInstanceMethod)
     // this.$myInstanceMethod()
+  },
+  methods: {
+    handleClick() {
+      console.log('((((')
+    }
   }
 }
 </script>

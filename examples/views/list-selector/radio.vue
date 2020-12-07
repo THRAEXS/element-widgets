@@ -1,8 +1,9 @@
 <template>
   <thx-card-box title="Case - List Selector Radio">
-    <el-input v-model="selected" class="input-with-select">
-      <el-button slot="append" icon="el-icon-check" @click="visible = true"></el-button>
-    </el-input>
+    <thx-input-carrier
+      :value.sync="selected"
+      clearable
+      @click="visible = true" />
     
     <thx-list-selector
       :data="data"

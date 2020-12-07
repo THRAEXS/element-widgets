@@ -97,6 +97,18 @@ const constantRoutes = [
   },
 
   {
+    path: '/input/carrier',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/input-carrier'),
+        meta: { title: 'Input Carrier', icon: 'el-icon-chat-dot-square' }
+      }
+    ]
+  },
+
+  {
     path: '/other',
     component: Layout,
     children: [
