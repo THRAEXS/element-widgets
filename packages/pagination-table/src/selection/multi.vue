@@ -55,17 +55,17 @@ export default {
     }
   },
   watch: {
-    value() {
-      // console.debug('watch value:', this.value)
-      this.handleBackfill()
+    value: {
+      immediate: true,
+      handler() {
+        // console.debug('watch value:', this.value)
+        this.$nextTick(() => this.handleBackfill())
+      }
     },
     data() {
       // console.debug('watch data:', this.data)
       this.handleBackfill()
     }
-  },
-  created() {
-    this.$nextTick(() => this.handleBackfill())
   },
   methods: {
     handleSelect(selection) {

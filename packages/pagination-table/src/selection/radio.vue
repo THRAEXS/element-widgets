@@ -53,12 +53,12 @@ export default {
     }
   },
   watch: {
-    value() {
-      this.selected = this.value
+    value: {
+      immediate: true,
+      handler() {
+        this.selected = this.value
+      }
     }
-  },
-  created() {
-    this.selected = this.value
   }
 }
 </script>
