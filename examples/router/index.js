@@ -92,18 +92,32 @@ const constantRoutes = [
         name: 'ListSelectorMulti',
         component: () => import('@/views/list-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
-      },
+      }
     ]
   },
 
   {
     path: '/tree/selector',
     component: Layout,
+    meta: { title: 'Tree Selector', icon: 'el-icon-grape' },
+    redirect: '/tree/selector/radio',
     children: [
       {
-        path: '',
+        path: 'index',
         component: () => import('@/views/tree-selector'),
         meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
+      },
+      {
+        path: 'radio',
+        name: 'TreeSelectorRadio',
+        component: () => import('@/views/tree-selector/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'TreeSelectorMulti',
+        component: () => import('@/views/tree-selector/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       }
     ]
   },

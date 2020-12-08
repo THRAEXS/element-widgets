@@ -59,7 +59,7 @@ let orgList = []
 for (let i = 0; i < 5; i++) {
   const college = {
     id: `org-${i}`,
-    name: `College-${i + 1}`,
+    name: `中国天地银行-${i + 1}`,
     code: `COLLEGE-${i + 1}`,
     parentId: null,
     level: 1,
@@ -70,7 +70,7 @@ for (let i = 0; i < 5; i++) {
   Random.range(Random.integer(10, 60)).forEach(j => {
     const dept = {
       id: `${college.id}-${j}`,
-      name: `Department-${i}-${j}`,
+      name: `中国天地银行-${i}-${j}分行`,
       code: `DEPARTMENT-${i}-${j}`,
       parentId: college.id,
       level: 2,
