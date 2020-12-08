@@ -6,6 +6,7 @@ const Random = Mock.Random
 
 const debug = false
 
+/* ************* User ************* */
 const total = 3157
 let users = []
 let maps = new Map()
@@ -13,7 +14,7 @@ let maps = new Map()
 for (let i = 0; i < total; i++) {
   const user = {
     id: `user-${i}`,
-    account: `hanzo-${i+1}`,
+    account: `hanzo-${i + 1}`,
     name: Random.name(),
     department: 'Peking University Thrid Hospital',
     office: 'Dental',
@@ -52,4 +53,80 @@ function getUsers(options) {
   return params.ids.map(it => maps.get(it)).filter(it => it)
 }
 
-export default { getUserPage, getUser, getUsers }
+/* ************* Org ************* */
+let orgList = []
+
+for (let i = 0; i < 5; i++) {
+  const college = {
+    id: `org-${i}`,
+    name: `College-${i + 1}`,
+    code: `COLLEGE-${i + 1}`,
+    parentId: null,
+    level: 1,
+    remark: Random.paragraph(1),
+  }
+  orgList.push(college)
+
+  Random.range(Random.integer(10, 60)).forEach(j => {
+    const dept = {
+      id: `${college.id}-${j}`,
+      name: `Department-${i}-${j}`,
+      code: `DEPARTMENT-${i}-${j}`,
+      parentId: college.id,
+      level: 2,
+      remark: Random.paragraph(1),
+    }
+    orgList.push(dept)
+
+    Random.range(Random.integer(5, 20)).forEach(k => {
+      const office = {
+        id: `${dept.id}-${k}`,
+        name: `Office-${i}-${j}-${k}`,
+        code: `OFFICE-${i}-${j}-${k}`,
+        parentId: dept.id,
+        level: 3,
+        remark: Random.paragraph(1),
+      }
+      orgList.push(office)
+    })
+  }) 
+}
+
+function getOrgTree(options) {
+  debug && logger.debug('getOrgTree:', options)
+  const [lev] = options.url.split('/').reverse()
+  const level = Number.parseInt(lev)
+  debug && logger.debug('getOrgTree params:', level)
+
+  const colleges = orgList.filter(it => it.level === 1)
+
+  if (level > 1) {
+    const depts = orgList.filter(it => it.level === 2)
+
+    depts.forEach(d => {
+      const parent = colleges.find(c => c.id === d.parentId)
+
+      !parent.children && (parent.children = [])
+      parent.children.push(d)
+    })
+
+    if (level > 2) {
+      const offices = orgList.filter(it => it.level === 3)
+      offices.forEach(o => {
+        const parent = depts.find(d => d.id === o.parentId)
+
+        !parent.children && (parent.children = [])
+        parent.children.push(o)
+      })
+    }
+  }
+
+  return colleges
+}
+
+export default {
+  getUserPage,
+  getUser,
+  getUsers,
+  getOrgTree
+}

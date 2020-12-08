@@ -97,6 +97,18 @@ const constantRoutes = [
   },
 
   {
+    path: '/tree/selector',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/tree-selector'),
+        meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
+      }
+    ]
+  },
+
+  {
     path: '/input/carrier',
     component: Layout,
     children: [
