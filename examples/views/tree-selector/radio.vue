@@ -9,8 +9,9 @@
       v-model="selected"
       :visible.sync="visible"
       :props="props"
-      :data="data" />
-      <!-- :default-expanded-keys="data.length > 0 ? [data[0].id] : []" /> -->
+      check-all-levels
+      :data="data"
+      @ok="handleOk" />
   </thx-card-box>
 </template>
 <script>
@@ -34,6 +35,12 @@ export default {
   methods: {
     orgTree() {
       import('@/api').then(({ getOrgTree: ot }) => ot().then(data => (this.data = data)))
+    },
+    handleOk(checked, nodes) {
+      console.debug(this.selected, arguments)
+      this.selected = checked
+      console.debug()
+      this.value = nodes.map(it => it.name).join(' / ')
     }
   }
 }

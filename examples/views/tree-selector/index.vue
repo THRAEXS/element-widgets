@@ -76,7 +76,7 @@ export default {
   },
   methods: {
     orgTree() {
-      import('@/api').then(({ getOrgTree: ot }) => ot(1).then(data => (this.data = data)))
+      import('@/api').then(({ getOrgTree: ot }) => ot(3).then(data => (this.data = data)))
     },
     handleFocus() {
       console.debug('handleFocus')

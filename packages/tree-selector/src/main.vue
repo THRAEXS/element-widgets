@@ -17,15 +17,16 @@
       :accordion="accordion"
       :show-checkbox="showCheckbox"
       :default-expand-all="defaultExpandAll"
+      :expand-on-click-node="false"
       :default-expanded-keys="expandedKeys">
-      <template v-slot:default="scope">
-        <el-radio
-          v-model="selected"
-          :label="scope.data.id"
-          v-if="scope.node.isLeaf">
-          {{ scope.node.label }}
-        </el-radio>
-        <span v-else>{{ scope.node.label }}</span>
+      <template v-slot="{ node, data }">
+        <span>
+          <el-radio
+            v-model="selected"
+            :label="data.id"
+            v-if="checkAllLevels || (!checkAllLevels && node.isLeaf)" />
+          {{ node.label }}
+        </span>
       </template>
     </el-tree>
     
@@ -76,7 +77,8 @@ export default {
     defaultExpandFirstNode: {
       type: Boolean,
       default: true
-    }
+    },
+    checkAllLevels: Boolean
   },
   data() {
     return {
@@ -99,6 +101,7 @@ export default {
       immediate: true,
       handler() {
         console.debug('tree selector:', this.selected, this.value)
+        this.selected = this.value
       }
     }
   },
@@ -108,19 +111,34 @@ export default {
       this.$emit('cancel')
     },
     handleOk() {
-      console.debug(this.selected)
-      const node = this.$refs.tree.getNode(this.selected)
-      console.debug(node)
-      console.debug(node.label)
-      console.debug(node.parent)
-      console.debug(node.parent.label)
-      console.debug(node.parent.parent)
-      console.debug(node.parent.parent.label)
-      // console.debug(this.$refs.tree.getCheckedNodes())
-      // this.handleDeliver(this.selected)
+      console.debug('selected:', this.selected)
+
+      let result
+      if (this.selected) {
+        const node = this.$refs.tree.getNode(this.selected)
+        result = node ? this.getResult(node, result) : []
+      }
       
-      // this.updateVisible()
-      // this.$emit('ok')
+      // this.handleDeliver(this.selected)
+
+      console.debug('result:', result)
+      
+      this.$emit('update:value', this.selected)
+      this.updateVisible()
+      this.$emit('ok', this.selected, result)
+    },
+    handleClosed() {
+      this.selected = this.value
+      this.$emit('closed')
+    },
+    getResult(node) {
+      if (node.level === 0) return []
+
+      const parent = this.getResult(node.parent)
+      
+      const [data, key, label] = [node.data, this.nodeKey, this.props.label]
+
+      return [...parent, { [key]: data[key], [label]: data[label] }]
     }
   }
 }
@@ -131,7 +149,8 @@ export default {
   border: 1px solid #EBEEF5;
 }
 ::v-deep .el-radio .el-radio__label {
-  padding-left: 0;
-  font-weight: 400;
+  /* padding-left: 0;
+  font-weight: 400; */
+  display: none;
 }
 </style>
