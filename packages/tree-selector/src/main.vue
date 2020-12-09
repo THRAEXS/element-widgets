@@ -87,7 +87,7 @@ export default {
   },
   computed: {
     expandedKeys() {
-      const expanded = this.defaultExpandedKeys ? this.defaultExpandedKeys : []
+      const expanded = this.defaultExpandedKeys || []
 
       if (this.defaultExpandFirstNode && this.data && this.data.length > 0) {
         expanded.push(this.data[0].id)
@@ -116,7 +116,7 @@ export default {
       let result
       if (this.selected) {
         const node = this.$refs.tree.getNode(this.selected)
-        result = node ? this.getResult(node, result) : []
+        result = node ? this.getLevelNode(node) : []
       }
       
       // this.handleDeliver(this.selected)
@@ -131,10 +131,10 @@ export default {
       this.selected = this.value
       this.$emit('closed')
     },
-    getResult(node) {
+    getLevelNode(node) {
       if (node.level === 0) return []
 
-      const parent = this.getResult(node.parent)
+      const parent = this.getLevelNode(node.parent)
       
       const [data, key, label] = [node.data, this.nodeKey, this.props.label]
 

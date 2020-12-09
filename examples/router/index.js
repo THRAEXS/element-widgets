@@ -97,6 +97,27 @@ const constantRoutes = [
   },
 
   {
+    path: '/tree/selection',
+    component: Layout,
+    meta: { title: 'Tree Selection', icon: 'el-icon-grape' },
+    redirect: '/tree/selection/radio',
+    children: [
+      {
+        path: 'radio',
+        name: 'TreeSelectionRadio',
+        component: () => import('@/views/tree-selection/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'TreeSelectionMulti',
+        component: () => import('@/views/tree-selection/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
+      }
+    ]
+  },
+
+  {
     path: '/tree/selector',
     component: Layout,
     meta: { title: 'Tree Selector', icon: 'el-icon-grape' },

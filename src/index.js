@@ -6,6 +6,7 @@ import Pagination from '~/pagination'
 import PaginationSelection from '~/pagination-selection'
 import PaginationTable from '~/pagination-table'
 import Table from '~/table'
+import TreeSelection from '~/tree-selection'
 import TreeSelector from '~/tree-selector'
 
 const components = [
@@ -17,6 +18,7 @@ const components = [
   PaginationSelection,
   PaginationTable,
   Table,
+  TreeSelection,
   TreeSelector
 ]
 
@@ -36,6 +38,7 @@ export {
   PaginationSelection,
   PaginationTable,
   Table,
+  TreeSelection,
   TreeSelector
 }
 
