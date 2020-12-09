@@ -8,7 +8,9 @@
     <thx-tree-selector
       v-model="selected"
       :visible.sync="visible"
+      :props="props"
       :data="data" />
+      <!-- :default-expanded-keys="data.length > 0 ? [data[0].id] : []" /> -->
   </thx-card-box>
 </template>
 <script>
@@ -19,6 +21,10 @@ export default {
       value: null,
       selected: null,
       visible: false,
+      props: {
+        label: 'name',
+        children: 'childOrgList'
+      },
       data: []
     }
   },

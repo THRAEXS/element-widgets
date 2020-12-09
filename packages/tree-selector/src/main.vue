@@ -16,7 +16,8 @@
       :node-key="nodeKey"
       :accordion="accordion"
       :show-checkbox="showCheckbox"
-      :default-expand-all="defaultExpandAll">
+      :default-expand-all="defaultExpandAll"
+      :default-expanded-keys="expandedKeys">
       <template v-slot:default="scope">
         <el-radio
           v-model="selected"
@@ -70,11 +71,27 @@ export default {
       default: true
     },
     showCheckbox: Boolean,
-    defaultExpandAll: Boolean
+    defaultExpandAll: Boolean,
+    defaultExpandedKeys: Array,
+    defaultExpandFirstNode: {
+      type: Boolean,
+      default: true
+    }
   },
   data() {
     return {
       selected: null
+    }
+  },
+  computed: {
+    expandedKeys() {
+      const expanded = this.defaultExpandedKeys ? this.defaultExpandedKeys : []
+
+      if (this.defaultExpandFirstNode && this.data && this.data.length > 0) {
+        expanded.push(this.data[0].id)
+      }
+
+      return expanded
     }
   },
   watch: {
@@ -98,7 +115,7 @@ export default {
       console.debug(node.parent)
       console.debug(node.parent.label)
       console.debug(node.parent.parent)
-      console.debug(node.parent.parent.laebl)
+      console.debug(node.parent.parent.label)
       // console.debug(this.$refs.tree.getCheckedNodes())
       // this.handleDeliver(this.selected)
       
