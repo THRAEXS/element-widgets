@@ -1,9 +1,9 @@
 import CardBox from '~/card-box'
 import DialogBox from '~/dialog-box'
 import InputCarrier from '~/input-carrier'
-import ListSelector from '~/list-selector'
 import Pagination from '~/pagination'
 import PaginationSelection from '~/pagination-selection'
+import PaginationSelector from '~/pagination-selector'
 import PaginationTable from '~/pagination-table'
 import Table from '~/table'
 import TreeSelection from '~/tree-selection'
@@ -13,9 +13,9 @@ const components = [
   CardBox,
   DialogBox,
   InputCarrier,
-  ListSelector,
   Pagination,
   PaginationSelection,
+  PaginationSelector,
   PaginationTable,
   Table,
   TreeSelection,
@@ -33,9 +33,9 @@ export {
   CardBox,
   DialogBox,
   InputCarrier,
-  ListSelector,
   Pagination,
   PaginationSelection,
+  PaginationSelector,
   PaginationTable,
   Table,
   TreeSelection,

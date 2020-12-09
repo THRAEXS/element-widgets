@@ -1,5 +1,5 @@
 <template>
-  <thx-card-box title="Case - List Selector Multi">
+  <thx-card-box title="Case - Pagination Selector Multi">
     <template v-slot:toolbar>
       <el-button
         type="success"
@@ -32,7 +32,7 @@
       </el-table-column>
     </thx-table>
 
-    <thx-list-selector
+    <thx-pagination-selector
       multiple
       :data="data"
       :total="total"
@@ -46,14 +46,14 @@
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
       <el-table-column prop="department" label="Department" align="center"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-    </thx-list-selector>
+    </thx-pagination-selector>
   </thx-card-box>
 </template>
 <script>
 import { getUserPage } from '@/api'
 
 export default {
-  name: 'CaseListSelectorMulti',
+  name: 'CasePaginationSelectorMulti',
   data() {
     return {
       visible: false,

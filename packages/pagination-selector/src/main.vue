@@ -43,7 +43,7 @@ import SelectionMixin from '@@/mixins/selection'
 import ThxPaginationSelection from '../../pagination-selection'
 
 export default {
-  name: 'ThxListSelector',
+  name: 'ThxPaginationSelector',
   components: { ThxPaginationSelection },
   mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   props: {

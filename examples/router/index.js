@@ -76,21 +76,21 @@ const constantRoutes = [
   },
 
   {
-    path: '/list/selector',
+    path: '/pagination/selector',
     component: Layout,
-    meta: { title: 'List Selector', icon: 'el-icon-finished' },
-    redirect: '/list/selector/radio',
+    meta: { title: 'Pagination Selector', icon: 'el-icon-finished' },
+    redirect: '/pagination/selector/radio',
     children: [
       {
         path: 'radio',
-        name: 'ListSelectorRadio',
-        component: () => import('@/views/list-selector/radio'),
+        name: 'PaginationSelectorRadio',
+        component: () => import('@/views/pagination-selector/radio'),
         meta: { title: 'Radio', icon: 'el-icon-s-help' }
       },
       {
         path: 'multi',
-        name: 'ListSelectorMulti',
-        component: () => import('@/views/list-selector/multi'),
+        name: 'PaginationSelectorMulti',
+        component: () => import('@/views/pagination-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       }
     ]

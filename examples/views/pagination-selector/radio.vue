@@ -1,11 +1,11 @@
 <template>
-  <thx-card-box title="Case - List Selector Radio">
+  <thx-card-box title="Case - Pagination Selector Radio">
     <thx-input-carrier
       :value.sync="selected"
       clearable
       @click="visible = true" />
     
-    <thx-list-selector
+    <thx-pagination-selector
       :data="data"
       :total="total"
       :page.sync="page"
@@ -18,14 +18,14 @@
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
       <el-table-column prop="department" label="Department" align="center"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-    </thx-list-selector>
+    </thx-pagination-selector>
   </thx-card-box>
 </template>
 <script>
 import { getUserPage } from '@/api'
 
 export default {
-  name: 'CaseListSelectorRadio',
+  name: 'CasePaginationSelectorRadio',
   data() {
     return {
       visible: false,
