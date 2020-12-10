@@ -18,7 +18,26 @@
         </el-button>
       </template>
 
-      <thx-tree-selector />
+      <thx-tree-selection />
+      <!-- Content -->
+
+      <template #footer>
+        <!-- <el-button type="primary" size="mini">Save</el-button> -->
+        <el-button
+          type="success"
+          icon="el-icon-check"
+          size="mini"
+          circle
+          @click="visible = true">
+        </el-button>
+        <el-button
+          type="info"
+          icon="el-icon-edit"
+          size="mini"
+          circle
+          @click="visible = true">
+        </el-button>
+      </template>
     </thx-card-box>
 
     <thx-dialog-box :visible.sync="visible" />
