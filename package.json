@@ -3,6 +3,9 @@
   "version": "0.1.0",
   "description": "Widget based on element-ui",
   "main": "lib/element-widgets.common.js",
+  "files": [
+    "lib"
+  ],
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -16,10 +19,16 @@
     "element-ui",
     "pagination",
     "selector",
-    "list-selector",
+    "pagination-selector",
     "vue",
     "vue2"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/THRAEX-70/element-widgets"
+  },
+  "homepage": "https://github.com/THRAEX-70/element-widgets",
+  "bugs": "https://github.com/THRAEX-70/element-widgets/issues",
   "author": "THRAEX <THRAEX@aliyun.com>",
   "license": "MIT",
   "dependencies": {
@@ -52,10 +61,5 @@
       "parser": "babel-eslint"
     },
     "rules": {}
-  },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not dead"
-  ]
+  }
 }
