@@ -31,6 +31,6 @@ export default {
 }
 .thx-widget >>> .el-dialog__body {
   padding: 10px;
-  min-height: 300px;
+  /* min-height: 300px; */
 }
 </style>

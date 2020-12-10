@@ -10,6 +10,9 @@
     <slot name="prepend"></slot>
     
     <thx-pagination-selection
+      v-loading="loading"
+      :element-loading-text="loadingText"
+      :element-loading-background="loadingBackground"
       :data="data"
       :height="height"
       :max-height="maxHeight"
@@ -48,7 +51,13 @@ export default {
   mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   props: {
     value: [String, Array],
-    multiple: Boolean
+    multiple: Boolean,
+    loading: Boolean,
+    loadingText: String,
+    loadingBackground: {
+      type: String,
+      default: 'rgba(0, 0, 0, 0.7)'
+    }
   },
   data() {
     return {

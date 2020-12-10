@@ -40,7 +40,8 @@
       :size.sync="size"
       :index="{ label: 'No.' }"
       :value.sync="selected"
-      :visible.sync="visible">
+      :visible.sync="visible"
+      :loading="loading">
       <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
       <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
@@ -57,6 +58,7 @@ export default {
   data() {
     return {
       visible: false,
+      loading: false,
       data: [],
       total: 0,
       page: 1,
@@ -78,13 +80,16 @@ export default {
   },
   methods: {
     search() {
-      getUserPage({
-        page: this.page,
-        size: this.size
-      }).then(({ data, total }) => {
-        this.data = data
-        this.total = total
-      })
+      this.loading = true
+      setTimeout(() => {
+        getUserPage({
+          page: this.page,
+          size: this.size
+        }).then(({ data, total }) => {
+          this.data = data
+          this.total = total
+        }).finally(() => (this.loading = false))
+      }, 2000)
     },
     handleDelete(ind) {
       this.selected.splice(ind, 1);

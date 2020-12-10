@@ -2,6 +2,11 @@
 
 Widget based on element-ui.
 
+## Todos
+
+- [ ] mixins location
+- [X] selector loading
+
 ## Features
 
 - [X] `card-box`
