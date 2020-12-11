@@ -35,7 +35,7 @@ export default {
       const expanded = this.defaultExpandedKeys || []
 
       if (this.defaultExpandFirstNode && this.data && this.data.length > 0) {
-        expanded.push(this.data[0].id)
+        expanded.push(this.data[0][this.nodeKey])
       }
 
       return expanded

@@ -13,7 +13,7 @@
       <span>
         <el-radio
           v-model="selected"
-          :label="data.id"
+          :label="data[nodeKey]"
           @change="handleChange"
           v-if="checkStrictly || (!checkStrictly && node.isLeaf)" />
         {{ node.label }}

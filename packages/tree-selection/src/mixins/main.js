@@ -40,7 +40,8 @@ export default {
       if (node.level === 0) return []
 
       const parent = this.getLevelNode(node.parent)
-      const [data, key, label] = [node.data, this.nodeKey, this.props.label]
+      const { label } = Object.assign({}, this.$refs.tree.props, this.props)
+      const [data, key] = [node.data, this.nodeKey]
 
       return [...parent, { [key]: data[key], [label]: data[label] }]
     },
