@@ -41,14 +41,13 @@ import DialogBoxMixin from '@@/mixins/dialog-box'
 import MainMixin from '@@/mixins/pagination-table'
 import TableMixin from '@@/mixins/table'
 import PaginationMixin from '@@/mixins/pagination'
-import SelectionMixin from '@@/mixins/selection'
 
 import ThxPaginationSelection from '../../pagination-selection'
 
 export default {
   name: 'ThxPaginationSelector',
   components: { ThxPaginationSelection },
-  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
+  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin],
   props: {
     value: [String, Array],
     multiple: Boolean,
@@ -78,10 +77,9 @@ export default {
       this.$emit('cancel')
     },
     handleOk() {
-      this.handleDeliver(this.selected)
-      
       this.updateVisible()
-      this.$emit('ok')
+      this.$emit('update:value', this.selected)
+      this.$emit('ok', this.selected)
     },
     handleClosed() {
       this.selected = this.value
