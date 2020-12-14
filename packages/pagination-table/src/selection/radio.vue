@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <pagination-table
+      ref="thxTable"
       :data="data"
       :height="height"
       :max-height="maxHeight"
@@ -14,10 +15,7 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
       <template v-slot:pre-column>
-        <el-table-column
-          :align="selectionProps.align"
-          :width="selectionProps.width"
-          :fixed="selectionProps.fixed">
+        <el-table-column type="radio" align="center" width="40" :fixed="fixedRadio">
           <template v-slot:default="scope">
             <el-radio
               v-model="selected"
@@ -52,8 +50,15 @@ export default {
   },
   data() {
     return {
-      selected: null
+      selected: null,
+      fixedRadio: false
     }
+  },
+  mounted() {
+    this.handleFixedRadio()
+  },
+  updated() {
+    this.handleFixedRadio()
   },
   watch: {
     value: {
@@ -61,6 +66,13 @@ export default {
       handler() {
         this.selected = this.value
       }
+    }
+  },
+  methods: {
+    handleFixedRadio() {
+      // TODO: Optimize
+      this.$nextTick(() => this.fixedRadio = this.$refs.thxTable.$refs.thxTable.$refs.table.columns
+        .findIndex(it => it.type !== 'radio' && it.fixed) > -1)
     }
   }
 }

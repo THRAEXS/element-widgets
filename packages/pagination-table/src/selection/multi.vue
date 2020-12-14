@@ -17,11 +17,7 @@
       @select="handleSelect"
       @select-all="handleSelectAll">
       <template v-slot:pre-column>
-        <el-table-column
-          type="selection"
-          :align="selectionProps.align"
-          :width="selectionProps.width"
-          :fixed="selectionProps.fixed" />
+        <el-table-column type="selection" align="center" width="40" />
       </template>
 
       <slot></slot>
