@@ -14,7 +14,10 @@
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
       <template v-slot:pre-column>
-        <el-table-column align="center" width="40">
+        <el-table-column
+          :align="selectionProps.align"
+          :width="selectionProps.width"
+          :fixed="selectionProps.fixed">
           <template v-slot:default="scope">
             <el-radio
               v-model="selected"

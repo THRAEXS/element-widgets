@@ -23,6 +23,7 @@
       :sizes="sizes"
       :index="index"
       :show-index="showIndex"
+      :selection="selection"
       :multiple="multiple"
       :value.sync="selected"
       @size-change="handleSizeChange"
@@ -41,13 +42,14 @@ import DialogBoxMixin from '@@/mixins/dialog-box'
 import MainMixin from '@@/mixins/pagination-table'
 import TableMixin from '@@/mixins/table'
 import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import ThxPaginationSelection from '../../pagination-selection'
 
 export default {
   name: 'ThxPaginationSelector',
   components: { ThxPaginationSelection },
-  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin],
+  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
   props: {
     value: [String, Array],
     multiple: Boolean,
