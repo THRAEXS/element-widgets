@@ -11,7 +11,6 @@
       :size="size"
       :sizes="sizes"
       :index="index"
-      :show-index="showIndex"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
       <template v-slot:pre-column>

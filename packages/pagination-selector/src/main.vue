@@ -22,7 +22,6 @@
       :size="size"
       :sizes="sizes"
       :index="index"
-      :show-index="showIndex"
       :multiple="multiple"
       :value.sync="selected"
       @size-change="handleSizeChange"

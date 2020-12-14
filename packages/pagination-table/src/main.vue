@@ -15,11 +15,11 @@
       <el-table-column
         type="index"
         align="center"
-        :label="index.label"
-        :width="index.width || 60"
-        :fixed="index.fixed"
+        :label="indexProps.label"
+        :width="indexProps.width"
+        :fixed="indexProps.fixed"
         :index="handleIndex"
-        v-if="showIndex" />
+        v-if="indexProps.visible" />
 
       <slot>
         <el-table-column label="Columns" align="center"></el-table-column>
@@ -57,6 +57,16 @@ export default {
   name: 'ThxPaginationTable',
   mixins: [MainMixin, TableMixin, PaginationMixin],
   components: { ThxTable, ThxPagination },
+  computed: {
+    indexProps() {
+      return Object.assign({
+        label: '',
+        width: 60,
+        fixed: false,
+        visible: true
+      }, this.index)
+    }
+  },
   methods: {
     rowSelection(ids) {
       this.$refs.thxTable.rowSelection(ids)
