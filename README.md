@@ -4,8 +4,15 @@ Widget based on element-ui.
 
 ## Todos
 
+- [ ] Documentation
+
 - [ ] mixins location
+
 - [X] selector loading
+
+- [ ] selector button label
+
+- [X] small pagination table
 
 ## Features
 

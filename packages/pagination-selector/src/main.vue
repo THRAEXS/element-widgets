@@ -29,8 +29,10 @@
       <slot></slot>
 
       <template v-slot:reserved>
-        <el-button size="mini" @click="handleCancel">取 消</el-button>
-        <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+        <div :class="{ 'thx-pagination-selector--small': small }">
+          <el-button size="mini" @click="handleCancel">取 消</el-button>
+          <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+        </div>
       </template>
     </thx-pagination-selection>
   </thx-dialog-box>
@@ -87,3 +89,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.thx-pagination-selector--small .el-button--mini {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 24px;
+} 
+</style>

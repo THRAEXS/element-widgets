@@ -5,6 +5,7 @@
       :data="data"
       :height="height"
       :max-height="maxHeight"
+      :size="small ? 'mini' : ''"
       @select="handleSelect"
       @select-all="handleSelectAll"
       @selection-change="handleSelectionChange"

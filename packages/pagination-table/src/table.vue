@@ -9,6 +9,7 @@
     :data="data"
     :height="height"
     :max-height="maxHeight"
+    :size="size"
     @select="handleSelect"
     @select-all="handleSelectAll"
     @selection-change="handleSelectionChange"
