@@ -11,11 +11,20 @@ module.exports = {
   css: {
     extract: false
   },
+  configureWebpack: {
+    resolve: {
+      alias: {
+        '@': path.resolve('examples'),
+        '@@': path.resolve('src'),
+        '~': path.resolve('packages')
+      }
+    }
+  },
   chainWebpack: config => {
-    config.resolve.alias
+    /* config.resolve.alias
       .set('@', path.resolve('examples'))
       .set('@@', path.resolve('src'))
-      .set('~', path.resolve('packages'))
+      .set('~', path.resolve('packages')) */
 
     config.module.rule('eslint').exclude.add(path.resolve('lib')).end()
 
