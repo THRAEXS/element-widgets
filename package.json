@@ -1,6 +1,6 @@
 {
   "name": "element-widgets",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Widget based on element-ui",
   "main": "lib/element-widgets.common.js",
   "files": [
