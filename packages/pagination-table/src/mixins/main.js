@@ -9,6 +9,10 @@ export default {
           fixed: false
         }
       }
+    },
+    showIndex: {
+      type: Boolean,
+      default: true
     }
   },
   methods: {

@@ -5,7 +5,6 @@
       :data="data"
       :height="height"
       :max-height="maxHeight"
-      :size="small ? 'mini' : ''"
       @select="handleSelect"
       @select-all="handleSelectAll"
       @selection-change="handleSelectionChange"
@@ -16,11 +15,11 @@
       <el-table-column
         type="index"
         align="center"
-        :label="indexProps.label"
-        :width="indexProps.width"
-        :fixed="indexProps.fixed"
+        :label="index.label"
+        :width="index.width || 60"
+        :fixed="index.fixed"
         :index="handleIndex"
-        v-if="indexProps.visible" />
+        v-if="showIndex" />
 
       <slot>
         <el-table-column label="Columns" align="center"></el-table-column>
@@ -47,9 +46,9 @@
   </div>
 </template>
 <script>
-import MainMixin from '@@/mixins/pagination-table'
-import TableMixin from '@@/mixins/table'
-import PaginationMixin from '@@/mixins/pagination'
+import MainMixin from './mixins/main'
+import TableMixin from './mixins/table'
+import PaginationMixin from './mixins/pagination'
 
 import ThxTable from './table'
 import ThxPagination from './pagination'
@@ -58,16 +57,6 @@ export default {
   name: 'ThxPaginationTable',
   mixins: [MainMixin, TableMixin, PaginationMixin],
   components: { ThxTable, ThxPagination },
-  computed: {
-    indexProps() {
-      return Object.assign({
-        label: '',
-        width: 60,
-        fixed: false,
-        visible: true
-      }, this.index)
-    }
-  },
   methods: {
     rowSelection(ids) {
       this.$refs.thxTable.rowSelection(ids)

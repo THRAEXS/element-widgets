@@ -1,7 +1,8 @@
 <template>
-    <el-card :body-style="{ padding: 0 }">
+  <div class="thx-widget">
+    <el-card>
       <template v-slot:header>
-        <el-row type="flex" align="middle" :style="headerStyle" v-if="showHeader">
+        <el-row type="flex" align="middle" v-if="showHeader">
           <el-col :span="leftSpan" v-if="title">
             <b>{{ title }}</b>
           </el-col>
@@ -11,47 +12,15 @@
         </el-row>
       </template>
       
-      <div :style="bodyStyle">
-        <slot />
-      </div>
-
-      <div class="thx-card-box__footer" v-if="$slots.footer">
-        <div :style="footerStyle">
-          <slot name="footer" />
-        </div>
-      </div>
+      <slot />
     </el-card>
+  </div>
 </template>
 <script>
 export default {
   name: 'ThxCardBox',
   props: {
-    title: String,
-    headerStyle: {
-      type: Object,
-      default() {
-        return {
-          padding: '10px'
-        }
-      }
-    },
-    bodyStyle: {
-      type: Object,
-      default() {
-        return {
-          padding: '10px',
-        }
-      }
-    },
-    footerStyle: {
-      type: Object,
-      default() {
-        return {
-          padding: '10px',
-          textAlign: 'right'
-        }
-      }
-    }
+    title: String
   },
   computed: {
     showHeader() {
@@ -72,10 +41,8 @@ export default {
 }
 </script>
 <style scoped>
-::v-deep .el-card__header {
-  padding: 0;
-}
-.thx-card-box__footer {
-  border-top: 1px solid #EBEEF5;
+.thx-widget >>> .el-card__header,
+.thx-widget >>> .el-card__body {
+  padding: 10px;
 }
 </style>

@@ -1,0 +1,104 @@
+<template>
+  <div class="thx-widget">
+    <thx-dialog-box
+      :visible.sync="dialogVisible"
+      @handle-closed="handleClosed">
+      <thx-list-selector
+        :data="data"
+        :pagination="pagination"
+        :value.sync="selected"
+        @handle-ok="handleOk"
+        @handle-cancel="dialogVisible = false">
+        <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
+        <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
+        <el-table-column prop="name" label="Name" align="center"></el-table-column>
+        <el-table-column prop="department" label="Department" align="center"></el-table-column>
+        <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
+      </thx-list-selector>
+    </thx-dialog-box>
+  </div>
+</template>
+<script>
+import { getUserPage, getUser, getUsers } from '@/api'
+
+export default {
+  name: 'ThxUserSelector',
+  props: {
+    value: [String, Array],
+    visible: {
+      type: Boolean,
+      default: false
+    }
+  },
+  data() {
+    return {
+      dialogVisible: false,
+      data: [],
+      pagination: {
+        page: 1,
+        size: 10,
+        total: 0
+      },
+      selected: null
+    }
+  },
+  watch: {
+    visible() {
+      this.dialogVisible = this.visible
+      this.dialogVisible && this.search()
+    },
+    'pagination.page'() {
+      this.search()
+    },
+    'pagination.size'() {
+      this.search()
+    }
+  },
+  // beforeUpdate() {
+  //   console.log('user selector beforeUpdate', this.visible)
+  //   this.$emit('handle-clears')
+  // },
+  methods: {
+    search() {
+      const { page, size } = this.pagination
+      getUserPage({
+        page,
+        size,
+        params: {
+          name: 'gui',
+          other: 'oo' 
+        } 
+      }).then(({ data, total }) => {
+        this.data = data
+        this.pagination.total = total
+      })
+    },
+    async one(id) {
+      return await getUser(id)
+    },
+    async gets(ids) {
+      return await getUsers(ids)
+    },
+    handleClosed() {
+      this.$emit('update:visible', false)
+    },
+    handleOk() {
+      this.$emit('update:value', this.selected)
+      this.dialogVisible = false
+
+      this.one(this.selected).then(data => {
+        this.$emit('update:data-set', data)
+        this.$emit('handle-ok', data)
+      })
+    }
+  }
+}
+</script>
+<style scoped>
+.thx-widget >>> .el-dialog__header {
+  padding: 0;
+}
+.thx-widget >>> .el-dialog__body {
+  padding: 10px;
+}
+</style>

@@ -8,8 +8,7 @@ export default {
     maxHeight: {
       type: [String, Number],
       default: 530
-    },
-    size: String
+    }
   },
   methods: {
     handleSelect() {

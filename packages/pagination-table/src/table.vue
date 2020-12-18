@@ -9,7 +9,6 @@
     :data="data"
     :height="height"
     :max-height="maxHeight"
-    :size="size"
     @select="handleSelect"
     @select-all="handleSelectAll"
     @selection-change="handleSelectionChange"
@@ -25,7 +24,7 @@
   </el-table>
 </template>
 <script>
-import TableMixin from '@@/mixins/table'
+import TableMixin from './mixins/table'
 
 export default {
   name: 'ThxTable',

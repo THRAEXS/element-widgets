@@ -16,12 +16,12 @@ export default {
     }
   },
   watch: {
-    visible: {
-      immediate: true,
-      handler() {
-        this.dialogVisible = this.visible
-      }
+    visible() {
+      this.dialogVisible = this.visible
     }
+  },
+  created() {
+    this.dialogVisible = this.visible
   },
   methods: {
     handleOpen() {
