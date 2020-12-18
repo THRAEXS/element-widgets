@@ -9,7 +9,6 @@
     :size="size"
     :sizes="sizes"
     :index="index"
-    :show-index="showIndex"
     v-model="value"
     @selected="handleDeliver"
     @size-change="handleSizeChange"
@@ -32,7 +31,6 @@
     :size="size"
     :sizes="sizes"
     :index="index"
-    :show-index="showIndex"
     v-model="value"
     @selected="handleDeliver"
     @size-change="handleSizeChange"
@@ -46,10 +44,10 @@
   </thx-pagination-selection-radio>
 </template>
 <script>
-import MainMixin from '../mixins/main'
-import TableMixin from '../mixins/table'
-import PaginationMixin from '../mixins/pagination'
-import SelectionMixin from '../mixins/selection'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import ThxPaginationSelectionRadio from './radio'
 import ThxPaginationSelectionMulti from './multi'

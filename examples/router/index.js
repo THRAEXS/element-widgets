@@ -76,23 +76,82 @@ const constantRoutes = [
   },
 
   {
-    path: '/list/selector',
+    path: '/pagination/selector',
     component: Layout,
-    meta: { title: 'List Selector', icon: 'el-icon-finished' },
-    redirect: '/list/selector/radio',
+    meta: { title: 'Pagination Selector', icon: 'el-icon-finished' },
+    redirect: '/pagination/selector/radio',
     children: [
       {
         path: 'radio',
-        name: 'ListSelectorRadio',
-        component: () => import('@/views/list-selector/radio'),
+        name: 'PaginationSelectorRadio',
+        component: () => import('@/views/pagination-selector/radio'),
         meta: { title: 'Radio', icon: 'el-icon-s-help' }
       },
       {
         path: 'multi',
-        name: 'ListSelectorMulti',
-        component: () => import('@/views/list-selector/multi'),
+        name: 'PaginationSelectorMulti',
+        component: () => import('@/views/pagination-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
+      }
+    ]
+  },
+
+  {
+    path: '/tree/selection',
+    component: Layout,
+    meta: { title: 'Tree Selection', icon: 'el-icon-grape' },
+    redirect: '/tree/selection/radio',
+    children: [
+      {
+        path: 'radio',
+        name: 'TreeSelectionRadio',
+        component: () => import('@/views/tree-selection/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
       },
+      {
+        path: 'multi',
+        name: 'TreeSelectionMulti',
+        component: () => import('@/views/tree-selection/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
+      }
+    ]
+  },
+
+  {
+    path: '/tree/selector',
+    component: Layout,
+    meta: { title: 'Tree Selector', icon: 'el-icon-grape' },
+    redirect: '/tree/selector/radio',
+    children: [
+      {
+        path: 'index',
+        component: () => import('@/views/tree-selector'),
+        meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
+      },
+      {
+        path: 'radio',
+        name: 'TreeSelectorRadio',
+        component: () => import('@/views/tree-selector/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'TreeSelectorMulti',
+        component: () => import('@/views/tree-selector/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
+      }
+    ]
+  },
+
+  {
+    path: '/input/carrier',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        component: () => import('@/views/input-carrier'),
+        meta: { title: 'Input Carrier', icon: 'el-icon-chat-dot-square' }
+      }
     ]
   },
 

@@ -5,12 +5,12 @@ import router from './router'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import locale from 'element-ui/lib/locale/lang/en'
-import ElementSelector from '~'
+import ElementWidgets from '@@'
 
 import './mock'
 
 Vue.use(ElementUI, { locale })
-Vue.use(ElementSelector)
+Vue.use(ElementWidgets)
 
 Vue.config.productionTip = false
 

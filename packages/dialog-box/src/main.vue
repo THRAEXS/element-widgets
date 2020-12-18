@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import MainMixin from './mixins/main'
+import MainMixin from '@@/mixins/dialog-box'
 
 export default {
   name: 'ThxDialogBox',
@@ -31,6 +31,6 @@ export default {
 }
 .thx-widget >>> .el-dialog__body {
   padding: 10px;
-  min-height: 300px;
+  /* min-height: 300px; */
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <thx-card-box title="Case - List Selector Multi">
+  <thx-card-box title="Case - Pagination Selector Multi">
     <template v-slot:toolbar>
       <el-button
         type="success"
@@ -32,7 +32,7 @@
       </el-table-column>
     </thx-table>
 
-    <thx-list-selector
+    <thx-pagination-selector
       multiple
       :data="data"
       :total="total"
@@ -40,23 +40,25 @@
       :size.sync="size"
       :index="{ label: 'No.' }"
       :value.sync="selected"
-      :visible.sync="visible">
+      :visible.sync="visible"
+      :loading="loading">
       <el-table-column prop="id" label="ID" align="center" width="100"></el-table-column>
       <el-table-column prop="account" label="Account" align="center" width="100"></el-table-column>
       <el-table-column prop="name" label="Name" align="center"></el-table-column>
       <el-table-column prop="department" label="Department" align="center"></el-table-column>
       <el-table-column prop="office" label="Office" align="center" width="100"></el-table-column>
-    </thx-list-selector>
+    </thx-pagination-selector>
   </thx-card-box>
 </template>
 <script>
 import { getUserPage } from '@/api'
 
 export default {
-  name: 'CaseListSelectorMulti',
+  name: 'CasePaginationSelectorMulti',
   data() {
     return {
       visible: false,
+      loading: false,
       data: [],
       total: 0,
       page: 1,
@@ -78,13 +80,16 @@ export default {
   },
   methods: {
     search() {
-      getUserPage({
-        page: this.page,
-        size: this.size
-      }).then(({ data, total }) => {
-        this.data = data
-        this.total = total
-      })
+      this.loading = true
+      setTimeout(() => {
+        getUserPage({
+          page: this.page,
+          size: this.size
+        }).then(({ data, total }) => {
+          this.data = data
+          this.total = total
+        }).finally(() => (this.loading = false))
+      }, 2000)
     },
     handleDelete(ind) {
       this.selected.splice(ind, 1);

@@ -20,7 +20,7 @@
   </el-row>
 </template>
 <script>
-import PaginationMixin from './mixins/pagination'
+import PaginationMixin from '@@/mixins/pagination'
 
 export default {
   name: 'ThxPagination',
@@ -28,7 +28,11 @@ export default {
 }
 </script>
 <style scoped>
-.el-pagination {
+::v-deep .el-pagination {
   padding: 2px;
+}
+::v-deep .el-pagination--small .el-input--mini .el-input__inner {
+  height: 22px;
+  line-height: 22px;
 }
 </style>

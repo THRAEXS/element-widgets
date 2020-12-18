@@ -11,13 +11,12 @@
       :size="size"
       :sizes="sizes"
       :index="index"
-      :show-index="showIndex"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"
       @select="handleSelect"
       @select-all="handleSelectAll">
       <template v-slot:pre-column>
-        <el-table-column type="selection" align="center" width="40"></el-table-column>
+        <el-table-column type="selection" align="center" width="40" />
       </template>
 
       <slot></slot>
@@ -29,10 +28,10 @@
   </div>
 </template>
 <script>
-import MainMixin from '../mixins/main'
-import TableMixin from '../mixins/table'
-import PaginationMixin from '../mixins/pagination'
-import SelectionMixin from '../mixins/selection'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import PaginationTable from '../main'
 
@@ -55,17 +54,17 @@ export default {
     }
   },
   watch: {
-    value() {
-      // console.debug('watch value:', this.value)
-      this.handleBackfill()
+    value: {
+      immediate: true,
+      handler() {
+        // console.debug('watch value:', this.value)
+        this.$nextTick(() => this.handleBackfill())
+      }
     },
     data() {
       // console.debug('watch data:', this.data)
       this.handleBackfill()
     }
-  },
-  created() {
-    this.$nextTick(() => this.handleBackfill())
   },
   methods: {
     handleSelect(selection) {

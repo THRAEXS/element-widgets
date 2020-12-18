@@ -10,6 +10,9 @@
     <slot name="prepend"></slot>
     
     <thx-pagination-selection
+      v-loading="loading"
+      :element-loading-text="loadingText"
+      :element-loading-background="loadingBackground"
       :data="data"
       :height="height"
       :max-height="maxHeight"
@@ -19,7 +22,6 @@
       :size="size"
       :sizes="sizes"
       :index="index"
-      :show-index="showIndex"
       :multiple="multiple"
       :value.sync="selected"
       @size-change="handleSizeChange"
@@ -27,28 +29,35 @@
       <slot></slot>
 
       <template v-slot:reserved>
-        <el-button size="mini" @click="handleCancel">取 消</el-button>
-        <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+        <div :class="{ 'thx-pagination-selector--small': small }">
+          <el-button size="mini" @click="handleCancel">取 消</el-button>
+          <el-button type="primary" size="mini" @click="handleOk">确 定</el-button>
+        </div>
       </template>
     </thx-pagination-selection>
   </thx-dialog-box>
 </template>
 <script>
-import DialogBoxMixin from '../../dialog-box/src/mixins/main'
-import MainMixin from '../../pagination-table/src/mixins/main'
-import TableMixin from '../../pagination-table/src/mixins/table'
-import PaginationMixin from '../../pagination-table/src/mixins/pagination'
-import SelectionMixin from '../../pagination-table/src/mixins/selection'
+import DialogBoxMixin from '@@/mixins/dialog-box'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
 
 import ThxPaginationSelection from '../../pagination-selection'
 
 export default {
-  name: 'ThxListSelector',
+  name: 'ThxPaginationSelector',
   components: { ThxPaginationSelection },
-  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin, SelectionMixin],
+  mixins: [DialogBoxMixin, MainMixin, TableMixin, PaginationMixin],
   props: {
     value: [String, Array],
-    multiple: Boolean
+    multiple: Boolean,
+    loading: Boolean,
+    loadingText: String,
+    loadingBackground: {
+      type: String,
+      default: 'rgba(0, 0, 0, 0.7)'
+    }
   },
   data() {
     return {
@@ -56,12 +65,12 @@ export default {
     }
   },
   watch: {
-    value() {
-      this.selected = this.value
+    value: {
+      immediate: true,
+      handler() {
+        this.selected = this.value
+      }
     }
-  },
-  created() {
-    this.selected = this.value
   },
   methods: {
     handleCancel() {
@@ -69,10 +78,9 @@ export default {
       this.$emit('cancel')
     },
     handleOk() {
-      this.handleDeliver(this.selected)
-      
       this.updateVisible()
-      this.$emit('ok')
+      this.$emit('update:value', this.selected)
+      this.$emit('ok', this.selected)
     },
     handleClosed() {
       this.selected = this.value
@@ -81,3 +89,10 @@ export default {
   }
 }
 </script>
+<style scoped>
+.thx-pagination-selector--small .el-button--mini {
+  padding-top: 0;
+  padding-bottom: 0;
+  height: 24px;
+} 
+</style>

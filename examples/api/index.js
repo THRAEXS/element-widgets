@@ -26,4 +26,16 @@ function getUsers(ids) {
   })
 }
 
-export { getUserPage, getUser, getUsers }
+function getOrgTree(level = 2) {
+  return request({
+    url: `/api/admin/org/tree/${level}`,
+    method: 'GET'
+  })
+}
+
+export {
+  getUserPage,
+  getUser,
+  getUsers,
+  getOrgTree
+}

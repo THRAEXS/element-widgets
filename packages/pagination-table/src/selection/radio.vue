@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <pagination-table
+      ref="thxTable"
       :data="data"
       :height="height"
       :max-height="maxHeight"
@@ -10,11 +11,10 @@
       :size="size"
       :sizes="sizes"
       :index="index"
-      :show-index="showIndex"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange">
       <template v-slot:pre-column>
-        <el-table-column align="center" width="40">
+        <el-table-column type="radio" align="center" width="40" :fixed="fixedRadio">
           <template v-slot:default="scope">
             <el-radio
               v-model="selected"
@@ -33,10 +33,10 @@
   </div>
 </template>
 <script>
-import MainMixin from '../mixins/main'
-import TableMixin from '../mixins/table'
-import PaginationMixin from '../mixins/pagination'
-import SelectionMixin from '../mixins/selection'
+import MainMixin from '@@/mixins/pagination-table'
+import TableMixin from '@@/mixins/table'
+import PaginationMixin from '@@/mixins/pagination'
+import SelectionMixin from '@@/mixins/selection'
 
 import PaginationTable from '../main'
 
@@ -49,16 +49,30 @@ export default {
   },
   data() {
     return {
-      selected: null
+      selected: null,
+      fixedRadio: false
     }
+  },
+  mounted() {
+    this.handleFixedRadio()
+  },
+  updated() {
+    this.handleFixedRadio()
   },
   watch: {
-    value() {
-      this.selected = this.value
+    value: {
+      immediate: true,
+      handler() {
+        this.selected = this.value
+      }
     }
   },
-  created() {
-    this.selected = this.value
+  methods: {
+    handleFixedRadio() {
+      // TODO: Optimize
+      this.$nextTick(() => this.fixedRadio = this.$refs.thxTable.$refs.thxTable.$refs.table.columns
+        .findIndex(it => it.type !== 'radio' && it.fixed) > -1)
+    }
   }
 }
 </script>
