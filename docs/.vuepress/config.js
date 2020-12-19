@@ -4,8 +4,9 @@ module.exports = {
   description: 'Widget based on element-ui',
   port: 9718,
   themeConfig: {
+    // lastUpdated: true,
     nav: [
-      { text: 'Home', link: '/' },
+      // { text: 'Home', link: '/' },
       { text: 'Guide', link: '/guide/' },
       { text: 'Others', link: '/others/' }
     ],
@@ -27,6 +28,13 @@ module.exports = {
     // sidebarDepth: 0,
     sidebar: {
       '/guide/': [
+        '',
+        'table/',
+        'pagination/',
+        'pagination/selection/',
+        'pagination/selector/',
+        'tree/selection/',
+        'tree/selector/',
         // 'table/',
         // // 'table/',
         // // 'pagination-table'
@@ -43,9 +51,9 @@ module.exports = {
         //   ]
         // }
         // '',
-        'table/',
-        'pagination',
-        'pagination-selection'
+        // 'table/',
+        // 'pagination',
+        // 'pagination-selection'
       ],
       /* '/others/': [
         ''
