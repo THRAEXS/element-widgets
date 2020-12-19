@@ -18,7 +18,7 @@
   </div>
 </template>
 <script>
-import MainMixin from '@@/mixins/dialog-box'
+import MainMixin from '../../../src/mixins/dialog-box'
 
 export default {
   name: 'ThxDialogBox',

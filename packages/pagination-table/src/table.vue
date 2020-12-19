@@ -25,7 +25,7 @@
   </el-table>
 </template>
 <script>
-import TableMixin from '@@/mixins/table'
+import TableMixin from '../../../src/mixins/table'
 
 export default {
   name: 'ThxTable',

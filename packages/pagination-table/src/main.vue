@@ -47,9 +47,9 @@
   </div>
 </template>
 <script>
-import MainMixin from '@@/mixins/pagination-table'
-import TableMixin from '@@/mixins/table'
-import PaginationMixin from '@@/mixins/pagination'
+import MainMixin from '../../../src/mixins/pagination-table'
+import TableMixin from '../../../src/mixins/table'
+import PaginationMixin from '../../../src/mixins/pagination'
 
 import ThxTable from './table'
 import ThxPagination from './pagination'

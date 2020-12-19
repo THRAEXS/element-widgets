@@ -20,7 +20,7 @@
   </el-row>
 </template>
 <script>
-import PaginationMixin from '@@/mixins/pagination'
+import PaginationMixin from '../../../src/mixins/pagination'
 
 export default {
   name: 'ThxPagination',

@@ -39,7 +39,7 @@
   </thx-dialog-box>
 </template>
 <script>
-import DialogBoxMixin from '@@/mixins/dialog-box'
+import DialogBoxMixin from '../../../src/mixins/dialog-box'
 
 export default {
   name: 'ThxTreeSelector',
