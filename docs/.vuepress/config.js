@@ -26,6 +26,7 @@ module.exports = {
     //   // '/guide/table/pagination/table',
     // ]
     // sidebarDepth: 0,
+    displayAllHeaders: true,
     sidebar: {
       '/guide/': [
         '',
@@ -35,6 +36,15 @@ module.exports = {
         'pagination/selector/',
         'tree/selection/',
         'tree/selector/',
+        /* {
+          title: 'Tree',
+          collapsable: false,
+          initialOpenGroupIndex: -1,
+          children: [
+            'tree/selection/',
+            'tree/selector/'
+          ]
+        } */
         // 'table/',
         // // 'table/',
         // // 'pagination-table'
