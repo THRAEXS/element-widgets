@@ -5,13 +5,13 @@ title: Pagination Selection
 ## Radio
 
 ::: warning TODO
-Pagination Selection Radio
+Pagination Selection Radio Demo
 :::
 
 ## Multi
 
 ::: warning TODO
-Pagination Selection Multi
+Pagination Selection Multi Demo
 :::
 
 ## Attributes
