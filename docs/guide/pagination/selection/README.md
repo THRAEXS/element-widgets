@@ -25,3 +25,9 @@ Pagination Selection Multi Demo
 | `height` | `String` / `Number` | - | - | Table的高度 |
 | `maxHeight` | `String` / `Number` | - | `530` | Table最大高度 |
 | `size` | `String` | `small` | - | Table的尺寸 |
+
+### Events
+
+| Event Name | Parameters | Description |
+| :----: | :----: | ---- |
+| `selected` | 单选: `String`；多选: `Array` | 点击确定时的回掉 |
