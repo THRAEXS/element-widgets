@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <thx-tree-selection-multi v-if="multiple" />
+
     <thx-tree-selection-radio
       v-model="value"
       :style="{ height }"
@@ -45,7 +46,7 @@ export default {
 </script>
 <style scoped>
 .thx-widget ::v-deep .el-tree {
-  overflow: scroll;
+  overflow: auto;
   border: 1px solid #EBEEF5;
   border-radius: 4px;
 }
