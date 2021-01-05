@@ -6,6 +6,7 @@ import PaginationSelection from '../packages/pagination-selection'
 import PaginationSelector from '../packages/pagination-selector'
 import PaginationTable from '../packages/pagination-table'
 import Table from '../packages/table'
+import TreeCascader from '../packages/tree-cascader'
 import TreeSelection from '../packages/tree-selection'
 import TreeSelector from '../packages/tree-selector'
 
@@ -18,6 +19,7 @@ const components = [
   PaginationSelector,
   PaginationTable,
   Table,
+  TreeCascader,
   TreeSelection,
   TreeSelector
 ]
@@ -38,6 +40,7 @@ export {
   PaginationSelector,
   PaginationTable,
   Table,
+  TreeCascader,
   TreeSelection,
   TreeSelector
 }
