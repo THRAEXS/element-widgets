@@ -97,6 +97,20 @@ const constantRoutes = [
   },
 
   {
+    path: '/tree/cascader',
+    component: Layout,
+    meta: { title: 'Tree Cascader', icon: 'el-icon-grape' },
+    children: [
+      {
+        path: '',
+        name: 'TreeCascader',
+        component: () => import('@/views/tree-cascader'),
+        meta: { title: 'Tree Cascader', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
+  
+  {
     path: '/tree/selection',
     component: Layout,
     meta: { title: 'Tree Selection', icon: 'el-icon-grape' },
