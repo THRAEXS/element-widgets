@@ -28,7 +28,7 @@ function getUsers(ids) {
 
 function getOrgTree(level = 2) {
   return request({
-    url: `/api/admin/org/tree/${level}`,
+    url: `/api/admin/org/tree/v1/${level}`,
     method: 'GET'
   })
 }
