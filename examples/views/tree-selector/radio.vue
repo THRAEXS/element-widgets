@@ -34,7 +34,7 @@ export default {
   },
   methods: {
     orgTree() {
-      import('@/api').then(({ getOrgTree: ot }) => ot().then(data => (this.data = data)))
+      import('@/api').then(({ getOrgV1Tree: ot }) => ot().then(data => (this.data = data)))
     },
     handleOk(checked, nodes) {
       console.debug(this.selected, arguments)
