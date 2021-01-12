@@ -14,6 +14,8 @@ Widget based on element-ui.
 
 - [X] small pagination table
 
+- [ ] Big data table
+
 ## Features
 
 - [X] `card-box`
