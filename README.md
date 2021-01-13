@@ -14,7 +14,7 @@ Widget based on element-ui.
 
 - [X] small pagination table
 
-- [ ] Big data table
+- [ ] Big data table(`editable`)
 
 ## Features
 
