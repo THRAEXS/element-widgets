@@ -16,6 +16,8 @@ Widget based on element-ui.
 
 - [ ] Big data table(`editable`)
 
+- [ ] pagination selector ok/cancel event custom
+
 ## Features
 
 - [X] `card-box`

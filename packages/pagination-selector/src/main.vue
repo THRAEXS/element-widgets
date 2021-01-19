@@ -74,13 +74,17 @@ export default {
   },
   methods: {
     handleCancel() {
-      this.updateVisible()
       this.$emit('cancel')
+      this.clickAfter('cancel')
     },
     handleOk() {
-      this.updateVisible()
       this.$emit('update:value', this.selected)
       this.$emit('ok', this.selected)
+      this.clickAfter('ok', this.selected)
+    },
+    clickAfter(event, data) {
+      // this.updateVisible()
+      console.debug(event, data)
     },
     handleClosed() {
       this.selected = this.value

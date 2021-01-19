@@ -14,7 +14,8 @@
       :index="{ label: 'No.' }"
       :value.sync="selected"
       :visible.sync="visible"
-      :loading="loading">
+      :loading="loading"
+      @custom-ok="handleCustomOk">
       <template #prepend>
         <div style="text-align: center;border: 1px solid red;">
           <h1>Conditions</h1>
@@ -57,6 +58,9 @@ export default {
     this.search()
   },
   methods: {
+    handleCustomOk() {
+      console.debug('handleCustomOk:', arguments)
+    },
     search() {
       this.loading = true
       setTimeout(() => {
@@ -67,7 +71,7 @@ export default {
           this.data = data
           this.total = total
         }).finally(() => (this.loading = false))
-      }, 2000)
+      }, 1000)
     }
   }
 }
