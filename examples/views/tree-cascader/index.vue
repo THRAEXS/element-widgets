@@ -1,7 +1,15 @@
 <template>
   <div>
     Tree Cascader
-    <div>{{ data }}</div>
+    <!-- <div>{{ data }}</div> -->
+
+    <thx-tree-cascader
+      size="mini"
+      placeholder="123"
+      clearable
+      @focus="handleFocus"
+      @blur="handleBlur"
+    />
   </div>
 </template>
 <script>
@@ -16,6 +24,14 @@ export default {
   },
   created() {
     getOrgTree().then(data => (this.data = data))
+  },
+  methods: {
+    handleFocus() {
+      console.debug('focus:', arguments)
+    },
+    handleBlur() {
+      console.debug('blur:', arguments)
+    }
   }
 }
 </script>
