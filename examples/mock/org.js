@@ -7,7 +7,7 @@ function tree(options) {
   const [level] = options.url.split('/').reverse()
   // const level = Number.parseInt(lev)
   // console.log(options, level)
-  return orgs[`level${level}`]
+  return orgs[`level${Number(level) + 1}`]
 }
 
 export default { tree }

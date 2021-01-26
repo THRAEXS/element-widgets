@@ -14,17 +14,17 @@ function enabled(options) {
   const level = Number.parseInt(lev)
   debug && logger.debug('Org enabled params:', level)
 
-  // const [{ childOrgList: colleges, ...root }] = enables.data
+  // const [{ children: colleges, ...root }] = enables.data
 
   // console.debug(root, colleges)
 
-  // enables.data[0].childOrgList[0].childOrgList[0].childOrgList = [{ id: '1', name: "2"}]
-  // console.debug(enables.data[0].childOrgList[0].childOrgList[0].name)
-  // console.debug(enables.data[0].childOrgList[0].childOrgList[0].id)
-  // console.debug(enables.data[0].childOrgList[0].childOrgList[0].childOrgList)
+  // enables.data[0].children[0].children[0].children = [{ id: '1', name: "2"}]
+  // console.debug(enables.data[0].children[0].children[0].name)
+  // console.debug(enables.data[0].children[0].children[0].id)
+  // console.debug(enables.data[0].children[0].children[0].children)
   
   return enables.data
-  // return enables.data[0].childOrgList
+  // return enables.data[0].children
 }
 
 export default {

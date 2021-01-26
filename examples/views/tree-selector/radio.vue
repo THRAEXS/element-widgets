@@ -23,8 +23,7 @@ export default {
       selected: null,
       visible: false,
       props: {
-        label: 'name',
-        children: 'childOrgList'
+        label: 'name'
       },
       data: []
     }

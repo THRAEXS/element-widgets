@@ -1,16 +1,17 @@
 <template>
-  <div>
-    Tree Cascader
-    <!-- <div>{{ data }}</div> -->
-
+  <thx-card-box title="Case - Tree Cascader">
     <thx-tree-cascader
+      v-model="selected"
+      :props="props"
+      :options="data"
       size="mini"
-      placeholder="123"
+      placeholder="Please select"
       clearable
+      style="width: 400px;"
       @focus="handleFocus"
       @blur="handleBlur"
     />
-  </div>
+  </thx-card-box>
 </template>
 <script>
 import { getOrgTree } from '@/api'
@@ -19,11 +20,16 @@ export default {
   name: 'CaseTreeCascader',
   data() {
     return {
-      data: null
+      props: {
+        value: 'id',
+        label: 'name'
+      },
+      data: [],
+      selected: null
     }
   },
   created() {
-    getOrgTree().then(data => (this.data = data))
+    getOrgTree().then(([{ children: data }]) => (this.data = data))
   },
   methods: {
     handleFocus() {
