@@ -7,10 +7,19 @@
       size="mini"
       placeholder="Please select"
       clearable
+      :filter-method="handleFilterMethod"
       style="width: 400px;"
       @focus="handleFocus"
       @blur="handleBlur"
-    />
+    >
+      <template #default="{ node }">
+        <span>{{ node.label }}</span>
+        <span v-if="!node.isLeaf">({{ node.children.length }})</span>
+      </template>
+      <template #empty>
+        No node
+      </template>
+    </thx-tree-cascader>
   </thx-card-box>
 </template>
 <script>
@@ -37,6 +46,9 @@ export default {
     },
     handleBlur() {
       console.debug('blur:', arguments)
+    },
+    handleFilterMethod(node, keyword) {
+      return node.label.includes(keyword) || node.data.code.includes(keyword)
     }
   }
 }
