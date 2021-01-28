@@ -14,7 +14,7 @@
     >
       <template #default="{ node }">
         <span>{{ node.label }}</span>
-        <span v-if="!node.isLeaf">({{ node.children.length }})</span>
+        <el-tag size="mini" type="danger" v-if="!node.isLeaf">({{ node.children.length }})</el-tag>
       </template>
       <template #empty>
         No node

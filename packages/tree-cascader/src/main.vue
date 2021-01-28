@@ -21,8 +21,8 @@ export default {
     }
   },
   created() {
-    console.debug('$attrs:', this.$attrs)
-    console.debug('$props:', this.$props)
+    // console.debug('$attrs:', this.$attrs)
+    // console.debug('$props:', this.$props)
     // console.debug('$listeners:', this.$listeners)
   }
 }
