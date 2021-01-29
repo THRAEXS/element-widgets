@@ -20,6 +20,8 @@
         No node
       </template>
     </thx-tree-cascader>
+
+    <div>{{ selected }}</div>
   </thx-card-box>
 </template>
 <script>
