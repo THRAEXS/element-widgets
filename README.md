@@ -18,6 +18,16 @@ Widget based on element-ui.
 
 - [ ] pagination selector ok/cancel event custom
 
+- [ ] pagination selector ok/cancel location sort
+
+## Tree
+
+- Filter
+
+- Radio / Multi
+
+- Check leaf / any level
+
 ## Features
 
 - [X] `card-box`
