@@ -1,5 +1,7 @@
 <template>
   <thx-card-box title="Case - Tree Cascader">
+    <div>{{ selected }}</div>
+
     <thx-tree-cascader
       v-model="selected"
       :props="props"
@@ -8,7 +10,7 @@
       placeholder="Please select"
       clearable
       :filter-method="handleFilterMethod"
-      style="width: 400px;"
+      style="width: 100%;"
       @focus="handleFocus"
       @blur="handleBlur"
     >
@@ -20,8 +22,6 @@
         No node
       </template>
     </thx-tree-cascader>
-
-    <div>{{ selected }}</div>
   </thx-card-box>
 </template>
 <script>
@@ -33,7 +33,10 @@ export default {
     return {
       props: {
         value: 'id',
-        label: 'name'
+        label: 'name',
+        // checkStrictly: true,
+        // emitPath: false,
+        // multiple: true
       },
       data: [],
       selected: null
@@ -50,7 +53,10 @@ export default {
       console.debug('blur:', arguments)
     },
     handleFilterMethod(node, keyword) {
-      return node.label.includes(keyword) || node.data.code.includes(keyword)
+      const code = node.data.code.toLowerCase()
+      const label = node.label.toLowerCase()
+      const kw = keyword.toLowerCase()
+      return label.includes(kw) || code.includes(kw)
     }
   }
 }
