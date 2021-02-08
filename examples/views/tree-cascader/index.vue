@@ -52,11 +52,9 @@ export default {
     handleBlur() {
       console.debug('blur:', arguments)
     },
-    handleFilterMethod(node, keyword) {
-      const code = node.data.code.toLowerCase()
-      const label = node.label.toLowerCase()
-      const kw = keyword.toLowerCase()
-      return label.includes(kw) || code.includes(kw)
+    handleFilterMethod({ label, data }, keyword) {
+      const [lab, code, kw] = [label, data.code, keyword].map(it => it.toLowerCase())
+      return lab.includes(kw) || code.includes(kw)
     }
   }
 }
