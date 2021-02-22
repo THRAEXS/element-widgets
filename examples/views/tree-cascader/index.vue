@@ -14,10 +14,10 @@
       @focus="handleFocus"
       @blur="handleBlur"
     >
-      <template #default="{ node }">
+      <!-- <template #default="{ node }">
         <span>{{ node.label }}</span>
         <el-tag size="mini" type="danger" v-if="!node.isLeaf">({{ node.children.length }})</el-tag>
-      </template>
+      </template> -->
       <template #empty>
         No node
       </template>
