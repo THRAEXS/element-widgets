@@ -109,6 +109,20 @@ const constantRoutes = [
       }
     ]
   },
+
+  {
+    path: '/tree/cascader/panel',
+    component: Layout,
+    // meta: { title: 'Tree Cascader Panel', icon: 'el-icon-grape' },
+    children: [
+      {
+        path: '',
+        name: 'TreeCascaderPanel',
+        component: () => import('@/views/tree-cascader-panel'),
+        meta: { title: 'Tree Cascader Panel', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
   
   {
     path: '/tree/selection',
