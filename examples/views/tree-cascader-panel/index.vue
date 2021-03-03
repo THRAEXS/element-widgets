@@ -16,6 +16,7 @@
         <el-row :gutter="5">
           <el-col :span="12">
             <el-cascader-panel
+              style="border: 1px solid red;"
               v-model="selected"
               :props="props"
               :options="data"
