@@ -113,13 +113,19 @@ const constantRoutes = [
   {
     path: '/tree/cascader/panel',
     component: Layout,
-    // meta: { title: 'Tree Cascader Panel', icon: 'el-icon-grape' },
+    meta: { title: 'Tree Cascader Panel', icon: 'el-icon-grape' },
     children: [
       {
         path: '',
         name: 'TreeCascaderPanel',
         component: () => import('@/views/tree-cascader-panel'),
-        meta: { title: 'Tree Cascader Panel', icon: 'el-icon-s-help' }
+        meta: { title: 'Index', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'radio',
+        name: 'TreeCascaderPanelRadio',
+        component: () => import('@/views/tree-cascader-panel/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
       }
     ]
   },
