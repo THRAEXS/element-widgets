@@ -22,7 +22,12 @@
         />
       </el-col>
       <el-col :span="12">
-        <thx-tree-cascader-panel ref="thxPanel" />
+        <thx-tree-cascader-panel
+          ref="thxPanel"
+          v-model="selected.thx"
+          :props="props"
+          :data="data"
+        />
       </el-col>
     </el-row>
   </thx-card-box>
@@ -46,7 +51,7 @@ export default {
     }
   },
   created() {
-    getOrgTree().then(([{ children: data }]) => (this.data = data))
+    getOrgTree(3).then(([{ children: data }]) => (this.data = data))
   }
 }
 </script>
