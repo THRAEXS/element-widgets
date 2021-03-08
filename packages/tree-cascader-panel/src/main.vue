@@ -1,23 +1,27 @@
 <template>
-  <el-tree
-    ref="tree"
-    :highlight-current="highlightCurrent"
-    :node-key="nodeKey"
-    v-bind="$attrs"
-    v-on="$listeners">
-    <template v-slot="{ node, data }">
-      <el-radio
-        v-model="selected"
-        :label="data[nodeKey]"
-        v-if="node.isLeaf"
-      >
-        {{ node.label }}
-      </el-radio>
-      <span v-else>
-        {{ node.label }}
-      </span>
-    </template>
-  </el-tree>
+  <div>
+    <el-input size="mini" v-model="filterText" />
+    <el-tree
+      ref="tree"
+      :highlight-current="highlightCurrent"
+      :node-key="nodeKey"
+      :filter-node-method="handleFilterNode"
+      v-bind="$attrs"
+      v-on="$listeners">
+      <template v-slot="{ node, data }">
+        <el-radio
+          v-model="selected"
+          :label="data[nodeKey]"
+          v-if="node.isLeaf"
+        >
+          {{ node.label }}
+        </el-radio>
+        <span v-else>
+          {{ node.label }}
+        </span>
+      </template>
+    </el-tree>
+  </div>
 </template>
 <script>
 export default {
@@ -34,16 +38,20 @@ export default {
   },
   data() {
     return {
-      selected: null
+      selected: null,
+      filterText: ''
     }
   },
   watch: {
-    selected() {
-      const node = this.$refs.tree.getNode(this.selected)
+    selected(val) {
+      const node = this.$refs.tree.getNode(val)
       const vals = this.getLevelNode(node).map(it => it[this.nodeKey])
 
       this.$emit('input', vals)
       this.$emit('update:value', vals)
+    },
+    filterText(val) {
+      this.$refs.tree.filter(val)
     }
   },
   methods: {
@@ -55,6 +63,10 @@ export default {
       const [data, key] = [node.data, this.nodeKey]
 
       return [...parent, { [key]: data[key], [label]: data[label] }]
+    },
+    handleFilterNode(value, data) {
+      const { label } = Object.assign({}, this.$refs.tree.props, this.props)
+      return !value ? true : data[label].indexOf(value) !== -1
     }
   }
 }
