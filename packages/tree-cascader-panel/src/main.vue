@@ -39,15 +39,29 @@ export default {
   },
   watch: {
     selected() {
-      this.$emit('input', this.selected)
-      this.$emit('update:value', this.selected)
+      const node = this.$refs.tree.getNode(this.selected)
+      const vals = this.getLevelNode(node).map(it => it[this.nodeKey])
+
+      this.$emit('input', vals)
+      this.$emit('update:value', vals)
+    }
+  },
+  methods: {
+    getLevelNode(node) {
+      if (node.level === 0) return []
+
+      const parent = this.getLevelNode(node.parent)
+      const { label } = Object.assign({}, this.$refs.tree.props, this.props)
+      const [data, key] = [node.data, this.nodeKey]
+
+      return [...parent, { [key]: data[key], [label]: data[label] }]
     }
   }
 }
 </script>
 <style scoped>
 .el-tree {
-  overflow: scroll;
+  /* overflow: scroll; */
   border: 1px solid #EBEEF5;
 }
 .el-tree span {
