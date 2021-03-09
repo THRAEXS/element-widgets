@@ -41,7 +41,9 @@ export default {
     return {
       props: {
         value: 'id',
-        label: 'name'
+        label: 'name',
+        checkStrictly: true,
+        emitPath: false
       },
       data: [],
       selected: {

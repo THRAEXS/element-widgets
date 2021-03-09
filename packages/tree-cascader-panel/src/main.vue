@@ -7,16 +7,26 @@
       v-bind="$attrs"
       v-on="$listeners">
       <template v-slot="{ node, data }">
-        <el-radio
-          v-model="selected"
-          :label="data[nodeKey]"
-          v-if="node.isLeaf"
-        >
-          {{ node.label }}
-        </el-radio>
-        <span v-else>
-          {{ node.label }}
-        </span>
+        <template v-if="props.checkStrictly">
+          <el-radio
+            v-model="selected"
+            :label="data[nodeKey]"
+          >
+            {{ node.label }}
+          </el-radio>
+        </template>
+        <template v-else>
+          <el-radio
+            v-model="selected"
+            :label="data[nodeKey]"
+            v-if="node.isLeaf"
+          >
+            {{ node.label }}
+          </el-radio>
+          <span v-else>
+            {{ node.label }}
+          </span>
+        </template>
       </template>
     </el-tree>
   </div>
@@ -39,21 +49,31 @@ export default {
       selected: null
     }
   },
+  computed: {
+    tree() {
+      return this.$refs.tree
+    },
+    props() {
+      return this.tree.props
+    }
+  },
   watch: {
     selected(val) {
-      const node = this.$refs.tree.getNode(val)
-      const vals = this.getLevelNode(node).map(it => it[this.nodeKey])
-
-      this.$emit('input', vals)
-      this.$emit('update:value', vals)
+      const result = this.getSelectedValue(val)
+      this.$emit('input', result)
+      this.$emit('update:value', result)
     }
   },
   methods: {
-    getLevelNode(node) {
+    getSelectedValue(val) {
+      return this.props.emitPath === false ? val
+        : this.getLevelData(this.tree.getNode(val)).map(it => it[this.nodeKey])
+    },
+    getLevelData(node) {
       if (node.level === 0) return []
 
-      const parent = this.getLevelNode(node.parent)
-      const { label } = Object.assign({}, this.$refs.tree.props, this.props)
+      const parent = this.getLevelData(node.parent)
+      const { label } = this.props
       const [data, key] = [node.data, this.nodeKey]
 
       return [...parent, { [key]: data[key], [label]: data[label] }]
