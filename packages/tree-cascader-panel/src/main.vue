@@ -1,11 +1,9 @@
 <template>
   <div>
-    <el-input size="mini" v-model="filterText" />
     <el-tree
       ref="tree"
       :highlight-current="highlightCurrent"
       :node-key="nodeKey"
-      :filter-node-method="handleFilterNode"
       v-bind="$attrs"
       v-on="$listeners">
       <template v-slot="{ node, data }">
@@ -38,8 +36,7 @@ export default {
   },
   data() {
     return {
-      selected: null,
-      filterText: ''
+      selected: null
     }
   },
   watch: {
@@ -49,9 +46,6 @@ export default {
 
       this.$emit('input', vals)
       this.$emit('update:value', vals)
-    },
-    filterText(val) {
-      this.$refs.tree.filter(val)
     }
   },
   methods: {
@@ -63,17 +57,12 @@ export default {
       const [data, key] = [node.data, this.nodeKey]
 
       return [...parent, { [key]: data[key], [label]: data[label] }]
-    },
-    handleFilterNode(value, data) {
-      const { label } = Object.assign({}, this.$refs.tree.props, this.props)
-      return !value ? true : data[label].indexOf(value) !== -1
     }
   }
 }
 </script>
 <style scoped>
 .el-tree {
-  /* overflow: scroll; */
   border: 1px solid #EBEEF5;
 }
 .el-tree span {
