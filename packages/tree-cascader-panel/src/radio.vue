@@ -4,7 +4,6 @@
     :node-key="nodeKey"
     :highlight-current="highlightCurrent"
     :expand-on-click-node="selfExpandOnClickNode"
-    :props="props"
     v-bind="$attrs"
     v-on="$listeners">
     <template v-slot="{ node, data }">
@@ -38,7 +37,8 @@ const DefaultProps = {
   checkStrictly: false,
   emitPath: true,
   value: 'value',
-  label: 'label'
+  label: 'label',
+  children: 'children'
 }
 
 export default {
@@ -56,8 +56,7 @@ export default {
     expandOnClickNode: {
       type: Boolean,
       default: true
-    },
-    props: Object
+    }
   },
   data() {
     return {
@@ -69,7 +68,7 @@ export default {
       return this.$refs.tree
     },
     config() {
-      return merge({ ...DefaultProps }, this.props || {})
+      return merge({ ...DefaultProps }, this.$attrs.props || {})
     },
     selfExpandOnClickNode() {
       return this.config.checkStrictly ? false : this.expandOnClickNode

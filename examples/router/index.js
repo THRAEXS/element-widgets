@@ -126,6 +126,12 @@ const constantRoutes = [
         name: 'TreeCascaderPanelRadio',
         component: () => import('@/views/tree-cascader-panel/radio'),
         meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'TreeCascaderPanelMulti',
+        component: () => import('@/views/tree-cascader-panel/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
       }
     ]
   },
