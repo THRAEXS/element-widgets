@@ -42,13 +42,17 @@ export default {
       props: {
         value: 'id',
         label: 'name',
-        checkStrictly: true,
+        // checkStrictly: true,
         // emitPath: false
       },
       data: [],
       selected: {
         el: null,
-        thx: null
+        thx: null,
+        // el:  [ "3302", "58162" ] ,
+        // thx:  [ "3302", "58162" ] 
+        // el:  '3302' ,
+        // thx:  '3302' 
       }
     }
   },
