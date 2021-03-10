@@ -4,6 +4,7 @@
     show-checkbox
     :node-key="nodeKey"
     :highlight-current="highlightCurrent"
+    :check-strictly="checkStrictly"
     @check="handleCheck"
     v-bind="$attrs"
     v-on="$listeners"
@@ -39,6 +40,9 @@ export default {
     },
     config() {
       return merge({ ...DefaultProps }, this.$attrs.props || {})
+    },
+    checkStrictly() {
+      return this.config.checkStrictly
     }
   },
   watch: {
@@ -46,17 +50,20 @@ export default {
       immediate: true,
       deep: true,
       handler(val) {
-        val && this.tree.setCheckedKeys(val.map(it => [...it].pop()))
+        this.$nextTick(() => val && this.tree.setCheckedKeys(
+          this.config.emitPath ? val.map(it => [...it].pop()) : val))
       }
     }
   },
   methods: {
-    handleCheck(current, { checkedNodes }) {
-      const keys = checkedNodes
+    handleCheck(current, { checkedKeys, checkedNodes }) {
+      const { checkStrictly, emitPath } = this.config
+      const keys = checkStrictly ? checkedKeys : checkedNodes
         .filter(node => !node[this.config.children])
         .map(node => node[this.nodeKey])
-      const result = keys.map(key =>
-        this.getLevelData(this.tree.getNode(key)).map(it => it[this.nodeKey]))
+      const result = emitPath
+        ? keys.map(key => this.getLevelData(this.tree.getNode(key)).map(it => it[this.nodeKey]))
+        : keys
       this.$emit('input', result)
       this.$emit('update:value', result)
     },
