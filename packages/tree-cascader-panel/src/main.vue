@@ -2,8 +2,10 @@
   <div>
     <el-tree
       ref="tree"
-      :highlight-current="highlightCurrent"
       :node-key="nodeKey"
+      :highlight-current="highlightCurrent"
+      :expand-on-click-node="selfExpandOnClickNode"
+      :props="props"
       v-bind="$attrs"
       v-on="$listeners">
       <template v-slot="{ node, data }">
@@ -32,17 +34,29 @@
   </div>
 </template>
 <script>
+import merge from 'element-ui/src/utils/merge'
+
+const DefaultProps = {
+  checkStrictly: false,
+  emitPath: true
+}
+
 export default {
   name: 'ThxTreeCascaderPanel',
   props: {
+    nodeKey: {
+      type: String,
+      default: 'id'
+    },
     highlightCurrent: {
       type: Boolean,
       default: true
     },
-    nodeKey: {
-      type: String,
-      default: 'id'
-    }
+    expandOnClickNode: {
+      type: Boolean,
+      default: true
+    },
+    props: Object
   },
   data() {
     return {
@@ -53,8 +67,11 @@ export default {
     tree() {
       return this.$refs.tree
     },
-    props() {
-      return this.tree.props
+    config() {
+      return merge({ ...DefaultProps }, this.props || {})
+    },
+    selfExpandOnClickNode() {
+      return this.config.checkStrictly ? false : this.expandOnClickNode
     }
   },
   watch: {
@@ -66,14 +83,15 @@ export default {
   },
   methods: {
     getSelectedValue(val) {
-      return this.props.emitPath === false ? val
-        : this.getLevelData(this.tree.getNode(val)).map(it => it[this.nodeKey])
+      return this.config.emitPath
+        ? this.getLevelData(this.tree.getNode(val)).map(it => it[this.nodeKey])
+        : val
     },
     getLevelData(node) {
       if (node.level === 0) return []
 
       const parent = this.getLevelData(node.parent)
-      const { label } = this.props
+      const { label } = this.config
       const [data, key] = [node.data, this.nodeKey]
 
       return [...parent, { [key]: data[key], [label]: data[label] }]

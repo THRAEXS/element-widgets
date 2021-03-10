@@ -43,7 +43,7 @@ export default {
         value: 'id',
         label: 'name',
         checkStrictly: true,
-        emitPath: false
+        // emitPath: false
       },
       data: [],
       selected: {
@@ -53,7 +53,7 @@ export default {
     }
   },
   created() {
-    getOrgTree(3).then(([{ children: data }]) => (this.data = data))
+    getOrgTree().then(([{ children: data }]) => (this.data = data))
   }
 }
 </script>
