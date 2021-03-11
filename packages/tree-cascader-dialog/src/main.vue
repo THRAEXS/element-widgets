@@ -5,11 +5,19 @@
     v-on="$listeners"
     @closed="handleClosed"
   >
+    <div class="thx-filter" v-if="showFilter">
+      <el-input
+        v-model="filterText"
+        v-bind="filterInputConfig"
+      />
+    </div>
+    
     <thx-tree-cascader-panel
       class="thx-tree-cascader-panel"
       ref="panel"
-      :style="panelStyle"
       v-model="selected"
+      :style="panelStyle"
+      :filter-node-method="filterNodeMethod || handleFilterNode"
       v-bind="$attrs"
       v-on="panelListeners"
     />
@@ -21,6 +29,12 @@
   </thx-dialog-box>
 </template>
 <script>
+const DefaultFilterInput = {
+  size: 'mini',
+  placeholder: '输入关键字进行过滤',
+  clearable: true
+}
+
 export default {
   name: 'ThxTreeCascaderDialog',
   props: {
@@ -29,10 +43,17 @@ export default {
       type: String,
       default: '30%'
     },
-    panelStyle: Object
+    panelStyle: Object,
+    showFilter: {
+      type: Boolean,
+      default: true
+    },
+    filterInput: Object,
+    filterNodeMethod: Function
   },
   data() {
     return {
+      filterText: '',
       selected: null
     }
   },
@@ -45,6 +66,9 @@ export default {
         .forEach(e => (events[e] = this.$listeners[e]))
         
       return events
+    },
+    filterInputConfig() {
+      return Object.assign({}, DefaultFilterInput, this.filterInput || {})
     }
   },
   watch: {
@@ -54,9 +78,15 @@ export default {
       handler(val) {
         this.selected = val
       }
+    },
+    filterText(val) {
+      this.getTree().filter(val)
     }
   },
   methods: {
+    handleFilterNode(value, data, node) {
+      return !value ? true : node.label.indexOf(value) !== -1
+    },
     getTree() {
       return this.$refs.panel.$refs.panel.tree
     },
@@ -86,6 +116,9 @@ export default {
 }
 </script>
 <style scoped>
+.thx-filter {
+  margin-bottom: 5px;
+}
 .thx-tree-cascader-panel {
   border: 1px solid #EBEEF5;
   height: 600px;

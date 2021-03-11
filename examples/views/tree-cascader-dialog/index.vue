@@ -14,6 +14,7 @@
       v-model="value"
       :props="props"
       :data="data"
+      :filter-node-method="handleFilterNode"
       @ok="handleOk"
     />
   </thx-card-box>
@@ -44,6 +45,12 @@ export default {
     getOrgTree().then(([{ children: data }]) => (this.data = data))
   },
   methods: {
+    handleFilterNode(value, data) {
+      if (!value) return true
+
+      return data.name.indexOf(value) !== -1
+        || data.code.toLowerCase().indexOf(value.toLowerCase()) > -1
+    },
     handleOk(values, labels) {
       this.label = labels
     }
