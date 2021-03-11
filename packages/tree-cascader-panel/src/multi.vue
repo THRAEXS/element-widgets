@@ -50,8 +50,9 @@ export default {
       immediate: true,
       deep: true,
       handler(val) {
-        this.$nextTick(() => val && this.tree.setCheckedKeys(
-          this.config.emitPath ? val.map(it => [...it].pop()) : val))
+        const checked = val || []
+        this.$nextTick(() => this.tree.setCheckedKeys(
+          this.config.emitPath ? checked.map(it => [...it].pop()) : checked))
       }
     }
   },
@@ -80,9 +81,6 @@ export default {
 }
 </script>
 <style scoped>
-.el-tree {
-  /* border: 1px solid #EBEEF5; */
-}
 .el-tree span {
   font-size: 14px;
 }

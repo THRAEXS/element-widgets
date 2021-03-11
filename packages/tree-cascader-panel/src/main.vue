@@ -1,11 +1,13 @@
 <template>
   <multi
     v-if="multiple"
+    ref="panel"
     v-bind="$attrs"
     v-on="$listeners"
   />
   <radio
     v-else
+    ref="panel"
     v-bind="$attrs"
     v-on="$listeners"
   />

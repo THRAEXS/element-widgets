@@ -2,6 +2,12 @@
 
 Widget based on element-ui.
 
+## Deprecated
+
+- [ ] router: tree cascader panel [index]
+- [ ] tree-cascader
+- [ ] tree-selection
+
 ## Todos
 
 - [ ] Documentation

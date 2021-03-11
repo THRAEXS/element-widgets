@@ -7,6 +7,7 @@ import PaginationSelector from '../packages/pagination-selector'
 import PaginationTable from '../packages/pagination-table'
 import Table from '../packages/table'
 import TreeCascader from '../packages/tree-cascader'
+import TreeCascaderDialog from '../packages/tree-cascader-dialog'
 import TreeCascaderPanel from '../packages/tree-cascader-panel'
 import TreeSelection from '../packages/tree-selection'
 import TreeSelector from '../packages/tree-selector'
@@ -21,6 +22,7 @@ const components = [
   PaginationTable,
   Table,
   TreeCascader,
+  TreeCascaderDialog,
   TreeCascaderPanel,
   TreeSelection,
   TreeSelector
@@ -43,6 +45,7 @@ export {
   PaginationTable,
   Table,
   TreeCascader,
+  TreeCascaderDialog,
   TreeCascaderPanel,
   TreeSelection,
   TreeSelector

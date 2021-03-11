@@ -78,7 +78,7 @@ export default {
     value: {
       immediate: true,
       handler(val) {
-        this.selected = val && val.constructor === Array ? [...val].pop() : val
+        this.selected = Array.isArray(val) ? [...val].pop() : val
       }
     },
     selected(val) {
@@ -106,9 +106,6 @@ export default {
 }
 </script>
 <style scoped>
-.el-tree {
-  /* border: 1px solid #EBEEF5; */
-}
 .el-tree span {
   font-size: 14px;
 }
