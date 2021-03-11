@@ -81,7 +81,7 @@ export default {
 </script>
 <style scoped>
 .el-tree {
-  border: 1px solid #EBEEF5;
+  /* border: 1px solid #EBEEF5; */
 }
 .el-tree span {
   font-size: 14px;

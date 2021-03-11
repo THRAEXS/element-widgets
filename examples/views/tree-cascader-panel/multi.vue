@@ -90,7 +90,7 @@ export default {
         label: 'name',
         multiple: true,
         // checkStrictly: true,
-        emitPath: false
+        // emitPath: false
       },
       data: [],
       selected: {
