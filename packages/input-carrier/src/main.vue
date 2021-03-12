@@ -29,7 +29,7 @@
 export default {
   name: 'ThxInputCarrier',
   props: {
-    value: String,
+    value: [String, Number],
     readonly: Boolean,
     disabled: Boolean,
     clearable: Boolean,
