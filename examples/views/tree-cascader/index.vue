@@ -1,27 +1,55 @@
 <template>
   <thx-card-box title="Case - Tree Cascader">
-    <div>{{ selected }}</div>
+    <el-row :gutter="5">
+      <el-col :span="20">
+        <thx-tree-cascader
+          v-model="selected"
+          :props="props"
+          :data="data"
+          :show-all-levels="showAllLevels"
+        />
 
-    <thx-tree-cascader
-      v-model="selected"
-      :props="props"
-      :options="data"
-      size="mini"
-      placeholder="Please select"
-      clearable
-      :filter-method="handleFilterMethod"
-      style="width: 100%;"
-      @focus="handleFocus"
-      @blur="handleBlur"
-    >
-      <!-- <template #default="{ node }">
-        <span>{{ node.label }}</span>
-        <el-tag size="mini" type="danger" v-if="!node.isLeaf">({{ node.children.length }})</el-tag>
-      </template> -->
-      <template #empty>
-        No node
-      </template>
-    </thx-tree-cascader>
+        <div style="margin-top: 5px;">
+          {{ selected }}
+        </div>
+      </el-col>
+      <el-col :span="4">
+        <div>
+          multiple:
+          <el-switch
+            v-model="props.multiple"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+          />
+        </div>
+
+        <div>
+          checkStrictly:
+          <el-switch
+            v-model="props.checkStrictly"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+          />
+        </div>
+
+        <div>
+          emitPath:
+          <el-switch
+            v-model="props.emitPath"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+          />
+        </div>
+        <div>
+          showAllLevels:
+          <el-switch
+            v-model="showAllLevels"
+            active-color="#13ce66"
+            inactive-color="#ff4949"
+          />
+        </div>
+      </el-col>
+    </el-row>
   </thx-card-box>
 </template>
 <script>
@@ -31,31 +59,21 @@ export default {
   name: 'CaseTreeCascader',
   data() {
     return {
+      showAllLevels: true,
       props: {
         value: 'id',
         label: 'name',
-        // checkStrictly: true,
-        // emitPath: false,
-        // multiple: true
+        multiple: false,
+        checkStrictly: false,
+        emitPath: true
       },
       data: [],
       selected: null
+      // selected: ['3302', '58160']
     }
   },
   created() {
-    getOrgTree().then(([{ children: data }]) => (this.data = data))
-  },
-  methods: {
-    handleFocus() {
-      console.debug('focus:', arguments)
-    },
-    handleBlur() {
-      console.debug('blur:', arguments)
-    },
-    handleFilterMethod({ label, data }, keyword) {
-      const [lab, code, kw] = [label, data.code, keyword].map(it => it.toLowerCase())
-      return lab.includes(kw) || code.includes(kw)
-    }
+    getOrgTree(3).then(([{ children: data }]) => (this.data = data))
   }
 }
 </script>

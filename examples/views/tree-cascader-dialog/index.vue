@@ -14,7 +14,7 @@
       </el-col>
       <el-col :span="4">
         <div>
-          Multiple:
+          multiple:
           <el-switch
             v-model="props.multiple"
             active-color="#13ce66"

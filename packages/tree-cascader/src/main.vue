@@ -1,29 +1,66 @@
 <template>
-  <el-cascader
-    :filterable="filterable"
-    v-bind="$attrs"
-    v-on="$listeners">
-    <template #default="{ node, data }">
-      <slot v-bind="{ node, data }" />
-    </template>
-    <template #empty>
-      <slot name="empty" />
-    </template>
-  </el-cascader>
+  <div class="thx-tree-cascader">
+    <thx-input-carrier
+      v-model="selected.label"
+      readonly
+      @click="visible = true"
+    />
+
+    <thx-tree-cascader-dialog
+      :visible.sync="visible"
+      v-model="selected.value"
+      v-bind="$attrs"
+      v-on="$listeners"
+      @ok="handleOk"
+    />
+  </div>
 </template>
 <script>
 export default {
   name: 'ThxTreeCascader',
   props: {
-    filterable: {
+    showAllLevels: {
       type: Boolean,
       default: true
+    },
+    separator: {
+      type: String,
+      default: ' / '
+    },
+    multiSeparator: {
+      type: String,
+      default: ' , '
     }
   },
-  created() {
-    // console.debug('$attrs:', this.$attrs)
-    // console.debug('$props:', this.$props)
-    // console.debug('$listeners:', this.$listeners)
+  data() {
+    return {
+      selected: {
+        value: null,
+        label: null
+      },
+      visible: false
+    }
+  },
+  methods: {
+    handleLabel(label) {
+      return Array.isArray(label)
+            ? this.showAllLevels ? label.join(this.separator) : [...label].pop()
+            : label
+    },
+    handleOk(value, label) {
+      let text = null
+
+      if (label !== undefined && label !== null) {
+        const { multiple } = this.$attrs.props || {}
+        text = multiple === true
+          ? label.map(this.handleLabel).join(this.multiSeparator)
+          : this.handleLabel(label)
+      }
+      
+      this.selected.label = text
+
+      this.$emit('ok', value, label)
+    }
   }
 }
 </script>
