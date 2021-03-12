@@ -91,6 +91,8 @@ export default {
       return this.$refs.panel.$refs.panel.tree
     },
     getNodeLabel(val) {
+      if (!val) return null
+      
       const getLabel = key => this.getTree().getNode(key).label
       const toLabel = values => Array.isArray(values)
         ? values.map(toLabel)
@@ -99,9 +101,10 @@ export default {
       return toLabel(val)
     },
     handleOk() {
-      this.$emit('input', this.selected)
-      this.$emit('update:value', this.selected)
-      this.$emit('ok', this.selected, this.getNodeLabel(this.selected))
+      const val = this.selected
+      this.$emit('input', val)
+      this.$emit('update:value', val)
+      this.$emit('ok', val, this.getNodeLabel(val))
       this.$emit('update:visible', false)
     },
     handleCancel() {
