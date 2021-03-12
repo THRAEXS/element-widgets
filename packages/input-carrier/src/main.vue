@@ -1,9 +1,8 @@
 <template>
   <el-input
     v-model="val"
-    :readonly="readonly"
     :disabled="disabled"
-    :clearable="clearable"
+    v-bind="$attrs"
     @blur="handleBlur"
     @focus="handleFocus"
     @change="handleChange"
@@ -30,9 +29,7 @@ export default {
   name: 'ThxInputCarrier',
   props: {
     value: [String, Number],
-    readonly: Boolean,
     disabled: Boolean,
-    clearable: Boolean,
     icon: {
       type: String,
       default: 'el-icon-check'
