@@ -3,6 +3,7 @@
     <thx-input-carrier
       v-model="selected.label"
       readonly
+      :size="size"
       @click="visible = true"
     />
 
@@ -19,6 +20,10 @@
 export default {
   name: 'ThxTreeCascader',
   props: {
+    size: {
+      type: String,
+      default: 'mini'
+    },
     showAllLevels: {
       type: Boolean,
       default: true
