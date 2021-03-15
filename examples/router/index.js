@@ -177,6 +177,11 @@ const constantRoutes = [
     redirect: '/tree/selector/radio',
     children: [
       {
+        path: '',
+        component: () => import('@/views/tree-selector/index-v2'),
+        meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
+      }
+      /* {
         path: 'index',
         component: () => import('@/views/tree-selector'),
         meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
@@ -192,7 +197,7 @@ const constantRoutes = [
         name: 'TreeSelectorMulti',
         component: () => import('@/views/tree-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
-      }
+      } */
     ]
   },
 
