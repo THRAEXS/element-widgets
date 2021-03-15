@@ -64,16 +64,23 @@ export default {
         value: 'id',
         label: 'name',
         multiple: false,
-        checkStrictly: false,
-        emitPath: true
+        checkStrictly: true,
+        emitPath: false
       },
       data: [],
-      selected: null
+      // selected: null
+      // selected: ['3302', '58160']
+      // selected: ['58160']
+      // selected: '58160'
+      selected: '3302'
+      // selected: [['3302', '58160'], ['3302', '58161'], ['3302', '58162']]
+      // selected: [['58160'], ['58161'], ['58162']]
+      // selected: ['58160', '58161', '58162']
       // selected: ['3302', '58160']
     }
   },
   created() {
-    getOrgTree(3).then(([{ children: data }]) => (this.data = data))
+    getOrgTree().then(([{ children: data }]) => (this.data = data))
   }
 }
 </script>
