@@ -88,6 +88,9 @@ export default {
     }
   },
   methods: {
+    async getCurrentChecked() {
+      return this.getSelectedValue(this.selected)
+    },
     getSelectedValue(val) {
       return this.config.emitPath
         ? this.getLevelData(this.tree.getNode(val)).map(it => it[this.nodeKey])

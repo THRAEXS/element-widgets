@@ -57,7 +57,11 @@ export default {
     }
   },
   methods: {
-    handleCheck(current, { checkedKeys, checkedNodes }) {
+    async getCurrentChecked() {
+      return new Promise(resolve => this.$nextTick(() => resolve(
+        this.getSelectedValue(this.tree.getCheckedKeys(), this.tree.getCheckedNodes()))))
+    },
+    getSelectedValue(checkedKeys, checkedNodes) {
       const { checkStrictly, emitPath } = this.config
       const keys = checkStrictly ? checkedKeys : checkedNodes
         .filter(node => !node[this.config.children])
@@ -65,6 +69,11 @@ export default {
       const result = emitPath
         ? keys.map(key => this.getLevelData(this.tree.getNode(key)).map(it => it[this.nodeKey]))
         : keys
+      
+      return result
+    },
+    handleCheck(current, { checkedKeys, checkedNodes }) {
+      const result = this.getSelectedValue(checkedKeys, checkedNodes)
       this.$emit('input', result)
       this.$emit('update:value', result)
     },
