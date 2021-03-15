@@ -18,7 +18,7 @@
       ref="panel"
       v-model="selected"
       :style="panelStyle"
-      :filter-node-method="filterNodeMethod || handleFilterNode"
+      :filter-node-method="filterMethod || handleFilterNode"
       v-bind="$attrs"
       v-on="panelListeners"
     />
@@ -50,7 +50,7 @@ export default {
       default: true
     },
     filterInput: Object,
-    filterNodeMethod: Function
+    filterMethod: Function
   },
   data() {
     return {

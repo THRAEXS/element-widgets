@@ -47,7 +47,7 @@
       v-model="value"
       :props="props"
       :data="data"
-      :filter-node-method="handleFilterNode"
+      :filter-method="handleFilterNode"
       @ok="handleOk"
     />
   </thx-card-box>
