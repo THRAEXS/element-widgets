@@ -1,5 +1,6 @@
 <template>
   <thx-dialog-box
+    ref="dialogBox"
     :width="width"
     v-bind="$attrs"
     v-on="$listeners"

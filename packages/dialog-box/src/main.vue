@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <el-dialog
+      ref="dialog"
       :visible.sync="dialogVisible"
       :width="width"
       :top="top"
