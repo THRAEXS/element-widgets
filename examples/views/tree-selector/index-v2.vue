@@ -5,6 +5,8 @@
       :props="props"
       :data="data"
     />
+
+    {{ selected }}
   </thx-card-box>
 </template>
 <script>
@@ -17,12 +19,13 @@ export default {
       props: {
         value: 'id',
         label: 'name',
-        multiple: false,
+        multiple: true,
         checkStrictly: false,
         emitPath: false
       },
       data: [],
-      selected: null
+      // selected: null
+      selected: ['58160', '58161', '58162']
     }
   },
   created() {
