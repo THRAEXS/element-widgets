@@ -92,12 +92,14 @@ export default {
       return this.getSelectedValue(this.selected)
     },
     getSelectedValue(val) {
+      if (!val) return null
+
       return this.config.emitPath
         ? this.getLevelData(this.tree.getNode(val)).map(it => it[this.nodeKey])
         : val
     },
     getLevelData(node) {
-      if (node.level === 0) return []
+      if (!node || node.level === 0) return []
 
       const parent = this.getLevelData(node.parent)
       const { label } = this.config

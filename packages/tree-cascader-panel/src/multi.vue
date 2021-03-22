@@ -78,7 +78,7 @@ export default {
       this.$emit('update:value', result)
     },
     getLevelData(node) {
-      if (node.level === 0) return []
+      if (!node || node.level === 0) return []
 
       const parent = this.getLevelData(node.parent)
       const { label } = this.config
