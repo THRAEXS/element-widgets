@@ -58,14 +58,19 @@ export default {
       deep: true,
       handler(val) {
         this.selected.value = val
-        if (!val || val.length === 0) {
-          this.selected.label = null
-        }
+        val ? this.setLabel() : this.$set(this.selected, 'label', null)
       }
     },
     data: {
       deep: true,
       handler() {
+        this.setLabel()
+      }
+    }
+  },
+  methods: {
+    setLabel() {
+      try {
         const cur = this.$refs.cascader
         const dialog = cur.$refs.dialogBox.$refs.dialog
         this.$set(dialog, 'rendered', true)
@@ -77,10 +82,10 @@ export default {
             this.selected.label = this.handleLabel(label)
           })
         })
+      } catch(e) {
+        // console.warn(e)
       }
-    }
-  },
-  methods: {
+    },
     joinLabel(label) {
       return Array.isArray(label)
             ? this.showAllLevels ? label.join(this.separator) : [...label].pop()
