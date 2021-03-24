@@ -1,9 +1,11 @@
 <template>
   <div class="thx-tree-cascader">
     <thx-input-carrier
+      ref="carrier"
       v-model="selected.label"
       readonly
       :size="size"
+      v-bind="$attrs"
       @click="visible = true"
     />
 
@@ -56,6 +58,9 @@ export default {
       deep: true,
       handler(val) {
         this.selected.value = val
+        if (!val || val.length === 0) {
+          this.selected.label = null
+        }
       }
     },
     data: {
