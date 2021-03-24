@@ -1,5 +1,6 @@
 <template>
   <el-cascader
+    ref="selector"
     :options="$attrs['data']"
     :size="size"
     v-bind="$attrs"
@@ -8,6 +9,7 @@
   />
 
   <thx-tree-cascader
+    ref="selector"
     :size="size"
     v-bind="$attrs"
     v-on="$listeners"
