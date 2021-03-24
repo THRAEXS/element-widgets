@@ -95,7 +95,6 @@ export default {
     },
     handleOk(value, label) {
       this.selected.label = this.handleLabel(label)
-      this.$emit('ok', value, label)
     }
   }
 }

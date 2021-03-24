@@ -60,7 +60,7 @@ export default {
   },
   computed: {
     panelListeners() {
-      const baned = ['input', 'update:value', 'update:visible', 'ok']
+      const baned = ['input', 'update:value', 'update:visible', 'ok', 'close', 'closed']
       const events = {}
       Object.keys(this.$listeners)
         .filter(e => !baned.includes(e))
@@ -114,7 +114,6 @@ export default {
     },
     handleClosed() {
       this.selected = this.value
-      this.$emit('closed')
     }
   }
 }
