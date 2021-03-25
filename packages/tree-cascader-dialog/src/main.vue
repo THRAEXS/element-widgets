@@ -6,7 +6,7 @@
     v-on="$listeners"
     @closed="handleClosed"
   >
-    <div class="thx-filter" v-if="showFilter">
+    <div class="thx-filter" v-if="filterable">
       <el-input
         v-model="filterText"
         v-bind="filterInputConfig"
@@ -32,7 +32,7 @@
 <script>
 const DefaultFilterInput = {
   size: 'mini',
-  placeholder: '输入关键字进行过滤',
+  placeholder: 'Enter keywords to filter',
   clearable: true
 }
 
@@ -45,7 +45,7 @@ export default {
       default: '30%'
     },
     panelStyle: Object,
-    showFilter: {
+    filterable: {
       type: Boolean,
       default: true
     },
