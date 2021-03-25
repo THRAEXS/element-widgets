@@ -2,6 +2,12 @@
 
 Widget based on element-ui.
 
+## Deprecated
+
+- [ ] router: tree cascader panel [index]
+- [ ] tree-cascader
+- [ ] tree-selection
+
 ## Todos
 
 - [ ] Documentation
@@ -13,6 +19,20 @@ Widget based on element-ui.
 - [ ] selector button label
 
 - [X] small pagination table
+
+- [ ] Big data table(`editable`)
+
+- [ ] pagination selector ok/cancel event custom
+
+- [ ] pagination selector ok/cancel location sort
+
+## Tree
+
+- Filter
+
+- Radio / Multi
+
+- Check leaf / any level
 
 ## Features
 

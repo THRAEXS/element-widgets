@@ -1,7 +1,7 @@
 <template>
   <el-aside width="250px">
     <el-menu
-      :default-openeds="['/tree/selection']"
+      :default-openeds="openeds"
       background-color="#282923"
       text-color="#d4d4d3"
       active-text-color="#ffd04b">
@@ -35,6 +35,11 @@
 <script>
 export default {
   name: 'LayoutAside',
+  data() {
+    return {
+      openeds: ['/tree/cascader/panel']
+    }
+  },
   computed: {
     routes() {
       return this.$router.options.routes.filter(it => !it.hidden)

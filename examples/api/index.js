@@ -26,6 +26,13 @@ function getUsers(ids) {
   })
 }
 
+function getOrgV1Tree(level = 2) {
+  return request({
+    url: `/api/admin/org/v1/tree/${level}`,
+    method: 'GET'
+  })
+}
+
 function getOrgTree(level = 2) {
   return request({
     url: `/api/admin/org/tree/${level}`,
@@ -37,5 +44,6 @@ export {
   getUserPage,
   getUser,
   getUsers,
+  getOrgV1Tree,
   getOrgTree
 }

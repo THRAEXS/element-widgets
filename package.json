@@ -10,7 +10,9 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lib": "vue-cli-service build --target lib --name element-widgets --dest lib src/index.js",
-    "lint": "vue-cli-service lint"
+    "lint": "vue-cli-service lint",
+    "docs:dev": "vuepress dev docs",
+    "docs:build": "vuepress build docs"
   },
   "keywords": [
     "thraex",
@@ -32,21 +34,23 @@
   "author": "THRAEX <THRAEX@aliyun.com>",
   "license": "MIT",
   "dependencies": {
-    "core-js": "3.6.5",
+    "async-validator": "1.11.5",
+    "core-js": "^3.6.5",
     "element-ui": "2.13.2",
-    "vue": "2.6.11"
+    "vue": "^2.6.11"
   },
   "devDependencies": {
-    "@vue/cli-plugin-babel": "4.5.0",
-    "@vue/cli-plugin-eslint": "4.5.0",
-    "@vue/cli-service": "4.5.0",
+    "@vue/cli-plugin-babel": "~4.5.0",
+    "@vue/cli-plugin-eslint": "~4.5.0",
+    "@vue/cli-service": "~4.5.0",
     "axios": "0.21.0",
-    "babel-eslint": "10.1.0",
-    "eslint": "6.7.2",
-    "eslint-plugin-vue": "6.2.2",
+    "babel-eslint": "~10.1.0",
+    "eslint": "~6.7.2",
+    "eslint-plugin-vue": "~6.2.2",
     "mockjs": "1.1.0",
     "vue-router": "3.4.9",
-    "vue-template-compiler": "2.6.11"
+    "vue-template-compiler": "^2.6.11",
+    "vuepress": "^1.7.1"
   },
   "eslintConfig": {
     "root": true,

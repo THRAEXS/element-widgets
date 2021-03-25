@@ -97,6 +97,59 @@ const constantRoutes = [
   },
 
   {
+    path: '/tree/cascader',
+    component: Layout,
+    meta: { title: 'Tree Cascader', icon: 'el-icon-grape' },
+    children: [
+      {
+        path: '',
+        name: 'TreeCascader',
+        component: () => import('@/views/tree-cascader'),
+        meta: { title: 'Tree Cascader', icon: 'el-icon-s-help' }
+      }
+    ]
+  },
+
+  {
+    path: '/tree/cascader/panel',
+    component: Layout,
+    meta: { title: 'Tree Cascader Panel', icon: 'el-icon-grape' },
+    children: [
+      /* {
+        path: '',
+        name: 'TreeCascaderPanel',
+        component: () => import('@/views/tree-cascader-panel'),
+        meta: { title: 'Index - Deprecated', icon: 'el-icon-s-help' }
+      }, */
+      {
+        path: 'radio',
+        name: 'TreeCascaderPanelRadio',
+        component: () => import('@/views/tree-cascader-panel/radio'),
+        meta: { title: 'Radio', icon: 'el-icon-s-help' }
+      },
+      {
+        path: 'multi',
+        name: 'TreeCascaderPanelMulti',
+        component: () => import('@/views/tree-cascader-panel/multi'),
+        meta: { title: 'Multi', icon: 'el-icon-document-checked' }
+      }
+    ]
+  },
+
+  {
+    path: '/tree/cascader/dialog',
+    component: Layout,
+    children: [
+      {
+        path: '',
+        name: 'TreeCascaderDialog',
+        component: () => import('@/views/tree-cascader-dialog'),
+        meta: { title: 'Tree Cascader Dialog', icon: 'el-icon-s-cooperation' }
+      }
+    ]
+  },
+  
+  {
     path: '/tree/selection',
     component: Layout,
     meta: { title: 'Tree Selection', icon: 'el-icon-grape' },
@@ -124,6 +177,11 @@ const constantRoutes = [
     redirect: '/tree/selector/radio',
     children: [
       {
+        path: '',
+        component: () => import('@/views/tree-selector/index-v2'),
+        meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
+      }
+      /* {
         path: 'index',
         component: () => import('@/views/tree-selector'),
         meta: { title: 'Tree Selector', icon: 'el-icon-grape' }
@@ -139,7 +197,7 @@ const constantRoutes = [
         name: 'TreeSelectorMulti',
         component: () => import('@/views/tree-selector/multi'),
         meta: { title: 'Multi', icon: 'el-icon-document-checked' }
-      }
+      } */
     ]
   },
 

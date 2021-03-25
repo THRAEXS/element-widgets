@@ -67,7 +67,7 @@ export default {
           this.data = data
           this.total = total
         }).finally(() => (this.loading = false))
-      }, 2000)
+      }, 1000)
     }
   }
 }

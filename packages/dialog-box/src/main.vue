@@ -1,6 +1,7 @@
 <template>
   <div class="thx-widget">
     <el-dialog
+      ref="dialog"
       :visible.sync="dialogVisible"
       :width="width"
       :top="top"
@@ -18,7 +19,7 @@
   </div>
 </template>
 <script>
-import MainMixin from '@@/mixins/dialog-box'
+import MainMixin from '../../../src/mixins/dialog-box'
 
 export default {
   name: 'ThxDialogBox',

@@ -26,8 +26,7 @@ export default {
       selected: null,
       nodes: null,
       props: {
-        label: 'name',
-        children: 'childOrgList'
+        label: 'name'
       },
       data: []
     }
