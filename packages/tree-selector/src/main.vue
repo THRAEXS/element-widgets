@@ -13,8 +13,8 @@
     ref="selector"
     :size="size"
     :filterable="filterable"
-    v-bind="$attrs"
     :filter-input="filterInput"
+    v-bind="$attrs"
     v-on="$listeners"
     v-else
   />
